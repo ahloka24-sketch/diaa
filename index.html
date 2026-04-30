@@ -31,6 +31,10 @@
         .side-link { display: flex; align-items: center; gap: 15px; padding: 15px; text-decoration: none; color: var(--primary); font-weight: 700; border-radius: var(--radius-md); transition: 0.3s; margin-bottom: 5px; cursor: pointer; }
         .side-link:hover { background: var(--bg-cream); color: var(--accent); }
 
+        /* --- Google Play Style Button --- */
+        .play-store-btn { background: #000 !important; color: #fff !important; border-radius: 12px !important; padding: 10px 15px !important; margin: 20px 10px 0 !important; display: flex !important; align-items: center !important; gap: 10px !important; }
+        .play-store-btn svg { width: 24px; height: 24px; }
+
         /* --- Header --- */
         header { background: var(--primary); padding: 50px 20px 25px; border-radius: 0 0 40px 40px; color: white; position: relative; box-shadow: var(--shadow); }
         .nav-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
@@ -54,9 +58,9 @@
         .card-icon { width: 55px; height: 55px; background: var(--bg-cream); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
         .card-info h3 { font-size: 15px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
         .card-info p { font-size: 11px; color: #666; line-height: 1.5; }
-        .contact-info { margin-top: 5px; font-size: 10px; color: var(--accent); font-weight: bold; }
+        .recipe-details { font-size: 10px; color: var(--primary-light); margin-top: 5px; background: #f0f7f4; padding: 5px; border-radius: 5px; }
 
-        .reminder-card { background: linear-gradient(135deg, var(--accent), #b38f2d); padding: 15px 20px; border-radius: var(--radius-md); margin: 25px 20px 25px; /* تم تعديل الهامش ليكون مضبوطاً */ color: white; display: flex; align-items: center; gap: 15px; box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3); }
+        .reminder-card { background: linear-gradient(135deg, var(--accent), #b38f2d); padding: 15px 20px; border-radius: var(--radius-md); margin: 25px 20px 25px; color: white; display: flex; align-items: center; gap: 15px; box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3); }
         .tab-bar { display: flex; overflow-x: auto; padding: 0 20px; gap: 10px; scrollbar-width: none; margin-bottom: 20px; }
         .tab { background: white; padding: 10px 22px; border-radius: 30px; font-weight: 700; font-size: 13px; color: var(--primary); white-space: nowrap; cursor: pointer; }
         .tab.active { background: var(--primary); color: white; }
@@ -69,7 +73,6 @@
 
         .toast { position: fixed; top: 40px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 12px 30px; border-radius: 50px; font-size: 13px; z-index: 3000; display: none; }
         
-        /* إضافة ستايل إعلان أماكن الشراء */
         .ad-banner { background: #fff; border: 2px dashed var(--accent); padding: 15px; border-radius: var(--radius-md); margin: 20px; text-align: center; }
         .ad-banner a { color: var(--primary); font-weight: bold; text-decoration: underline; font-size: 14px; }
     </style>
@@ -83,13 +86,17 @@
             <h2 style="color:var(--primary); font-size: 18px;">نظام الطيبات</h2>
         </div>
         <div class="side-link" onclick="navTo('home'); toggleMenu()"><span>🏠</span> الرئيسية</div>
+        <div class="side-link" onclick="navTo('recipes'); toggleMenu()"><span>🍳</span> وصفات نظام الطيبات</div>
         <div class="side-link" onclick="navTo('stores'); toggleMenu()"><span>🛒</span> أماكن الشراء</div>
-        <div class="side-link" onclick=<a href="https://wa.me/message/5D2RTCNJCKPED1"><span>💬</span> استشارة نظام الطيبات</div>
         <div class="side-link" onclick="showToast('قريباً')"><span>📊</span> تقارير الصحة</div>
         
         <hr style="opacity: 0.1; margin: 15px 0;">
-        <div class="side-link" onclick="window.location.href='https://play.google.com/store'" style="background: #000; color: #fff; margin: 0 10px;">
-            <span>🤖</span> رابط تحميل التطبيق
+        <div class="side-link play-store-btn" onclick="window.location.href='https://play.google.com/store'">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L18.66,14.05C20.44,13.03 20.44,10.97 18.66,9.95L16.81,8.88L14.89,12L16.81,15.12M14.28,12.61L4.66,22.23C4.77,22.27 4.88,22.3 5,22.3C5.32,22.3 5.61,22.21 5.87,22.06L14.28,12.61M5.87,1.94C5.61,1.79 5.32,1.7 5,1.7C4.88,1.7 4.77,1.73 4.66,1.77L14.28,11.39L5.87,1.94Z"/></svg>
+            <div style="text-align: right;">
+                <p style="font-size: 8px; margin:0;">GET IT ON</p>
+                <p style="font-size: 14px; font-weight: bold; margin:0;">Google Play</p>
+            </div>
         </div>
 
         <p style="text-align:center; font-size:10px; color:#999; margin-top: 20px;">الإصدار 1.1.0</p>
@@ -124,6 +131,11 @@
         <div class="content-area" id="forbidden-list"></div>
     </div>
 
+    <div id="page-recipes" class="page">
+        <div style="padding: 20px 20px 15px;"><h2 style="font-size: 18px; color: var(--primary);">أشهى وصفات الطيبات 👩‍🍳</h2></div>
+        <div class="content-area" id="recipes-list"></div>
+    </div>
+
     <div id="page-stores" class="page">
         <div style="padding: 20px 20px 15px;"><h2 style="font-size: 18px; color: var(--primary);">أين أجد منتجات الطيبات؟</h2></div>
         
@@ -149,9 +161,9 @@
             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
             <span>المسموحات</span>
         </button>
-        <button class="nav-btn" id="btn-forbidden" onclick="navTo('forbidden')">
-            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>
-            <span>الممنوعات</span>
+        <button class="nav-btn" id="btn-recipes" onclick="navTo('recipes')">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M8.1,13.34l2.83-2.83L3.91,3.5c-1.56,1.56-1.56,4.09,0,5.66L8.1,13.34z M12.04,12.04l-2.83,2.83l7.02,7.02l2.83-2.83 L12.04,12.04z M20.49,3.51c-1.56-1.56-4.09-1.56-5.66,0l-4.24,4.24l2.83,2.83l4.24-4.24c0.78-0.78,2.05-0.78,2.83,0l1.41,1.41 L23.32,6.34L20.49,3.51z"/></svg>
+            <span>الوصفات</span>
         </button>
         <button class="nav-btn" id="btn-stores" onclick="navTo('stores')">
             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -165,7 +177,34 @@
         const days = ["السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة"];
         let currentDay = "السبت";
 
-        // بيانات أماكن الشراء
+        // بيانات الوصفات
+        const recipesData = [
+            { 
+                icon: "🥘", 
+                t: "فتة الكوارع بالخل والثوم", 
+                ingredients: "كوارع، أرز أبيض، توست ريتش بيك محمص، سمن بلدي، ثوم، خل.", 
+                method: "تُسلق الكوارع جيداً. يُحمص التوست بالسمن. يُوضع الأرز فوق التوست ثم تُسقى بشوربة الكوارع وتُضاف طشة الثوم والخل." 
+            },
+            { 
+                icon: "🥩", 
+                t: "كبدة ضاني بزبادة الطيبات", 
+                ingredients: "كبدة ضاني، سمن بلدي، ملح، فلفل، ملعقة قشطة.", 
+                method: "تُشوح الكبدة في السمن البلدي بسرعة. يُضاف الملح والفلفل. في النهاية تُوضع ملعقة القشطة للدهون الطيبة وتُقدم مع التوست." 
+            },
+            { 
+                icon: "🍚", 
+                t: "أرز معمر فلاحي (بدون لبن)", 
+                ingredients: "أرز، شوربة دسمة (ضاني)، سمن بلدي، قشطة كثيرة.", 
+                method: "يُغسل الأرز ويُوضع في البرام. يُسقى بالشوربة الدسمة بدلاً من اللبن. تُوضع كمية وفيرة من القشطة والسمن على الوجه ويدخل الفرن." 
+            },
+            { 
+                icon: "🍯", 
+                t: "حلى القشطة والعسل", 
+                ingredients: "توست ريتش بيك، قشطة بلدي، عسل نحل، مكسرات.", 
+                method: "يُحمص التوست قليلاً. تُفرد القشطة بغزارة، يُرش العسل والمكسرات المسموحة." 
+            }
+        ];
+
         const storeData = {
             restaurants: [
                 { name: "مطعم الطيبات الأصيل", icon: "🍲", address: "القاهرة - مدينة نصر", phone: "0123456789" },
@@ -212,6 +251,7 @@
             renderDay("السبت");
             renderLists();
             renderStores('restaurants');
+            renderRecipes();
         }
 
         function renderTabs() {
@@ -235,14 +275,25 @@
             updateReminder(day);
         }
 
+        function renderRecipes() {
+            const list = document.getElementById('recipes-list');
+            list.innerHTML = recipesData.map(r => `
+                <div class="card-item fade-in">
+                    <div class="card-icon">${r.icon}</div>
+                    <div class="card-info">
+                        <h3>${r.t}</h3>
+                        <div class="recipe-details"><b>المكونات:</b> ${r.ingredients}</div>
+                        <p style="margin-top:5px;"><b>الطريقة:</b> ${r.method}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
         function renderStores(category) {
             const list = document.getElementById('stores-list');
             const data = storeData[category];
-            
-            // تحديث حالة الأزرار
             document.getElementById('btn-show-rest').classList.toggle('active', category === 'restaurants');
             document.getElementById('btn-show-market').classList.toggle('active', category === 'markets');
-
             list.innerHTML = data.map(s => `
                 <div class="card-item fade-in">
                     <div class="card-icon">${s.icon}</div>
