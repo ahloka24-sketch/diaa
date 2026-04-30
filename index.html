@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نظام الطيبات | النسخة الاحترافية</title>
+    <title>نظام الطيبات | الإصدار النهائي</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -77,11 +77,12 @@
             <div class="logo-icon" style="margin: 0 auto 10px;">ط</div>
             <h2 style="color:var(--primary); font-size: 18px;">نظام الطيبات</h2>
         </div>
-        <div class="side-link" onclick="showToast('قريباً')"><span>🔔</span> إعدادات التذكير</div>
         <div class="side-link" onclick="showToast('قريباً')"><span>💬</span> استشارة طبية</div>
-        <div class="side-link" onclick="showToast('قريباً')"><span>📊</span> تتبع الوزن</div>
+        <div class="side-link" onclick="showToast('قريباً')"><span>⚙️</span> الإعدادات</div>
+        <div class="side-link" onclick="showToast('قريباً')"><span>🔔</span> تذكير المواعيد</div>
+        <div class="side-link" onclick="showToast('قريباً')"><span>📊</span> تقارير الصحة</div>
         <hr style="opacity: 0.1; margin: 15px 0;">
-        <div class="side-link" style="color:var(--danger)"><span>🚪</span> خروج</div>
+        <p style="text-align:center; font-size:10px; color:#999;">الإصدار 1.0.0</p>
     </div>
 
     <header>
@@ -138,17 +139,19 @@
         const days = ["السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة"];
         let currentDay = "السبت";
 
-        // بيانات المسموحات والممنوعات
+        // المسموحات (كما هي)
         const allowedData = [
             { icon: '🍞', t: 'توست بالردة', d: 'ريتش بيك حصراً' },
             { icon: '🫒', t: 'دهون طيبة', d: 'زيت زيتون، زبدة وسمن بلدي، قشطة' },
             { icon: '🧀', t: 'أجبان مسموحة', d: 'شيدر، موتزريلا، كشكفال، برميزان، رومي، أجبان مطبوخة' },
             { icon: '🍚', t: 'نشويات', d: 'أرز، بطاطس، بطاطا، قرع، قلقاس، فريك، مشروم' },
-            { icon: '🍎', t: 'فواكه', d: 'كل الأنواع وعصائرها ما عدا البطيخ. التفاح والكمثرى بدون قشر.' },
+            { icon: '🍎', t: 'فواكه', d: 'كل الأنواع ما عدا البطيخ. التفاح والكمثرى بدون قشر.' },
             { icon: '🥩', t: 'البروتينات', d: 'لحم ضاني، بقري مسلوق جيداً، حمام، سمان، أرانب، أسماك' }
         ];
 
+        // الممنوعات مع إضافة الدجاج وملحقاته
         const forbiddenData = [
+            { icon: '🍗', t: 'الدجاج وملحقاته', d: 'ممنوع الفراخ، الكبد وقوانص الفراخ، البط، والديك الرومي' },
             { icon: '🥚', t: 'البيض', d: 'ممنوع بكافة أشكاله' },
             { icon: '🥛', t: 'الألبان', d: 'ممنوع اللبن، الزبادي، الرايب، والجبنة القريش' },
             { icon: '🍞', t: 'الدقيق الأبيض', d: 'فينو، مكرونة، كيك، مخبوزات، حلويات شرقيه' },
@@ -156,7 +159,6 @@
             { icon: '🥤', t: 'المشروبات', d: 'مياه غازية، مبيضات القهوة' }
         ];
 
-        // جدول متنوع لكل يوم
         const weeklyMenu = {
             "السبت": [
                 { type: "فطور", t: "جبنة شيدر وتوست", d: "توست ريتش بيك مع زيت زيتون", i: "🧀" },
@@ -166,7 +168,7 @@
             "الأحد": [
                 { type: "فطور", t: "حلاوة طحينية", d: "توست ردة مع طحينة غامقة", i: "🥪" },
                 { type: "غداء", t: "سمك مشوي", d: "سمك بجميع أنواعه مع أرز أبيض", i: "🐟" },
-                { type: "عشاء", t: "بطاطس محمرة", d: "شيبسي منزلي بزيت نظيف", i: "🍟" }
+                { type: "عشاء", t: "بطاطس محمرة", d: "شيبسي منزلي بزيت زيتون", i: "🍟" }
             ],
             "الاثنين": [
                 { type: "سحور", t: "تمر وقشطة", d: "7 تمرات مع ملعقة قشطة", i: "🌴" },
@@ -174,13 +176,13 @@
                 { type: "سهرة", t: "بسبوسة سادة", d: "بسبوسة محلات (بدون لبن أو بيض)", i: "🍰" }
             ],
             "الثلاثاء": [
-                { type: "فطور", t: "جبنة رومي", d: "توست محمص مع جبنة رومي قديمة", i: "🧀" },
+                { type: "فطور", t: "جبنة رومي", d: "توست محمص مع جبنة رومي", i: "🧀" },
                 { type: "غداء", t: "أرانب محمرة", d: "أرانب مع شوربة لسان عصفور", i: "🐇" },
                 { type: "عشاء", t: "عصير مانجو", d: "عصير مانجو مصفى من الألياف", i: "🥭" }
             ],
             "الأربعاء": [
                 { type: "فطور", t: "عسل نحل وزبدة", d: "توست بالردة مع عسل وزبدة طبيعية", i: "🍯" },
-                { type: "غداء", t: "كوارع وممبار", d: "وجبة دسمة مسموحة ومنشطة", i: "🥘" },
+                { type: "غداء", t: "كوارع وممبار", d: "وجبة دسمة مسموحة", i: "🥘" },
                 { type: "عشاء", t: "فاكهة مقشرة", d: "تفاح أو كمثرى بدون قشر", i: "🍎" }
             ],
             "الخميس": [
@@ -229,10 +231,10 @@
             let content = '';
             if(day === "الاثنين" || day === "الخميس") {
                 content = `<div class="reminder-card fasting fade-in"><span>🌙</span><div><b>تذكير بالصيام</b><p>صيام ${day} سنة نبوية وجزء من نظام الطيبات.</p></div></div>`;
-            } else if(day === "الأربعاء") {
-                content = `<div class="reminder-card fade-in" style="background:var(--primary)"><span>📅</span><div><b>الأيام البيض قريبة</b><p>استعد لصيام الأيام البيض القادمة.</p></div></div>`;
+            } else if(day === "الثلاثاء" || day === "الأربعاء" || day === "الجمعة") {
+                content = `<div class="reminder-card fade-in" style="background:var(--primary)"><span>📅</span><div><b>تذكير الأيام البيض</b><p>لا تنسَ فضل صيام الأيام البيض من كل شهر هجري.</p></div></div>`;
             } else {
-                content = `<div class="reminder-card fade-in"><span>💡</span><div><b>نصيحة اليوم</b><p>البروتين يوم بعد يوم، والخبز المسموح هو توست الردة فقط.</p></div></div>`;
+                content = `<div class="reminder-card fade-in"><span>💡</span><div><b>نصيحة اليوم</b><p>البروتين (لحم/سمك) يوم بعد يوم لراحة القولون.</p></div></div>`;
             }
             box.innerHTML = content;
         }
