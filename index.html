@@ -1,373 +1,277 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نظام الطيبات | د. ضياء العوضي</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-<style>
-/* ===== CSS VARIABLES (التصميم الأصلي) ===== */
-:root {
-  --green-dark: #1a3d2b;
-  --green-mid: #2d6a4f;
-  --green-light: #52b788;
-  --green-pale: #b7e4c7;
-  --gold: #c9a84c;
-  --gold-light: #f0d080;
-  --cream: #f8f4e8;
-  --cream-dark: #ede8d5;
-  --red: #c0392b;
-  --white: #ffffff;
-  --text-dark: #1a1a1a;
-  --text-mid: #3d3d3d;
-  --shadow-sm: 0 2px 12px rgba(26,61,43,0.10);
-  --shadow-md: 0 6px 32px rgba(26,61,43,0.15);
-  --shadow-lg: 0 16px 64px rgba(26,61,43,0.20);
-  --radius: 18px;
-  --radius-sm: 10px;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام الطيبات | د. ضياء العوضي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-dark: #1a3d2b;
+            --green-mid: #2d6a4f;
+            --green-light: #52b788;
+            --green-pale: #b7e4c7;
+            --gold: #c9a84c;
+            --gold-light: #f0d080;
+            --cream: #f8f4e8;
+            --cream-dark: #ede8d5;
+            --red: #c0392b;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --shadow-sm: 0 2px 12px rgba(26,61,43,0.10);
+            --shadow-md: 0 6px 32px rgba(26,61,43,0.15);
+            --radius: 18px;
+            --radius-sm: 10px;
+        }
 
-/* ===== RESET & BASE ===== */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Tajawal', sans-serif;
-  background: var(--cream);
-  color: var(--text-dark);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Tajawal', sans-serif; background: var(--cream); color: var(--text-dark); direction: rtl; min-height: 100vh; padding-bottom: 80px; }
 
-/* ===== PAGES SYSTEM ===== */
-.page { display: none; min-height: 100vh; }
-.page.active { display: block; animation: fadeIn 0.4s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        /* Navigation */
+        .top-nav {
+            background: var(--green-dark);
+            padding: 16px 20px;
+            display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-circle {
+            width: 45px; height: 45px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Amiri', serif; font-weight: 700; color: var(--green-dark); font-size: 14px;
+        }
+        .app-title { color: white; }
+        .app-title h1 { font-size: 18px; font-weight: 800; }
+        .app-title p { font-size: 11px; color: var(--green-pale); }
 
-/* ===== TOP NAV ===== */
-.top-nav {
-  position: sticky; top: 0; z-index: 100;
-  background: var(--green-dark);
-  padding: 14px 20px;
-  display: flex; align-items: center; justify-content: space-between;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-}
-.top-nav .logo-area { display: flex; align-items: center; gap: 10px; }
-.top-nav .logo-circle {
-  width: 42px; height: 42px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Amiri', serif; font-size: 13px; color: var(--green-dark);
-  font-weight: 700; border: 2px solid var(--gold-light);
-}
-.top-nav .app-name { color: var(--white); font-size: 18px; font-weight: 700; line-height: 1.1; }
-.top-nav .app-sub { color: var(--green-pale); font-size: 11px; }
-.menu-btn { background: none; border: none; cursor: pointer; padding: 6px; }
-.menu-btn span {
-  display: block; width: 24px; height: 2.5px; background: var(--white);
-  margin: 5px 0; border-radius: 2px; transition: all 0.3s;
-}
+        /* Pages */
+        .page { display: none; padding: 20px 16px; animation: fadeIn 0.4s ease; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ===== BOTTOM NAVBAR ===== */
-.bottom-nav {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
-  background: var(--green-dark);
-  display: flex; justify-content: space-around; align-items: center;
-  padding: 10px 0 16px;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
-}
-.bottom-nav .nav-item {
-  display: flex; flex-direction: column; align-items: center;
-  gap: 4px; cursor: pointer; padding: 4px 12px;
-  border-radius: var(--radius-sm);
-  transition: all 0.25s; border: none; background: none; color: #7aab8a;
-  font-family: 'Tajawal', sans-serif; font-size: 11px;
-}
-.bottom-nav .nav-item.active { color: var(--gold-light); }
-.bottom-nav .nav-item svg { width: 22px; height: 22px; }
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+            border-radius: var(--radius); padding: 25px; color: white; margin-bottom: 25px;
+            position: relative; overflow: hidden;
+        }
+        .hero h2 { font-size: 24px; font-weight: 900; margin-bottom: 8px; }
+        .hero p { font-size: 13px; color: var(--green-pale); line-height: 1.6; opacity: 0.9; }
 
-/* ===== HERO & CONTENT ===== */
-.page-content { padding: 20px 16px 90px; }
-.hero-banner {
-  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
-  border-radius: var(--radius); padding: 28px 22px; margin-bottom: 22px; position: relative; overflow: hidden;
-}
-.hero-banner h1 { color: var(--white); font-size: 26px; font-weight: 900; margin-bottom: 6px; line-height: 1.3; }
-.hero-banner p { color: var(--green-pale); font-size: 14px; line-height: 1.6; }
+        /* Grid */
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .menu-card {
+            background: var(--white); border-radius: var(--radius); padding: 20px 15px;
+            text-align: center; box-shadow: var(--shadow-sm); border: 2px solid transparent;
+            transition: 0.3s; cursor: pointer;
+        }
+        .menu-card:active { transform: scale(0.95); background: var(--cream-dark); }
+        .card-icon { font-size: 32px; margin-bottom: 10px; display: block; }
+        .card-title { font-size: 14px; font-weight: 800; color: var(--green-dark); }
 
-.section-title {
-  font-size: 20px; font-weight: 800; color: var(--green-dark);
-  margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
-}
-.section-title::after { content: ''; flex: 1; height: 2px; background: linear-gradient(to left, transparent, var(--green-pale)); }
+        /* Content Sections */
+        .section-header {
+            font-size: 18px; font-weight: 900; color: var(--green-dark);
+            margin: 25px 0 15px; display: flex; align-items: center; gap: 10px;
+        }
+        .section-header::after { content: ''; flex: 1; height: 2px; background: var(--green-pale); border-radius: 2px; }
 
-/* Quick Cards */
-.quick-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
-.quick-card {
-  background: var(--white); border-radius: var(--radius); padding: 18px 14px; text-align: center;
-  box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.25s; border: 2px solid transparent;
-}
-.quick-card .qc-icon { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-size: 26px; }
-.quick-card .qc-title { font-size: 14px; font-weight: 700; color: var(--green-dark); }
+        /* List Items */
+        .item-card {
+            background: white; border-radius: var(--radius-sm); padding: 15px;
+            margin-bottom: 10px; box-shadow: var(--shadow-sm);
+            display: flex; align-items: center; gap: 15px; border-right: 4px solid var(--green-light);
+        }
+        .item-card.forbidden { border-right-color: var(--red); }
+        .item-icon { font-size: 24px; width: 40px; text-align: center; }
+        .item-info h4 { font-size: 15px; font-weight: 800; color: var(--green-dark); margin-bottom: 2px; }
+        .item-info p { font-size: 12px; color: #666; line-height: 1.4; }
 
-/* Schedule Tabs */
-.week-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 20px; scrollbar-width: none; }
-.week-tabs::-webkit-scrollbar { display: none; }
-.week-tab {
-  flex-shrink: 0; padding: 8px 16px; border-radius: 30px; background: var(--white); border: 2px solid var(--cream-dark);
-  font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s;
-}
-.week-tab.active { background: var(--green-dark); border-color: var(--green-dark); color: var(--white); }
+        /* Tab Bar */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: var(--green-dark); display: flex; justify-content: space-around;
+            padding: 12px 10px 25px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 1000;
+        }
+        .nav-item {
+            color: #7aab8a; text-decoration: none; display: flex; flex-direction: column;
+            align-items: center; gap: 5px; font-size: 11px; font-weight: 700;
+            background: none; border: none; cursor: pointer;
+        }
+        .nav-item.active { color: var(--gold-light); }
+        .nav-item svg { width: 22px; height: 22px; }
 
-.meal-card {
-  background: var(--white); border-radius: var(--radius); padding: 14px; display: flex; align-items: center; gap: 12px;
-  box-shadow: var(--shadow-sm); margin-bottom: 10px;
-}
-.meal-img { width: 64px; height: 64px; border-radius: var(--radius-sm); background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-size: 28px; }
-.meal-name { font-size: 15px; font-weight: 700; color: var(--green-dark); }
-.meal-desc { font-size: 12px; color: #888; margin-top: 3px; }
-.meal-tag { font-size: 10px; padding: 3px 8px; border-radius: 20px; background: var(--cream-dark); color: var(--green-mid); font-weight: 600; margin-top: 6px; display: inline-block; }
-
-/* Forbidden Card */
-.forbidden-card {
-  background: var(--white); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow-sm);
-  display: flex; gap: 14px; border-right: 4px solid var(--red);
-}
-.forbidden-icon { font-size: 32px; }
-.forbidden-info h4 { font-size: 15px; font-weight: 800; color: var(--red); }
-.forbidden-info p { font-size: 12px; color: #666; margin-top: 4px; }
-
-/* Modal */
-.modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); align-items: flex-end; }
-.modal-overlay.open { display: flex; }
-.modal-sheet { width: 100%; max-height: 90vh; overflow-y: auto; background: var(--cream); border-radius: 24px 24px 0 0; animation: slideUp 0.35s ease; padding-bottom: 30px; position: relative; }
-@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-.close-modal { position: absolute; top: 20px; left: 20px; background: rgba(0,0,0,0.3); border: none; width: 36px; height: 36px; border-radius: 50%; color: white; cursor: pointer; }
-.modal-hero { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 80px; margin: 10px 16px; border-radius: var(--radius); }
-.modal-body { padding: 0 20px; }
-.info-card { background: var(--white); border-radius: var(--radius); padding: 16px; margin-bottom: 14px; }
-
-/* Toast */
-.toast { position: fixed; top: 80px; left: 50%; transform: translateX(-50%); background: var(--green-dark); color: white; padding: 10px 20px; border-radius: 30px; font-size: 13px; opacity: 0; transition: 0.3s; z-index: 300; }
-.toast.show { opacity: 1; }
-</style>
+        /* Back Button */
+        .back-btn {
+            background: none; border: none; color: white; font-size: 24px; padding: 5px; cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-<div class="toast" id="toast"></div>
+    <nav class="top-nav" id="mainNav">
+        <div class="logo-area">
+            <div class="logo-circle">الطيبات</div>
+            <div class="app-title">
+                <h1>د. ضياء العوضي</h1>
+                <p>نظام الطيبات المعتمد</p>
+            </div>
+        </div>
+    </nav>
 
-<div class="page active" id="page-home">
-  <nav class="top-nav">
-    <div class="logo-area">
-      <div class="logo-circle">طيبات</div>
-      <div>
-        <div class="app-name">نظام الطيبات</div>
-        <div class="app-sub">د. ضياء العوضي</div>
-      </div>
+    <div id="home" class="page active">
+        <div class="hero">
+            <h2>مرحباً بك في عالم الطيبات 🌿</h2>
+            <p>هذا النظام يعتمد على العودة للفطرة والتوقف عن السموم الغذائية لاستعادة صحة الجسم ومناعته.</p>
+        </div>
+
+        <div class="section-header">الأقسام الأساسية</div>
+        <div class="menu-grid">
+            <div class="menu-card" onclick="showPage('allowed')">
+                <span class="card-icon">✅</span>
+                <span class="card-title">قائمة المسموحات</span>
+            </div>
+            <div class="menu-card" onclick="showPage('forbidden')">
+                <span class="card-icon">❌</span>
+                <span class="card-title">قائمة الممنوعات</span>
+            </div>
+            <div class="menu-card" onclick="showPage('rules')">
+                <span class="card-icon">⚖️</span>
+                <span class="card-title">قواعد البروتين</span>
+            </div>
+            <div class="menu-card" onclick="alert('قريباً: جدول الوجبات المقترح')">
+                <span class="card-icon">📅</span>
+                <span class="card-title">جدول الوجبات</span>
+            </div>
+        </div>
+
+        <div class="section-header">تنبيه هام ⚠️</div>
+        <div class="item-card forbidden" style="background: #fff5f5;">
+            <div class="item-icon">💊</div>
+            <div class="item-info">
+                <h4>أدوية الحموضة</h4>
+                <p>يمنع منعاً باتاً تناول كافة أدوية الحموضة في هذا النظام.</p>
+            </div>
+        </div>
     </div>
-    <button class="menu-btn" onclick="goTo('page-more')"><span></span><span></span><span></span></button>
-  </nav>
 
-  <div class="page-content">
-    <div class="hero-banner">
-      <h1>نظام الطيبات المعتمد<br>للدكتور ضياء العوضي 🌿</h1>
-      <p>دليلك الشامل للصحة والمناعة من خلال العودة للفطرة واستخدام الغذاء كدواء.</p>
+    <div id="allowed" class="page">
+        <div class="section-header">المسموحات (الطيبات)</div>
+        <div id="allowed-list">
+            </div>
     </div>
 
-    <div class="section-title">الأقسام الرئيسية</div>
-    <div class="quick-grid">
-      <div class="quick-card" onclick="goTo('page-schedule')">
-        <div class="qc-icon" style="background:#e8f5e9">📅</div>
-        <div class="qc-title">الجدول الغذائي</div>
-      </div>
-      <div class="quick-card" onclick="goTo('page-herbs')">
-        <div class="qc-icon" style="background:#e8f5e9">🍯</div>
-        <div class="qc-title">قائمة المسموحات</div>
-      </div>
-      <div class="quick-card" onclick="goTo('page-forbidden')">
-        <div class="qc-icon" style="background:#fde8e8">🚫</div>
-        <div class="qc-title">الممنوعات</div>
-      </div>
-      <div class="quick-card" onclick="goTo('page-favorites')">
-        <div class="qc-icon" style="background:#fff8e1">⭐</div>
-        <div class="qc-title">المفضلة</div>
-      </div>
+    <div id="forbidden" class="page">
+        <div class="section-header">الممنوعات (السموم الغذائية)</div>
+        <div id="forbidden-list">
+            </div>
     </div>
 
-    <div class="section-title">القاعدة الذهبية</div>
-    <div style="background:linear-gradient(135deg,#fffde7,#fff9c4);border-radius:var(--radius);padding:18px;border-right:4px solid var(--gold);">
-      <p style="font-size:13px;color:#6d5508;line-height:1.7">"لا يوجد دواء بلا طعام، ولا يوجد شفاء بلا التوقف عن السموم. الطيبات هي الأصل والمصنعات هي الداء."</p>
+    <div id="rules" class="page">
+        <div class="section-header">قواعد البروتين واللحوم</div>
+        <div id="rules-list">
+            </div>
     </div>
-  </div>
 
-  <nav class="bottom-nav">
-    <button class="nav-item active" onclick="goTo('page-home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>الرئيسية</span></button>
-    <button class="nav-item" onclick="goTo('page-schedule')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>الجدول</span></button>
-    <button class="nav-item" onclick="goTo('page-herbs')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4"/></svg><span>المسموحات</span></button>
-    <button class="nav-item" onclick="goTo('page-more')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg><span>المزيد</span></button>
-  </nav>
-</div>
+    <nav class="bottom-nav">
+        <button class="nav-item active" id="btn-home" onclick="showPage('home')">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>الرئيسية</span>
+        </button>
+        <button class="nav-item" id="btn-allowed" onclick="showPage('allowed')">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            <span>المسموحات</span>
+        </button>
+        <button class="nav-item" id="btn-forbidden" onclick="showPage('forbidden')">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            <span>الممنوعات</span>
+        </button>
+    </nav>
 
-<div class="page" id="page-schedule">
-  <nav class="top-nav">
-    <div class="logo-area"><button onclick="goTo('page-home')" style="background:none;border:none;color:white;font-size:22px;">‹</button>
-    <div><div class="app-name">الجدول اليومي</div></div></div>
-  </nav>
-  <div class="page-content">
-    <div class="week-tabs" id="weekTabs"></div>
-    <div id="scheduleContent"></div>
-  </div>
-  <nav class="bottom-nav">
-    <button class="nav-item" onclick="goTo('page-home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>الرئيسية</span></button>
-    <button class="nav-item active" onclick="goTo('page-schedule')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg><span>الجدول</span></button>
-    <button class="nav-item" onclick="goTo('page-herbs')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4"/></svg><span>المسموحات</span></button>
-  </nav>
-</div>
+    <script>
+        const ALLOWED_DATA = [
+            { icon: '🍞', title: 'توست بالردة', desc: 'نوع ريتش بيك حصراً' },
+            { icon: '🫒', title: 'الدهون الصحية', desc: 'زيت زيتون، زبدة وسمنة بلدي، وقشطة' },
+            { icon: '🧀', title: 'الأجبان المسموحة', desc: 'شيدر، موتزريلا، كشكفال، برميزان، جبنة مطبوخة (مثلثات وكوبيات)، رومي نوع جيد' },
+            { icon: '🍚', title: 'الأرز والنشويات', desc: 'أرز بكل أشكاله، فريك، بطاطس (كل الأشكال)، بطاطا حلوة، قرع، قلقاس، مشروم' },
+            { icon: '🍿', title: 'المسليات', desc: 'شيبسي، لب سوري' },
+            { icon: '🍎', title: 'الفواكه', desc: 'كل الأنواع وعصائرها (ما عدا البطيخ). الرمان والتين الشوكي يُصفى جيداً. التفاح والكمثرى والكاكا بدون قشر. الجوافة بدون بذر.' },
+            { icon: '🍯', title: 'الحلويات', desc: 'مربى، فواكه مجففة، حلاوة طحينية، طحينة غامقة، حلاوة المولد (ما عدا الملبن والفولية والنوجا)' },
+            { icon: '🍰', title: 'البسبوسة', desc: 'البسبوسة فقط مسموحة ويفضل من المحلات (لعدم وجود لبن/بيض)' },
+            { icon: '🍫', title: 'الشوكلاتة', desc: 'نوتيلا وشوكولاتة وجيلو (غومي)' },
+            { icon: '☕', title: 'المشروبات', desc: 'قهوة، شاي أخضر، مشروبات ساخنة (بدون مبيضات)، عصير قصب' }
+        ];
 
-<div class="page" id="page-forbidden">
-  <nav class="top-nav">
-    <div class="logo-area"><button onclick="goTo('page-home')" style="background:none;border:none;color:white;font-size:22px;">‹</button>
-    <div><div class="app-name">الممنوعات</div></div></div>
-  </nav>
-  <div class="page-content">
-    <div id="forbiddenList"></div>
-  </div>
-</div>
+        const FORBIDDEN_DATA = [
+            { icon: '🥚', title: 'البيض', desc: 'ممنوع تماماً بكافة أشكاله' },
+            { icon: '🥛', title: 'الألبان', desc: 'ممنوع اللبن، الزبادي، واللبن الرائب' },
+            { icon: '🧀', title: 'الأجبان البيضاء', desc: 'ممنوع الجبنة القريش وكافة الأجبان البيضاء' },
+            { icon: '🍞', title: 'الدقيق الأبيض', desc: 'فينو، كيك، كرواسون، باتيه، كريب، بسكويت، مكرونة، لازانيا' },
+            { icon: '🥗', title: 'الخضار النيء', desc: 'خيار، خس، جرجير، بقدونس، كرفس، جزر، فلفل أخضر وألوان (نيء)' },
+            { icon: '🌿', title: 'البقوليات والورقيات', desc: 'سبانخ، بسلة، فاصوليا بيضاء، لوبيا، فول، ملوخية وفاصوليا خضراء (مسموح مرة شهرية فقط)' },
+            { icon: '🥤', title: 'المياه الغازية', desc: 'ممنوعة بجميع أنواعها' },
+            { icon: '🍗', title: 'الطيور الممنوعة', desc: 'الفراخ، الكبد وقوانص الفراخ، البط، الديك الرومي' },
+            { icon: '🦐', title: 'البحريات', desc: 'الجمبري والسبيط ممنوع' }
+        ];
 
-<div class="page" id="page-herbs">
-  <nav class="top-nav">
-    <div class="logo-area"><button onclick="goTo('page-home')" style="background:none;border:none;color:white;font-size:22px;">‹</button>
-    <div><div class="app-name">قائمة المسموحات</div></div></div>
-  </nav>
-  <div class="page-content">
-    <div id="herbsGrid" class="quick-grid" style="grid-template-columns: 1fr 1fr;"></div>
-  </div>
-</div>
+        const RULES_DATA = [
+            { icon: '🥩', title: 'اللحوم الحمراء', desc: 'مرة أسبوعياً (بقري/جاموسي) مسلوقة جداً ومحمرة. مرتين أسبوعياً (ضاني/ماعز). مسموح كبدة ضاني وكوارع وممبار وعكاوي.' },
+            { icon: '🐟', title: 'الأسماك', desc: 'جميع الأنواع (ما عدا الجمبري والسبيط) وتفضل مشوية.' },
+            { icon: '🦆', title: 'الطيور المسموحة', desc: 'الحمام والسمان فقط (مشوي أو محشي أرز/فريك).' },
+            { icon: '🐇', title: 'الأرانب', desc: 'مسموحة في النظام.' },
+            { icon: '⏳', title: 'قاعدة التكرار', desc: 'البروتين (لحم/طيور/سمك) يوم ويوم وليس يومياً.' }
+        ];
 
-<div class="modal-overlay" id="herbModal" onclick="if(event.target===this)closeModal()">
-  <div class="modal-sheet">
-    <button class="close-modal" onclick="closeModal()">✕</button>
-    <div class="modal-hero" id="modalHero"></div>
-    <div class="modal-body">
-      <h2 id="modalTitle" style="color:var(--green-dark);margin-bottom:10px"></h2>
-      <div id="modalContent"></div>
-    </div>
-  </div>
-</div>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById('btn-' + (pageId === 'rules' ? 'home' : pageId));
+            if(activeBtn) activeBtn.classList.add('active');
+            
+            window.scrollTo(0, 0);
+        }
 
-<script>
-// ===========================
-// DATA (نظام الدكتور ضياء العوضي)
-// ===========================
-const HERBS = [
-  { id:1, name:'عسل نحل طبيعي', emoji:'🍯', bg:'#fff8e1', summary:'علاج القولون والمناعة', benefits:['مضاد حيوي طبيعي','منشط للكبد','بديل السكر الأساسي'], usage:['ملعقة على الريق','مذاب في ماء دافئ'] },
-  { id:2, name:'زيت زيتون بكر', emoji:'🫒', bg:'#f1f8e9', summary:'صديق القلب والشرايين', benefits:['يخفض الكوليسترول','يعالج الإمساك','مغذي للأعصاب'], usage:['مع الأكل البارد','ملعقة قبل النوم'] },
-  { id:3, name:'التمر (الرطب)', emoji:'🌴', bg:'#fbe9e7', summary:'منجم الفيتامينات', benefits:['علاج الأنيميا','طاقة فورية','مقوي للأعصاب'], usage:['7 تمرات صباحاً','بين الوجبات'] },
-  { id:4, name:'السمن البلدي', emoji:'🧈', bg:'#fff9c4', summary:'الدهون الصحية الأصلية', benefits:['لا يرفع الكوليسترول','مقوي للعظام','فيتامينات ذائبة'], usage:['للطبخ','مع التمر'] }
-];
+        function renderLists() {
+            const allowedList = document.getElementById('allowed-list');
+            allowedList.innerHTML = ALLOWED_DATA.map(item => `
+                <div class="item-card">
+                    <div class="item-icon">${item.icon}</div>
+                    <div class="item-info">
+                        <h4>${item.title}</h4>
+                        <p>${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
 
-const SCHEDULE = {
-  'السبت': { breakfast:[{name:'عسل نحل وزيت زيتون', desc:'ملعقة عسل + ملعقة زيت زيتون + خبز قمح كامل', emoji:'🍯', tag:'أساسي'}], lunch:[{name:'سمك مشوي', desc:'سمك مع زيت زيتون وليمون وثوم', emoji:'🐟', tag:'أوميغا 3'}], dinner:[{name:'7 تمرات وروب', desc:'وجبة خفيفة ومريحة للهضم', emoji:'🌴', tag:'خفيف'}] },
-  'الأحد': { breakfast:[{name:'بيض بلدي بالسمن', desc:'بيض مقلي بالسمن الطبيعي والخضروات', emoji:'🍳', tag:'بروتين'}], lunch:[{name:'دجاج منزوع الجلد', desc:'دجاج مسلوق أو مشوي مع شوربة دافئة', emoji:'🍗', tag:'مغذي'}], dinner:[{name:'عسل وماء دافئ', desc:'لتنظيف الكبد قبل النوم', emoji:'🍯', tag:'ديتوكس'}] }
-  // سيتم تكرار الأيام برمجياً للتبسيط
-};
+            const forbiddenList = document.getElementById('forbidden-list');
+            forbiddenList.innerHTML = FORBIDDEN_DATA.map(item => `
+                <div class="item-card forbidden">
+                    <div class="item-icon">${item.icon}</div>
+                    <div class="item-info">
+                        <h4>${item.title}</h4>
+                        <p>${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
 
-const FORBIDDEN = [
-  { name:'الزيوت المهدرجة', reason:'تسبب انسداد الشرايين والتهابات', emoji:'🧪', details:'كالسمن النباتي وزيوت القلي المتكررة.' },
-  { name:'السكر الأبيض', reason:'يغذي السرطان ويدمر المناعة', emoji:'🍬', details:'يستبدل بالعسل الطبيعي فقط.' },
-  { name:'الدقيق المبيض', reason:'يسبب مشاكل القولون والسمنة', emoji:'🥐', details:'يستبدل بدقيق القمح الكامل أو الشعير.' },
-  { name:'اللحوم المصنعة', reason:'تحتوي على مواد مسرطنة', emoji:'🌭', details:'اللانشون، السجق، والبرجر المعلب.' }
-];
+            const rulesList = document.getElementById('rules-list');
+            rulesList.innerHTML = RULES_DATA.map(item => `
+                <div class="item-card" style="border-right-color: var(--gold)">
+                    <div class="item-icon">${item.icon}</div>
+                    <div class="item-info">
+                        <h4>${item.title}</h4>
+                        <p>${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
 
-// ===========================
-// LOGIC (التصميم الأصلي)
-// ===========================
-let selectedDay = 'السبت';
-
-function goTo(pageId) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(pageId).classList.add('active');
-  window.scrollTo(0,0);
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2000);
-}
-
-function initApp() {
-  // أيام الأسبوع
-  const days = ['السبت','الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
-  document.getElementById('weekTabs').innerHTML = days.map(d => `<button class="week-tab ${d===selectedDay?'active':''}" onclick="selectDay('${d}')">${d}</button>`).join('');
-  
-  renderSchedule();
-  renderForbidden();
-  renderAllowed();
-}
-
-function selectDay(day) {
-  selectedDay = day;
-  document.querySelectorAll('.week-tab').forEach(t => t.classList.toggle('active', t.textContent === day));
-  renderSchedule();
-}
-
-function renderSchedule() {
-  const data = SCHEDULE[selectedDay] || SCHEDULE['السبت'];
-  const meals = [{l:'فطور', k:'breakfast'}, {l:'غداء', k:'lunch'}, {l:'عشاء', k:'dinner'}];
-  document.getElementById('scheduleContent').innerHTML = meals.map(m => `
-    <div class="meal-card">
-      <div class="meal-img">${data[m.k][0].emoji}</div>
-      <div class="meal-info">
-        <div class="meal-name">${data[m.k][0].name}</div>
-        <div class="meal-desc">${data[m.k][0].desc}</div>
-        <span class="meal-tag">${data[m.k][0].tag}</span>
-      </div>
-    </div>
-  `).join('');
-}
-
-function renderForbidden() {
-  document.getElementById('forbiddenList').innerHTML = FORBIDDEN.map(f => `
-    <div class="forbidden-card">
-      <div class="forbidden-icon">${f.emoji}</div>
-      <div class="forbidden-info">
-        <h4>${f.name}</h4>
-        <p>${f.details}</p>
-        <p style="color:var(--red); font-weight:700; font-size:10px; margin-top:5px;">⚠️ السبب: ${f.reason}</p>
-      </div>
-    </div>
-  `).join('');
-}
-
-function renderAllowed() {
-  document.getElementById('herbsGrid').innerHTML = HERBS.map(h => `
-    <div class="quick-card" style="padding:15px;" onclick="openModal(${h.id})">
-      <div class="qc-icon" style="background:${h.bg}">${h.emoji}</div>
-      <div class="qc-title">${h.name}</div>
-    </div>
-  `).join('');
-}
-
-function openModal(id) {
-  const h = HERBS.find(x => x.id === id);
-  document.getElementById('modalHero').style.background = h.bg;
-  document.getElementById('modalHero').textContent = h.emoji;
-  document.getElementById('modalTitle').textContent = h.name;
-  document.getElementById('modalContent').innerHTML = `
-    <div class="info-card"><h4>الفوائد:</h4><p>${h.benefits.join(' - ')}</p></div>
-    <div class="info-card"><h4>الاستخدام:</h4><p>${h.usage.join(' - ')}</p></div>
-  `;
-  document.getElementById('herbModal').classList.add('open');
-}
-
-function closeModal() {
-  document.getElementById('herbModal').classList.remove('open');
-}
-
-window.onload = initApp;
-</script>
-
+        window.onload = renderLists;
+    </script>
 </body>
 </html>
