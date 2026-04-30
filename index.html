@@ -31,10 +31,6 @@
         .side-link { display: flex; align-items: center; gap: 15px; padding: 15px; text-decoration: none; color: var(--primary); font-weight: 700; border-radius: var(--radius-md); transition: 0.3s; margin-bottom: 5px; cursor: pointer; }
         .side-link:hover { background: var(--bg-cream); color: var(--accent); }
 
-        /* --- Google Play Style Button --- */
-        .play-store-btn { background: #000 !important; color: #fff !important; border-radius: 12px !important; padding: 10px 15px !important; margin: 20px 10px 0 !important; display: flex !important; align-items: center !important; gap: 10px !important; }
-        .play-store-btn svg { width: 24px; height: 24px; }
-
         /* --- Header --- */
         header { background: var(--primary); padding: 50px 20px 25px; border-radius: 0 0 40px 40px; color: white; position: relative; box-shadow: var(--shadow); }
         .nav-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
@@ -42,14 +38,9 @@
         .logo-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-family: 'Amiri'; font-size: 20px; color: var(--primary); font-weight: bold; }
 
         /* --- Pages --- */
-        .page { display: none; padding-bottom: 100px; }
+        .page { display: none; padding-bottom: 120px; }
         .page.active { display: block; animation: fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- Store Page Style --- */
-        .store-btns { display: flex; gap: 10px; padding: 0 20px; margin-bottom: 20px; }
-        .store-btn { flex: 1; background: var(--white); border: 2px solid var(--primary); color: var(--primary); padding: 12px; border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; text-align: center; }
-        .store-btn.active { background: var(--primary); color: white; }
 
         /* --- Lists Cards --- */
         .content-area { padding: 0 20px; }
@@ -58,7 +49,7 @@
         .card-icon { width: 55px; height: 55px; background: var(--bg-cream); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
         .card-info h3 { font-size: 15px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
         .card-info p { font-size: 11px; color: #666; line-height: 1.5; }
-        .recipe-details { font-size: 10px; color: var(--primary-light); margin-top: 5px; background: #f0f7f4; padding: 5px; border-radius: 5px; }
+        .recipe-details { font-size: 11px; color: var(--primary-light); margin-top: 8px; background: #f0f7f4; padding: 8px; border-radius: 8px; border: 1px solid #e0eee8; }
 
         .reminder-card { background: linear-gradient(135deg, var(--accent), #b38f2d); padding: 15px 20px; border-radius: var(--radius-md); margin: 25px 20px 25px; color: white; display: flex; align-items: center; gap: 15px; box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3); }
         .tab-bar { display: flex; overflow-x: auto; padding: 0 20px; gap: 10px; scrollbar-width: none; margin-bottom: 20px; }
@@ -66,15 +57,12 @@
         .tab.active { background: var(--primary); color: white; }
 
         /* --- Bottom Nav --- */
-        .bottom-nav { position: fixed; bottom: 20px; left: 20px; right: 20px; background: var(--primary); border-radius: 25px; padding: 12px 5px; display: flex; justify-content: space-around; box-shadow: 0 15px 35px rgba(26,61,43,0.3); z-index: 1000; }
-        .nav-btn { background: none; border: none; color: rgba(255,255,255,0.5); font-family: 'Tajawal'; font-size: 10px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
+        .bottom-nav { position: fixed; bottom: 20px; left: 10px; right: 10px; background: var(--primary); border-radius: 25px; padding: 12px 5px; display: flex; justify-content: space-around; box-shadow: 0 15px 35px rgba(26,61,43,0.3); z-index: 1000; }
+        .nav-btn { background: none; border: none; color: rgba(255,255,255,0.5); font-family: 'Tajawal'; font-size: 10px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; flex: 1; }
         .nav-btn.active { color: var(--accent-light); }
         .nav-btn svg { width: 22px; height: 22px; }
 
         .toast { position: fixed; top: 40px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 12px 30px; border-radius: 50px; font-size: 13px; z-index: 3000; display: none; }
-        
-        .ad-banner { background: #fff; border: 2px dashed var(--accent); padding: 15px; border-radius: var(--radius-md); margin: 20px; text-align: center; }
-        .ad-banner a { color: var(--primary); font-weight: bold; text-decoration: underline; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -86,20 +74,10 @@
             <h2 style="color:var(--primary); font-size: 18px;">نظام الطيبات</h2>
         </div>
         <div class="side-link" onclick="navTo('home'); toggleMenu()"><span>🏠</span> الرئيسية</div>
-        <div class="side-link" onclick="navTo('recipes'); toggleMenu()"><span>🍳</span> وصفات نظام الطيبات</div>
+        <div class="side-link" onclick="navTo('allowed'); toggleMenu()"><span>✅</span> المسموحات</div>
+        <div class="side-link" onclick="navTo('forbidden'); toggleMenu()"><span>❌</span> الممنوعات</div>
+        <div class="side-link" onclick="navTo('recipes'); toggleMenu()"><span>👩‍🍳</span> وصفات الطيبات</div>
         <div class="side-link" onclick="navTo('stores'); toggleMenu()"><span>🛒</span> أماكن الشراء</div>
-        <div class="side-link" onclick="showToast('قريباً')"><span>📊</span> تقارير الصحة</div>
-        
-        <hr style="opacity: 0.1; margin: 15px 0;">
-        <div class="side-link play-store-btn" onclick="window.location.href='https://play.google.com/store'">
-            <svg viewBox="0 0 24 24" fill="white"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L18.66,14.05C20.44,13.03 20.44,10.97 18.66,9.95L16.81,8.88L14.89,12L16.81,15.12M14.28,12.61L4.66,22.23C4.77,22.27 4.88,22.3 5,22.3C5.32,22.3 5.61,22.21 5.87,22.06L14.28,12.61M5.87,1.94C5.61,1.79 5.32,1.7 5,1.7C4.88,1.7 4.77,1.73 4.66,1.77L14.28,11.39L5.87,1.94Z"/></svg>
-            <div style="text-align: right;">
-                <p style="font-size: 8px; margin:0;">GET IT ON</p>
-                <p style="font-size: 14px; font-weight: bold; margin:0;">Google Play</p>
-            </div>
-        </div>
-
-        <p style="text-align:center; font-size:10px; color:#999; margin-top: 20px;">الإصدار 1.1.0</p>
     </div>
 
     <header>
@@ -111,7 +89,7 @@
                     <p style="font-size: 10px; opacity: 0.8;">العودة إلى الغذاء الفطري</p>
                 </div>
             </div>
-            <div class="menu-toggle" onclick="toggleMenu()" style="cursor:pointer">☰</div>
+            <div class="menu-toggle" onclick="toggleMenu()" style="cursor:pointer; font-size: 24px;">☰</div>
         </div>
     </header>
 
@@ -137,19 +115,8 @@
     </div>
 
     <div id="page-stores" class="page">
-        <div style="padding: 20px 20px 15px;"><h2 style="font-size: 18px; color: var(--primary);">أين أجد منتجات الطيبات؟</h2></div>
-        
-        <div class="store-btns">
-            <button id="btn-show-rest" class="store-btn active" onclick="renderStores('restaurants')">🍴 المطاعم</button>
-            <button id="btn-show-market" class="store-btn" onclick="renderStores('markets')">🛒 السوبر ماركت</button>
-        </div>
-
+        <div style="padding: 20px 20px 15px;"><h2 style="font-size: 18px; color: var(--primary);">أماكن الشراء 🛒</h2></div>
         <div class="content-area" id="stores-list"></div>
-
-        <div class="ad-banner">
-            <p style="font-size: 12px; color: #666; margin-bottom: 5px;">لإضافة إعلانك</p>
-            <a href="https://wa.me/message/5D2RTCNJCKPED1">تواصل معنا من خلال هذا الرابط</a>
-        </div>
     </div>
 
     <nav class="bottom-nav">
@@ -161,13 +128,13 @@
             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
             <span>المسموحات</span>
         </button>
+        <button class="nav-btn" id="btn-forbidden" onclick="navTo('forbidden')">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            <span>الممنوعات</span>
+        </button>
         <button class="nav-btn" id="btn-recipes" onclick="navTo('recipes')">
             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M8.1,13.34l2.83-2.83L3.91,3.5c-1.56,1.56-1.56,4.09,0,5.66L8.1,13.34z M12.04,12.04l-2.83,2.83l7.02,7.02l2.83-2.83 L12.04,12.04z M20.49,3.51c-1.56-1.56-4.09-1.56-5.66,0l-4.24,4.24l2.83,2.83l4.24-4.24c0.78-0.78,2.05-0.78,2.83,0l1.41,1.41 L23.32,6.34L20.49,3.51z"/></svg>
             <span>الوصفات</span>
-        </button>
-        <button class="nav-btn" id="btn-stores" onclick="navTo('stores')">
-            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>أماكن الشراء</span>
         </button>
     </nav>
 
@@ -177,56 +144,17 @@
         const days = ["السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة"];
         let currentDay = "السبت";
 
-        // بيانات الوصفات
-        const recipesData = [
-            { 
-                icon: "🥘", 
-                t: "فتة الكوارع بالخل والثوم", 
-                ingredients: "كوارع، أرز أبيض، توست ريتش بيك محمص، سمن بلدي، ثوم، خل.", 
-                method: "تُسلق الكوارع جيداً. يُحمص التوست بالسمن. يُوضع الأرز فوق التوست ثم تُسقى بشوربة الكوارع وتُضاف طشة الثوم والخل." 
-            },
-            { 
-                icon: "🥩", 
-                t: "كبدة ضاني بزبادة الطيبات", 
-                ingredients: "كبدة ضاني، سمن بلدي، ملح، فلفل، ملعقة قشطة.", 
-                method: "تُشوح الكبدة في السمن البلدي بسرعة. يُضاف الملح والفلفل. في النهاية تُوضع ملعقة القشطة للدهون الطيبة وتُقدم مع التوست." 
-            },
-            { 
-                icon: "🍚", 
-                t: "أرز معمر فلاحي (بدون لبن)", 
-                ingredients: "أرز، شوربة دسمة (ضاني)، سمن بلدي، قشطة كثيرة.", 
-                method: "يُغسل الأرز ويُوضع في البرام. يُسقى بالشوربة الدسمة بدلاً من اللبن. تُوضع كمية وفيرة من القشطة والسمن على الوجه ويدخل الفرن." 
-            },
-            { 
-                icon: "🍯", 
-                t: "حلى القشطة والعسل", 
-                ingredients: "توست ريتش بيك، قشطة بلدي، عسل نحل، مكسرات.", 
-                method: "يُحمص التوست قليلاً. تُفرد القشطة بغزارة، يُرش العسل والمكسرات المسموحة." 
-            }
-        ];
-
-        const storeData = {
-            restaurants: [
-                { name: "مطعم الطيبات الأصيل", icon: "🍲", address: "القاهرة - مدينة نصر", phone: "0123456789" },
-                { name: "مشويات الهنا (لحم ضاني)", icon: "🥩", address: "الجيزة - الدقي", phone: "0100000000" },
-                { name: "أسماك البحار", icon: "🐟", address: "الإسكندرية - سموحة", phone: "0112233445" }
-            ],
-            markets: [
-                { name: "سوبر ماركت ريتش بيك", icon: "🍞", address: "جميع الفروع - توست الردة", phone: "19000" },
-                { name: "ماركت صحي وطيب", icon: "🧀", address: "المعادي - شارع 9", phone: "0155555555" },
-                { name: "منفذ بيع السمن البلدي", icon: "🫙", address: "وسط البلد", phone: "0128888888" }
-            ]
-        };
-
+        // --- بيانات المسموحات ---
         const allowedData = [
-            { icon: '🍞', t: 'توست بالردة', d: 'ريتش بيك حصراً' },
-            { icon: '🫒', t: 'دهون طيبة', d: 'زيت زيتون، زبدة وسمن بلدي، قشطة' },
-            { icon: '🧀', t: 'أجبان مسموحة', d: 'شيدر، موتزريلا، كشكفال، برميزان، رومي، أجبان مطبوخة' },
+            { icon: '🍞', t: 'توست بالردة', d: 'ريتش بيك حصراً (البني)' },
+            { icon: '🫒', t: 'دهون طيبة', d: 'زيت زيتون، زبدة وسمن بلدي، قشطة بلدي' },
+            { icon: '🧀', t: 'أجبان مطبوخة وشيدر', d: 'شيدر، موتزريلا، كشكفال، برميزان، رومي' },
             { icon: '🍚', t: 'نشويات', d: 'أرز، بطاطس، بطاطا، قرع، قلقاس، فريك، مشروم' },
             { icon: '🍎', t: 'فواكه', d: 'كل الأنواع ما عدا البطيخ. التفاح والكمثرى بدون قشر.' },
             { icon: '🥩', t: 'البروتينات', d: 'لحم ضاني، بقري مسلوق جيداً، حمام، سمان، أرانب، أسماك' }
         ];
 
+        // --- بيانات الممنوعات (بالحرف) ---
         const forbiddenData = [
             { icon: '🍗', t: 'الدجاج وملحقاته', d: 'ممنوع الفراخ، الكبد وقوانص الفراخ، البط، والديك الرومي' },
             { icon: '🥚', t: 'البيض', d: 'ممنوع بكافة أشكاله' },
@@ -236,22 +164,80 @@
             { icon: '🥤', t: 'المشروبات', d: 'مياه غازية، مبيضات القهوة' }
         ];
 
+        // --- بيانات الوصفات (محدثة ومطابقة للنظام) ---
+        const recipesData = [
+            { 
+                icon: "🍲", 
+                t: "فتة كوارع الطيبات", 
+                ingredients: "كوارع، أرز أبيض، توست ريتش بيك محمص، سمن بلدي، خل، ملح، فلفل.", 
+                method: "تُسلق الكوارع جيداً حتى النضج التام. يُقطع التوست ويُحمص بالسمن البلدي. يُوضع الأرز فوق التوست ثم تُسقى بشوربة الكوارع المركزة والخل والملح (بدون ثوم)." 
+            },
+            { 
+                icon: "🥩", 
+                t: "كبدة ضاني بالقشطة", 
+                ingredients: "كبدة ضاني، سمن بلدي، ملح، فلفل، ملعقة كبيرة قشطة بلدي.", 
+                method: "تُقطع الكبدة شرائح رقيقة وتُشوح سريعاً في السمن البلدي. يُضاف الملح والفلفل. قبل الإطفاء، تُضاف ملعقة القشطة لتعزيز الدهون الطيبة." 
+            },
+            { 
+                icon: "🍚", 
+                t: "أرز معمر بالشوربة والقشطة", 
+                ingredients: "أرز مصري، شوربة لحم دسمة، قشطة بلدي كثيرة، سمن بلدي.", 
+                method: "يُغسل الأرز ويُوضع في برام. بدلاً من الحليب، يُسقى بشوربة اللحم الدسمة. تُغطى القمة بطبقة سميكة من القشطة والسمن ويُدخل الفرن." 
+            },
+            { 
+                icon: "🥔", 
+                t: "صينية بطاطس بالضاني", 
+                ingredients: "بطاطس مكعبات، لحم ضاني، مرق لحم، سمن بلدي، فلفل أسود.", 
+                method: "يُسلق اللحم جيداً. تُوضع البطاطس في صينية مع المرق والسمن واللحم، وتدخل الفرن حتى تمام الذوبان." 
+            },
+            { 
+                icon: "🐟", 
+                t: "سمك في الفرن بزيت الزيتون", 
+                ingredients: "سمك (بلطي أو بوري)، زيت زيتون، ملح، كمون، ليمون.", 
+                method: "يُنظف السمك ويُتبل بالملح والكمون والليمون فقط. يُغمر بزيت الزيتون ويُدخل الفرن حتى ينضج." 
+            },
+            { 
+                icon: "🍯", 
+                t: "تحلية التوست بالعسل والقشطة", 
+                ingredients: "توست ريتش بيك، قشطة بلدي، عسل نحل.", 
+                method: "يُحمص التوست قليلاً. تُفرد القشطة البلدي بغزارة ثم يُصب فوقها عسل النحل." 
+            },
+            { 
+                icon: "🥣", 
+                t: "مشروم بالسمن والبهارات", 
+                ingredients: "مشروم طازج، سمن بلدي، ملح، فلفل أسود.", 
+                method: "يُشوح المشروم في السمن البلدي حتى يتغير لونه ويذبل. وجبة غنية بالبروتين النباتي المسموح." 
+            },
+            { 
+                icon: "🎃", 
+                t: "قرع عسلي بالسمن والعسل", 
+                ingredients: "قطع قرع عسلي، سمن بلدي، عسل نحل.", 
+                method: "يُسلق القرع أو يُشوى، ثم يُهرس مع السمن البلدي ويُحلى بعسل النحل." 
+            }
+        ];
+
         const weeklyMenu = {
-            "السبت": [{ type: "فطور", t: " جبنة شيدر وتوست", d: "توست ريتش بيك مع زيت زيتون", i: "🧀" }, { type: "غداء", t: "أرز وبطاطس مطبوخة", d: "بطاطس بالسمن البلدي", i: "🍚" }, { type: "عشاء", t: "مربى وقشطة", d: "وجبة خفيفة", i: "🍯" }],
-            "الأحد": [{ type: "فطور", t: "حلاوة طحينية", d: "توست ردة مع طحينة", i: "🥪" }, { type: "غداء", t: "سمك مشوي", d: "سمك مع أرز أبيض", i: "🐟" }, { type: "عشاء", t: "بطاطس محمرة", d: "شيبسي منزلي بزيت زيتون", i: "🍟" }],
-            "الاثنين": [{ type: "سحور", t: "تمر وقشطة", d: "7 تمرات مع ملعقة قشطة", i: "🌴" }, { type: "إفطار", t: "لحم ضاني مسلوق", d: "لحم مطهو جيداً", i: "🍲" }, { type: "سهرة", t: "بسبوسة سادة", d: "بدون لبن أو بيض", i: "🍰" }],
-            "الثلاثاء": [{ type: "فطور", t: "جبنة رومي", d: "توست محمص", i: "🧀" }, { type: "غداء", t: "أرانب محمرة", d: "أرانب مع شوربة لسان عصفور", i: "🐇" }, { type: "عشاء", t: "عصير مانجو", d: "مصفى من الألياف", i: "🥭" }],
-            "الأربعاء": [{ type: "فطور", t: "عسل نحل وزبدة", d: "توست بالردة مع عسل وزبدة", i: "🍯" }, { type: "غداء", t: "كوارع وممبار", d: "وجبة دسمة مسموحة", i: "🥘" }, { type: "عشاء", t: "فاكهة مقشرة", d: "تفاح بدون قشر", i: "🍎" }],
-            "الخميس": [{ type: "سحور", t: "بطاطا حلوة", d: "بطاطا مشوية", i: "🍠" }, { type: "إفطار", t: "حمام محشي", d: "حمام محشي بالأرز", i: "🦆" }, { type: "سهرة", t: "شوكولاتة نوتيلا", d: "ملعقة للتحلية", i: "🍫" }],
-            "الجمعة": [{ type: "فطور", t: "طحينة وعسل", d: "طحينة غامقة مع عسل أسود", i: "🥣" }, { type: "غداء", t: "كبدة وكوارع", d: "كبدة ضاني وسلطة زيتون", i: "🥩" }, { type: "عشاء", t: "جيلو فواكه", d: "جيلو مسموح", i: "🍧" }]
+            "السبت": [{ type: "فطور", t: "توست وقشطة وعسل", d: "توست ريتش بيك", i: "🍯" }, { type: "غداء", t: "أرز وبطاطس مطبوخة", d: "بالشوربة والسمن", i: "🍚" }, { type: "عشاء", t: "بطاطا مشوية", d: "وجبة دافئة", i: "🍠" }],
+            "الأحد": [{ type: "فطور", t: "طحينة وعسل أسود", d: "مع توست الردة", i: "🥣" }, { type: "غداء", t: "سمك مشوي وأرز", d: "سمك بوري أو بلطي", i: "🐟" }, { type: "عشاء", t: "مربى وقشطة", d: "بدون لبن", i: "🍓" }],
+            "الاثنين": [{ type: "سحور", t: "7 تمرات وقشطة", d: "سنة نبوية", i: "🌴" }, { type: "إفطار", t: "لحم ضاني مسلوق", d: "أرز بالشوربة", i: "🍲" }, { type: "سهرة", t: "فاكهة مقشرة", d: "تفاح أو كمثرى", i: "🍎" }],
+            "الثلاثاء": [{ type: "فطور", t: "مشروم مشوح", d: "بالسمن البلدي", i: "🍄" }, { type: "غداء", t: "حمام محشي أرز", d: "مطبوخ جيداً", i: "🕊️" }, { type: "عشاء", t: "بطاطس محمرة", d: "بزيت زيتون", i: "🍟" }],
+            "الأربعاء": [{ type: "فطور", t: "حلاوة طحينية", d: "توست ريتش بيك", i: "🥪" }, { type: "غداء", t: "كوارع وفتة", d: "بدون ثوم", i: "🥘" }, { type: "عشاء", t: "عصير مانجو", d: "مصفى تماماً", i: "🥭" }],
+            "الخميس": [{ type: "سحور", t: "بطاطا مهروسة", d: "بالسمن والعسل", i: "🍠" }, { type: "إفطار", t: "أرانب ولسان عصفور", d: "شوربة أرانب دسمة", i: "🐇" }, { type: "سهرة", t: "شوكولاتة داكنة", d: "قطعة صغيرة", i: "🍫" }],
+            "الجمعة": [{ type: "فطور", t: "توست وزيت زيتون", d: "مع زعتر (اختياري)", i: "🫒" }, { type: "غداء", t: "كبدة ضاني وقشطة", d: "مع توست ريتش بيك", i: "🥩" }, { type: "عشاء", t: "جيلو فواكه", d: "صنع منزلي", i: "🍧" }]
         };
+
+        const storeData = [
+            { name: "ريتش بيك", icon: "🍞", address: "متوفر في أغلب السوبر ماركت (التوست البني)" },
+            { name: "أماكن بيع السمن البلدي", icon: "🫙", address: "الموثوقة في منطقتك" },
+            { name: "محلات الأسماك", icon: "🐟", address: "لطلب السمك المشوي أو السنجاري" }
+        ];
 
         function init() {
             renderTabs();
             renderDay("السبت");
             renderLists();
-            renderStores('restaurants');
             renderRecipes();
+            renderStores();
         }
 
         function renderTabs() {
@@ -264,7 +250,7 @@
             renderTabs();
             const list = document.getElementById('schedule-list');
             list.innerHTML = weeklyMenu[day].map(m => `
-                <div class="card-item fade-in">
+                <div class="card-item">
                     <div class="card-icon">${m.i}</div>
                     <div class="card-info">
                         <span style="font-size:10px; color:var(--accent); font-weight:900;">${m.type}</span>
@@ -278,7 +264,7 @@
         function renderRecipes() {
             const list = document.getElementById('recipes-list');
             list.innerHTML = recipesData.map(r => `
-                <div class="card-item fade-in">
+                <div class="card-item">
                     <div class="card-icon">${r.icon}</div>
                     <div class="card-info">
                         <h3>${r.t}</h3>
@@ -289,52 +275,36 @@
             `).join('');
         }
 
-        function renderStores(category) {
-            const list = document.getElementById('stores-list');
-            const data = storeData[category];
-            document.getElementById('btn-show-rest').classList.toggle('active', category === 'restaurants');
-            document.getElementById('btn-show-market').classList.toggle('active', category === 'markets');
-            list.innerHTML = data.map(s => `
-                <div class="card-item fade-in">
-                    <div class="card-icon">${s.icon}</div>
-                    <div class="card-info">
-                        <h3>${s.name}</h3>
-                        <p>📍 ${s.address}</p>
-                        <div class="contact-info">📞 رقم التواصل: ${s.phone}</div>
-                    </div>
-                </div>
-            `).join('');
+        function renderLists() {
+            document.getElementById('allowed-list').innerHTML = allowedData.map(i => `<div class="card-item"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
+            document.getElementById('forbidden-list').innerHTML = forbiddenData.map(i => `<div class="card-item forbidden"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
+        }
+
+        function renderStores() {
+            document.getElementById('stores-list').innerHTML = storeData.map(s => `<div class="card-item"><div class="card-icon">${s.icon}</div><div class="card-info"><h3>${s.name}</h3><p>📍 ${s.address}</p></div></div>`).join('');
         }
 
         function updateReminder(day) {
             const box = document.getElementById('reminder-box');
-            let txt = (day === "الاثنين" || day === "الخميس") ? "تذكير بالصيام" : "نصيحة اليوم";
-            let sub = (day === "الاثنين" || day === "الخميس") ? "صيام سنة نبوية وجزء من النظام." : "البروتين يوم بعد يوم لراحة القولون.";
-            box.innerHTML = `<div class="reminder-card fade-in"><span>💡</span><div><b>${txt}</b><p>${sub}</p></div></div>`;
-        }
-
-        function renderLists() {
-            document.getElementById('allowed-list').innerHTML = allowedData.map(i => `<div class="card-item fade-in"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
-            document.getElementById('forbidden-list').innerHTML = forbiddenData.map(i => `<div class="card-item forbidden fade-in"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
+            let txt = (day === "الاثنين" || day === "الخميس") ? "تذكير بالصيام" : "قاعدة ذهبية";
+            let sub = (day === "الاثنين" || day === "الخميس") ? "صيام سنة نبوية يريح جهازك الهضمي." : "البروتين يوم بعد يوم، والدهون الطيبة أساس الشفاء.";
+            box.innerHTML = `<div class="reminder-card"><span>💡</span><div><b>${txt}</b><p>${sub}</p></div></div>`;
         }
 
         function navTo(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('page-'+page).classList.add('active');
-            if(document.getElementById('btn-'+page)) document.getElementById('btn-'+page).classList.add('active');
+            const btn = document.getElementById('btn-'+page);
+            if(btn) btn.classList.add('active');
             window.scrollTo(0,0);
         }
 
         function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('overlay').style.display = document.getElementById('sidebar').classList.contains('active') ? 'block' : 'none';
-        }
-
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.textContent = msg; t.style.display = 'block';
-            setTimeout(() => t.style.display = 'none', 2000);
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
         }
 
         window.onload = init;
