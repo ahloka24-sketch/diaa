@@ -98,28 +98,8 @@ body {
   margin-bottom: 22px;
   position: relative; overflow: hidden;
 }
-.hero-banner::before {
-  content: '';
-  position: absolute; top: -30px; left: -30px;
-  width: 150px; height: 150px;
-  background: radial-gradient(circle, rgba(201,168,76,0.2) 0%, transparent 70%);
-  border-radius: 50%;
-}
-.hero-banner::after {
-  content: '';
-  position: absolute; bottom: -20px; right: -20px;
-  width: 100px; height: 100px;
-  background: radial-gradient(circle, rgba(82,183,136,0.2) 0%, transparent 70%);
-  border-radius: 50%;
-}
 .hero-banner h1 { color: var(--white); font-size: 26px; font-weight: 900; margin-bottom: 6px; line-height: 1.3; }
 .hero-banner p { color: var(--green-pale); font-size: 14px; line-height: 1.6; margin-bottom: 18px; }
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(201,168,76,0.2); border: 1px solid var(--gold);
-  border-radius: 30px; padding: 6px 14px;
-  color: var(--gold-light); font-size: 12px; font-weight: 600;
-}
 
 .section-title {
   font-size: 20px; font-weight: 800; color: var(--green-dark);
@@ -139,14 +119,13 @@ body {
   transition: all 0.25s; border: 2px solid transparent;
   text-decoration: none;
 }
-.quick-card:hover, .quick-card:active { border-color: var(--green-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.quick-card:hover { border-color: var(--green-light); transform: translateY(-2px); }
 .quick-card .qc-icon {
   width: 52px; height: 52px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 10px; font-size: 26px;
 }
 .quick-card .qc-title { font-size: 14px; font-weight: 700; color: var(--green-dark); margin-bottom: 4px; }
-.quick-card .qc-sub { font-size: 11px; color: #888; }
 
 /* ===== SCHEDULE PAGE ===== */
 .week-tabs {
@@ -173,9 +152,7 @@ body {
   background: var(--white); border-radius: var(--radius);
   padding: 14px; display: flex; align-items: center; gap: 12px;
   box-shadow: var(--shadow-sm); margin-bottom: 10px; cursor: pointer;
-  transition: all 0.2s;
 }
-.meal-card:hover { transform: translateX(-4px); box-shadow: var(--shadow-md); }
 .meal-img {
   width: 64px; height: 64px; border-radius: var(--radius-sm);
   background: var(--cream-dark); overflow: hidden; flex-shrink: 0;
@@ -184,37 +161,21 @@ body {
 .meal-info { flex: 1; }
 .meal-name { font-size: 15px; font-weight: 700; color: var(--green-dark); margin-bottom: 3px; }
 .meal-desc { font-size: 12px; color: #888; line-height: 1.4; }
-.meal-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 6px; }
 .meal-tag {
   font-size: 10px; padding: 3px 8px; border-radius: 20px;
   background: var(--cream-dark); color: var(--green-mid); font-weight: 600;
+  display: inline-block; margin-top: 6px;
 }
 
 /* ===== HERBS PAGE ===== */
-.search-box {
-  position: relative; margin-bottom: 20px;
-}
+.search-box { position: relative; margin-bottom: 20px; }
 .search-box input {
   width: 100%; padding: 14px 50px 14px 20px;
   border: 2px solid var(--cream-dark); border-radius: 50px;
   font-family: 'Tajawal', sans-serif; font-size: 15px;
-  background: var(--white); outline: none; transition: border-color 0.2s;
-  color: var(--text-dark);
+  outline: none; background: var(--white);
 }
-.search-box input:focus { border-color: var(--green-light); }
-.search-box .search-icon {
-  position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
-  color: var(--green-mid);
-}
-.filter-chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 18px; scrollbar-width: none; }
-.filter-chips::-webkit-scrollbar { display: none; }
-.filter-chip {
-  flex-shrink: 0; padding: 7px 14px; border-radius: 25px;
-  border: 2px solid var(--cream-dark); background: var(--white);
-  font-family: 'Tajawal', sans-serif; font-size: 12px; font-weight: 600;
-  cursor: pointer; transition: all 0.2s; color: var(--text-mid);
-}
-.filter-chip.active { background: var(--green-mid); border-color: var(--green-mid); color: var(--white); }
+.search-box .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--green-mid); }
 
 .herbs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .herb-card {
@@ -222,17 +183,12 @@ body {
   overflow: hidden; box-shadow: var(--shadow-sm);
   cursor: pointer; transition: all 0.25s;
 }
-.herb-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.herb-emoji-bg {
-  height: 80px; display: flex; align-items: center; justify-content: center;
-  font-size: 42px; position: relative;
-}
+.herb-emoji-bg { height: 80px; display: flex; align-items: center; justify-content: center; font-size: 42px; }
 .herb-body { padding: 12px; }
 .herb-name { font-size: 15px; font-weight: 800; color: var(--green-dark); margin-bottom: 4px; }
-.herb-latin { font-size: 10px; color: #aaa; margin-bottom: 6px; direction: ltr; }
 .herb-benefits { font-size: 11px; color: #666; line-height: 1.5; }
 
-/* ===== HERB DETAIL (MODAL) ===== */
+/* Modal */
 .modal-overlay {
   display: none; position: fixed; inset: 0; z-index: 200;
   background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
@@ -241,177 +197,29 @@ body {
 .modal-sheet {
   width: 100%; max-height: 90vh; overflow-y: auto;
   background: var(--cream); border-radius: 24px 24px 0 0;
-  animation: slideUp 0.35s ease;
-  padding-bottom: 30px;
+  padding-bottom: 30px; position: relative;
 }
-@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-.modal-handle {
-  width: 40px; height: 4px; background: #ccc; border-radius: 2px;
-  margin: 12px auto 0;
-}
-.modal-hero {
-  height: 160px; display: flex; align-items: center; justify-content: center;
-  font-size: 80px; margin: 10px 16px; border-radius: var(--radius);
-}
+.modal-hero { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 80px; margin: 10px 16px; border-radius: var(--radius); }
 .modal-body { padding: 0 20px; }
-.modal-title { font-size: 26px; font-weight: 900; color: var(--green-dark); margin-bottom: 4px; }
-.modal-latin { font-size: 13px; color: #888; margin-bottom: 16px; direction: ltr; }
-.info-card {
-  background: var(--white); border-radius: var(--radius);
-  padding: 16px; margin-bottom: 14px; box-shadow: var(--shadow-sm);
-}
-.info-card h3 {
-  font-size: 15px; font-weight: 700; color: var(--green-mid);
-  margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
-}
+.info-card { background: var(--white); border-radius: var(--radius); padding: 16px; margin-bottom: 14px; box-shadow: var(--shadow-sm); }
+.info-card h3 { font-size: 15px; color: var(--green-mid); margin-bottom: 10px; }
 .info-card ul { list-style: none; }
-.info-card ul li {
-  font-size: 13px; color: var(--text-mid); padding: 5px 0;
-  border-bottom: 1px solid var(--cream-dark); line-height: 1.6;
-  display: flex; gap: 8px;
-}
-.info-card ul li:last-child { border-bottom: none; }
-.info-card ul li::before { content: '●'; color: var(--green-light); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
-.warning-card {
-  background: #fff5f5; border: 2px solid #f5c6c6; border-radius: var(--radius);
-  padding: 16px; margin-bottom: 14px;
-}
-.warning-card h3 { color: var(--red); font-size: 15px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-.warning-card p { font-size: 12px; color: #c0392b; line-height: 1.7; }
-.close-modal {
-  position: absolute; top: 20px; left: 20px; z-index: 10;
-  background: rgba(0,0,0,0.3); border: none; cursor: pointer;
-  width: 36px; height: 36px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: white; font-size: 18px;
-}
+.info-card ul li { font-size: 13px; padding: 5px 0; border-bottom: 1px solid var(--cream-dark); line-height: 1.6; }
+.close-modal { position: absolute; top: 20px; left: 20px; z-index: 10; background: rgba(0,0,0,0.3); border: none; width: 36px; height: 36px; border-radius: 50%; color: white; }
 
-/* ===== FORBIDDEN PAGE ===== */
-.forbidden-hero {
-  background: linear-gradient(135deg, #c0392b, #922b21);
-  border-radius: var(--radius); padding: 22px; margin-bottom: 22px; text-align: center;
-}
-.forbidden-hero h2 { color: white; font-size: 22px; font-weight: 900; margin-bottom: 6px; }
-.forbidden-hero p { color: rgba(255,255,255,0.8); font-size: 13px; }
-.forbidden-card {
-  background: var(--white); border-radius: var(--radius);
-  padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow-sm);
-  display: flex; gap: 14px; align-items: flex-start;
-  border-right: 4px solid var(--red);
-}
-.forbidden-icon { font-size: 32px; flex-shrink: 0; }
-.forbidden-info h4 { font-size: 15px; font-weight: 800; color: var(--red); margin-bottom: 4px; }
-.forbidden-info p { font-size: 12px; color: #666; line-height: 1.6; }
-.forbidden-tag {
-  display: inline-block; font-size: 10px; padding: 3px 8px; border-radius: 20px;
-  background: #ffe5e5; color: var(--red); font-weight: 700; margin-top: 6px;
-}
-
-/* ===== FAVORITES PAGE ===== */
-.empty-state {
-  text-align: center; padding: 60px 30px;
-  color: #aaa;
-}
-.empty-state .empty-icon { font-size: 64px; margin-bottom: 16px; opacity: 0.5; }
-.empty-state h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--text-mid); }
-.empty-state p { font-size: 13px; line-height: 1.6; }
-
-/* ===== FAV BUTTON ===== */
-.fav-btn {
-  width: 34px; height: 34px; border-radius: 50%; border: none;
-  background: var(--cream-dark); cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; transition: all 0.2s; flex-shrink: 0;
-}
-.fav-btn.active { background: #ffe5e5; }
-
-/* ===== MORE PAGE ===== */
-.more-card {
-  background: var(--white); border-radius: var(--radius);
-  margin-bottom: 12px; overflow: hidden; box-shadow: var(--shadow-sm);
-}
-.more-item {
-  display: flex; align-items: center; gap: 14px; padding: 16px;
-  border-bottom: 1px solid var(--cream-dark); cursor: pointer;
-  transition: background 0.15s;
-}
-.more-item:last-child { border-bottom: none; }
-.more-item:hover { background: var(--cream); }
-.more-item-icon {
-  width: 42px; height: 42px; border-radius: var(--radius-sm);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; flex-shrink: 0;
-}
-.more-item-text { flex: 1; }
-.more-item-text h4 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
-.more-item-text p { font-size: 12px; color: #888; }
-.more-item-arrow { color: #ccc; font-size: 18px; }
-
-/* ===== ABOUT SECTION ===== */
-.about-box {
-  background: var(--green-dark); border-radius: var(--radius);
-  padding: 24px; text-align: center; margin-top: 20px;
-}
-.about-box .logo-big {
-  width: 72px; height: 72px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 14px;
-  font-family: 'Amiri', serif; font-size: 22px; color: var(--green-dark); font-weight: 700;
-}
-.about-box h3 { color: var(--white); font-size: 20px; font-weight: 800; margin-bottom: 6px; }
-.about-box p { color: var(--green-pale); font-size: 13px; line-height: 1.7; }
-.about-box .version { margin-top: 12px; color: var(--gold-light); font-size: 12px; font-weight: 600; }
-
-/* ===== NOTIFICATION BADGE ===== */
-.badge {
-  position: absolute; top: -4px; right: -4px;
-  background: var(--red); color: white;
-  font-size: 9px; font-weight: 700; padding: 2px 5px;
-  border-radius: 10px; min-width: 16px; text-align: center;
-}
-.nav-item-wrap { position: relative; display: inline-flex; }
-
-/* ===== SCROLL TO TOP ===== */
-.scroll-top {
-  position: fixed; bottom: 90px; left: 16px; z-index: 90;
-  width: 42px; height: 42px; border-radius: 50%;
-  background: var(--green-mid); color: white; border: none;
-  cursor: pointer; font-size: 18px; box-shadow: var(--shadow-md);
-  display: none; align-items: center; justify-content: center;
-  transition: all 0.3s;
-}
-.scroll-top.visible { display: flex; }
-
-/* ===== SHIMMER LOADING ===== */
-.shimmer {
-  background: linear-gradient(90deg, var(--cream-dark) 25%, var(--cream) 50%, var(--cream-dark) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: var(--radius-sm);
-}
-@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
-/* ===== TOAST ===== */
+/* Toast */
 .toast {
   position: fixed; top: 80px; left: 50%; transform: translateX(-50%);
   background: var(--green-dark); color: white; padding: 10px 20px;
-  border-radius: 30px; font-size: 13px; font-weight: 600;
-  z-index: 300; opacity: 0; transition: opacity 0.3s;
-  white-space: nowrap; pointer-events: none;
-  box-shadow: var(--shadow-md);
+  border-radius: 30px; font-size: 13px; z-index: 300; opacity: 0; transition: opacity 0.3s;
 }
 .toast.show { opacity: 1; }
 </style>
 </head>
 <body>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<!-- ==============================
-     PAGE: HOME
-============================== -->
 <div class="page active" id="page-home">
   <nav class="top-nav">
     <div class="logo-area">
@@ -421,78 +229,27 @@ body {
         <div class="app-sub">غذاء ودواء</div>
       </div>
     </div>
-    <button class="menu-btn" onclick="goTo('page-more')">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 
   <div class="page-content">
-    <!-- Hero -->
     <div class="hero-banner">
       <h1>مرحباً بك في<br>نظام الطيبات 🌿</h1>
       <p>نظام متكامل للصحة والغذاء الطبيعي المعتمد على الطيبات النبوية لتحقيق صحة أفضل وحياة متوازنة.</p>
-      <div class="hero-badge">
-        <span>🌟</span>
-        <span>غذاء ودواء طبيعي</span>
-      </div>
     </div>
 
-    <!-- Quick Grid -->
     <div class="section-title">الأقسام الرئيسية</div>
     <div class="quick-grid">
       <div class="quick-card" onclick="goTo('page-schedule')">
         <div class="qc-icon" style="background:#e8f5e9">📅</div>
         <div class="qc-title">الجدول الأسبوعي</div>
-        <div class="qc-sub">وجبات يومية صحية</div>
       </div>
       <div class="quick-card" onclick="goTo('page-herbs')">
         <div class="qc-icon" style="background:#e8f5e9">🌿</div>
         <div class="qc-title">فوائد الطيبات</div>
-        <div class="qc-sub">الطيبات ومنافعها</div>
-      </div>
-      <div class="quick-card" onclick="goTo('page-forbidden')">
-        <div class="qc-icon" style="background:#fde8e8">🚫</div>
-        <div class="qc-title">قائمة الممنوعات</div>
-        <div class="qc-sub">الأطعمة الضارة</div>
-      </div>
-      <div class="quick-card" onclick="goTo('page-favorites')">
-        <div class="qc-icon" style="background:#fff8e1">⭐</div>
-        <div class="qc-title">المفضلة</div>
-        <div class="qc-sub">وصفاتك المحفوظة</div>
-      </div>
-    </div>
-
-    <!-- Daily Tip -->
-    <div class="section-title">نصيحة اليوم</div>
-    <div style="background:linear-gradient(135deg,#fffde7,#fff9c4);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-sm);border-right:4px solid var(--gold);margin-bottom:22px;">
-      <div style="display:flex;align-items:flex-start;gap:12px;">
-        <span style="font-size:36px">💡</span>
-        <div>
-          <h4 style="font-size:15px;font-weight:800;color:#856404;margin-bottom:6px" id="tip-title">فائدة العسل</h4>
-          <p style="font-size:13px;color:#6d5508;line-height:1.7" id="tip-text">العسل شفاء للناس، يُستخدم على الريق بمقدار ملعقة كبيرة لتعزيز المناعة وتحسين الهضم وتنشيط الطاقة في الصباح.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Stats -->
-    <div class="section-title">الإحصائيات</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px;">
-      <div style="background:var(--white);border-radius:var(--radius);padding:14px;text-align:center;box-shadow:var(--shadow-sm);">
-        <div style="font-size:26px;font-weight:900;color:var(--green-mid)">24</div>
-        <div style="font-size:11px;color:#888;margin-top:2px">طيبة</div>
-      </div>
-      <div style="background:var(--white);border-radius:var(--radius);padding:14px;text-align:center;box-shadow:var(--shadow-sm);">
-        <div style="font-size:26px;font-weight:900;color:var(--green-mid)">7</div>
-        <div style="font-size:11px;color:#888;margin-top:2px">أيام</div>
-      </div>
-      <div style="background:var(--white);border-radius:var(--radius);padding:14px;text-align:center;box-shadow:var(--shadow-sm);">
-        <div style="font-size:26px;font-weight:900;color:var(--green-mid)">42</div>
-        <div style="font-size:11px;color:#888;margin-top:2px">وجبة</div>
       </div>
     </div>
   </div>
 
-  <!-- Bottom Nav -->
   <nav class="bottom-nav">
     <button class="nav-item active" onclick="goTo('page-home')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
@@ -506,549 +263,168 @@ body {
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4 1.5-2.5 1.5-5 0-7C4 9 3 7 3 5c0-1.1.4-2.1 1-3 0 0 6 1 8 5s1 9-2 12"/><path d="M22 8s-4 0-8 4-6 10-6 10"/></svg>
       <span>الطيبات</span>
     </button>
-    <button class="nav-item" onclick="goTo('page-favorites')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      <span>المفضلة</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-more')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
-      <span>المزيد</span>
-    </button>
   </nav>
 </div>
 
-<!-- ==============================
-     PAGE: SCHEDULE
-============================== -->
 <div class="page" id="page-schedule">
   <nav class="top-nav">
     <div class="logo-area">
-      <button onclick="goTo('page-home')" style="background:none;border:none;color:white;font-size:22px;cursor:pointer">‹</button>
-      <div>
-        <div class="app-name">الجدول الأسبوعي</div>
-        <div class="app-sub">وجبات يومية متوازنة</div>
-      </div>
+      <button onclick="goTo('page-home')" style="background:none;border:none;color:white;font-size:22px;">‹</button>
+      <div><div class="app-name">الجدول الأسبوعي</div></div>
     </div>
   </nav>
-
   <div class="page-content">
     <div class="week-tabs" id="weekTabs"></div>
     <div id="scheduleContent"></div>
   </div>
-
   <nav class="bottom-nav">
-    <button class="nav-item" onclick="goTo('page-home')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-      <span>الرئيسية</span>
-    </button>
-    <button class="nav-item active" onclick="goTo('page-schedule')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      <span>الجدول</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-herbs')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4 1.5-2.5 1.5-5 0-7C4 9 3 7 3 5c0-1.1.4-2.1 1-3 0 0 6 1 8 5s1 9-2 12"/><path d="M22 8s-4 0-8 4-6 10-6 10"/></svg>
-      <span>الطيبات</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-favorites')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      <span>المفضلة</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-more')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
-      <span>المزيد</span>
-    </button>
+    <button class="nav-item" onclick="goTo('page-home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>الرئيسية</span></button>
+    <button class="nav-item active" onclick="goTo('page-schedule')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg><span>الجدول</span></button>
+    <button class="nav-item" onclick="goTo('page-herbs')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4"/></svg><span>الطيبات</span></button>
   </nav>
 </div>
 
-<!-- ==============================
-     PAGE: HERBS
-============================== -->
 <div class="page" id="page-herbs">
   <nav class="top-nav">
     <div class="logo-area">
-      <button onclick="goTo('page-home')" style="background:none;border:none;color:white;font-size:22px;cursor:pointer">‹</button>
-      <div>
-        <div class="app-name">فوائد الطيبات</div>
-        <div class="app-sub">شرح تفصيلي لكل طيبة</div>
-      </div>
+      <button onclick="goTo('page-home')" style="background:none;border:none;color:white;font-size:22px;">‹</button>
+      <div><div class="app-name">فوائد الطيبات</div></div>
     </div>
   </nav>
-
   <div class="page-content">
     <div class="search-box">
       <input type="text" placeholder="ابحث عن طيبة..." id="herbSearch" oninput="filterHerbs()">
-      <span class="search-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </span>
+      <span class="search-icon">🔍</span>
     </div>
-    <div class="filter-chips" id="herbFilters"></div>
     <div class="herbs-grid" id="herbsGrid"></div>
   </div>
-
-  <nav class="bottom-nav">
-    <button class="nav-item" onclick="goTo('page-home')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-      <span>الرئيسية</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-schedule')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/></svg>
-      <span>الجدول</span>
-    </button>
-    <button class="nav-item active" onclick="goTo('page-herbs')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4 1.5-2.5 1.5-5 0-7C4 9 3 7 3 5c0-1.1.4-2.1 1-3 0 0 6 1 8 5s1 9-2 12"/><path d="M22 8s-4 0-8 4-6 10-6 10"/></svg>
-      <span>الطيبات</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-favorites')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      <span>المفضلة</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-more')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
-      <span>المزيد</span>
-    </button>
-  </nav>
 </div>
 
-<!-- ==============================
-     PAGE: FORBIDDEN
-============================== -->
-<div class="page" id="page-forbidden">
-  <nav class="top-nav">
-    <div class="logo-area">
-      <button onclick="goTo('page-home')" style="background:none;border:none;color:white;font-size:22px;cursor:pointer">‹</button>
-      <div>
-        <div class="app-name">قائمة الممنوعات</div>
-        <div class="app-sub">أطعمة ومشروبات يجب تجنبها</div>
-      </div>
-    </div>
-  </nav>
-
-  <div class="page-content">
-    <div class="forbidden-hero">
-      <h2>🚫 تحذير غذائي</h2>
-      <p>الأطعمة والمشروبات التالية تضر بالصحة وينصح بتجنبها تماماً</p>
-    </div>
-    <div id="forbiddenList"></div>
-  </div>
-
-  <nav class="bottom-nav">
-    <button class="nav-item" onclick="goTo('page-home')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-      <span>الرئيسية</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-schedule')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/></svg>
-      <span>الجدول</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-herbs')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4 1.5-2.5 1.5-5 0-7"/></svg>
-      <span>الطيبات</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-favorites')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      <span>المفضلة</span>
-    </button>
-    <button class="nav-item active" onclick="goTo('page-forbidden')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-      <span>الممنوعات</span>
-    </button>
-  </nav>
-</div>
-
-<!-- ==============================
-     PAGE: FAVORITES
-============================== -->
-<div class="page" id="page-favorites">
-  <nav class="top-nav">
-    <div class="logo-area">
-      <button onclick="goTo('page-home')" style="background:none;border:none;color:white;font-size:22px;cursor:pointer">‹</button>
-      <div>
-        <div class="app-name">المفضلة</div>
-        <div class="app-sub">الطيبات والوصفات المحفوظة</div>
-      </div>
-    </div>
-  </nav>
-
-  <div class="page-content">
-    <div id="favoritesContent"></div>
-  </div>
-
-  <nav class="bottom-nav">
-    <button class="nav-item" onclick="goTo('page-home')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-      <span>الرئيسية</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-schedule')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/></svg>
-      <span>الجدول</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-herbs')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4 1.5-2.5 1.5-5 0-7"/></svg>
-      <span>الطيبات</span>
-    </button>
-    <button class="nav-item active" onclick="goTo('page-favorites')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      <span>المفضلة</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-more')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
-      <span>المزيد</span>
-    </button>
-  </nav>
-</div>
-
-<!-- ==============================
-     PAGE: MORE
-============================== -->
-<div class="page" id="page-more">
-  <nav class="top-nav">
-    <div class="logo-area">
-      <button onclick="goTo('page-home')" style="background:none;border:none;color:white;font-size:22px;cursor:pointer">‹</button>
-      <div>
-        <div class="app-name">المزيد</div>
-        <div class="app-sub">إعدادات وخيارات</div>
-      </div>
-    </div>
-  </nav>
-
-  <div class="page-content">
-    <div class="more-card">
-      <div class="more-item" onclick="goTo('page-schedule')">
-        <div class="more-item-icon" style="background:#e8f5e9">📅</div>
-        <div class="more-item-text"><h4>الجدول الأسبوعي</h4><p>وجبات يومية متنوعة وصحية</p></div>
-        <span class="more-item-arrow">›</span>
-      </div>
-      <div class="more-item" onclick="goTo('page-herbs')">
-        <div class="more-item-icon" style="background:#e8f5e9">🌿</div>
-        <div class="more-item-text"><h4>فوائد الطيبات</h4><p>فوائد كل طيبة واستخداماتها</p></div>
-        <span class="more-item-arrow">›</span>
-      </div>
-      <div class="more-item" onclick="goTo('page-forbidden')">
-        <div class="more-item-icon" style="background:#fde8e8">🚫</div>
-        <div class="more-item-text"><h4>قائمة الممنوعات</h4><p>تفاصيل دقيقة لما يُمنع تناوله</p></div>
-        <span class="more-item-arrow">›</span>
-      </div>
-    </div>
-
-    <div class="more-card">
-      <div class="more-item" onclick="showToast('قريباً...')">
-        <div class="more-item-icon" style="background:#fff3e0">🔔</div>
-        <div class="more-item-text"><h4>التنبيهات والتذكيرات</h4><p>مواعيد الوجبات والتذكيرات</p></div>
-        <span class="more-item-arrow">›</span>
-      </div>
-      <div class="more-item" onclick="showToast('قريباً...')">
-        <div class="more-item-icon" style="background:#e3f2fd">📊</div>
-        <div class="more-item-text"><h4>بحث وتصنيف</h4><p>بحث متقدم حسب الفائدة</p></div>
-        <span class="more-item-arrow">›</span>
-      </div>
-      <div class="more-item" onclick="showToast('قريباً...')">
-        <div class="more-item-icon" style="background:#f3e5f5">⚙️</div>
-        <div class="more-item-text"><h4>الإعدادات</h4><p>تخصيص التطبيق</p></div>
-        <span class="more-item-arrow">›</span>
-      </div>
-    </div>
-
-    <div class="about-box">
-      <div class="logo-big">طيبات</div>
-      <h3>نظام الطيبات</h3>
-      <p>تقديم نظام متكامل للصحة والغذاء الطبيعي يعتمد على الطيبات النبوية لتحقيق صحة أفضل وحياة متوازنة. مرجع صحي موثوق للجميع.</p>
-      <div class="version">الإصدار 1.0.0</div>
-    </div>
-  </div>
-
-  <nav class="bottom-nav">
-    <button class="nav-item" onclick="goTo('page-home')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-      <span>الرئيسية</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-schedule')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/></svg>
-      <span>الجدول</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-herbs')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22c1.25-1.25 2.5-2.5 3.5-4 1.5-2.5 1.5-5 0-7"/></svg>
-      <span>الطيبات</span>
-    </button>
-    <button class="nav-item" onclick="goTo('page-favorites')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      <span>المفضلة</span>
-    </button>
-    <button class="nav-item active" onclick="goTo('page-more')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
-      <span>المزيد</span>
-    </button>
-  </nav>
-</div>
-
-<!-- HERB DETAIL MODAL -->
-<div class="modal-overlay" id="herbModal" onclick="closeModal(event)">
-  <div class="modal-sheet" style="position:relative">
+<div class="modal-overlay" id="herbModal" onclick="if(event.target===this)closeHerbModal()">
+  <div class="modal-sheet">
     <button class="close-modal" onclick="closeHerbModal()">✕</button>
-    <div class="modal-handle"></div>
     <div class="modal-hero" id="modalHero"></div>
     <div class="modal-body">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
-        <h2 class="modal-title" id="modalTitle"></h2>
-        <button class="fav-btn" id="modalFavBtn" onclick="toggleFavFromModal()">⭐</button>
-      </div>
-      <div class="modal-latin" id="modalLatin"></div>
+      <h2 id="modalTitle" style="color:var(--green-dark);margin-bottom:10px"></h2>
       <div id="modalContent"></div>
     </div>
   </div>
 </div>
 
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
 <script>
 // ===========================
-// DATA
+// UPDATED DATA FROM IMAGES
 // ===========================
 const HERBS = [
   {
-    id: 1, name: 'العسل', emoji: '🍯', latin: 'Honey - Mel',
-    category: 'طبيعي',
-    bg: '#fff8e1',
-    summary: 'شفاء للناس، مضاد حيوي طبيعي قوي',
-    benefits: ['يعزز المناعة ويقاوم الالتهابات','مضاد للبكتيريا والفيروسات','يعالج التقرحات والجروح','يحسن الهضم ويريح المعدة','يمنح الطاقة ويقلل التعب','يساعد في علاج السعال وآلام الحلق'],
-    usage: ['ملعقة كبيرة على الريق صباحاً','ملعقة في الشاي الدافئ','تطبيق موضعي على الجروح','مزج مع الزنجبيل لتعزيز الأثر'],
-    warnings: 'لا يُعطى للأطفال أقل من سنة. يجب الانتباه لمرضى السكري ومتابعة مستوى السكر.',
-    category_tag: 'طبيعي'
+    id: 1, name: 'عسل نحل طالوقي', emoji: '🍯', 
+    bg: '#fff8e1', summary: 'عسل سدر جبلي أصلي بفوائد علاجية عالية',
+    benefits: ['مضاد حيوي طبيعي','مقوي للمناعة','علاج لمشاكل الهضم والقولون'],
+    usage: ['ملعقة على الريق صباحاً','يحل في ماء دافئ']
   },
   {
-    id: 2, name: 'الزيتون', emoji: '🫒', latin: 'Olive - Olea europaea',
-    category: 'زيوت',
-    bg: '#f1f8e9',
-    summary: 'زيت مبارك، حماية للقلب والأوعية الدموية',
-    benefits: ['يحمي القلب والأوعية الدموية','يقلل الكوليسترول الضار','مضاد قوي للأكسدة والشيخوخة','يرطب الجلد ويقوي الشعر','يساعد في امتصاص الفيتامينات','يقلل من خطر الإصابة بالسرطان'],
-    usage: ['ملعقتان كبيرتان يومياً في الطعام','استخدام خارجي للجلد والشعر','في السلطات بديلاً عن الزيوت المهدرجة'],
-    warnings: 'لا توجد موانع صريحة. الإفراط قد يسبب زيادة في الوزن لاحتوائه على سعرات حرارية عالية.',
-    category_tag: 'زيوت'
+    id: 2, name: 'زيت زيتون بكر', emoji: '🫒', 
+    bg: '#f1f8e9', summary: 'عصرة أولى على البارد لمضادات الأكسدة',
+    benefits: ['صحة القلب والشرايين','تخفيض الكوليسترول','مفيد للبشرة والشعر'],
+    usage: ['إضافته للسلطات والأجبان','ملعقة يومياً قبل النوم']
   },
   {
-    id: 3, name: 'الحبة السوداء', emoji: '🌱', latin: 'Black Seed - Nigella sativa',
-    category: 'بذور',
-    bg: '#ede7f6',
-    summary: 'شفاء من كل داء إلا الموت',
-    benefits: ['تعزيز المناعة بشكل ملحوظ','مضاد للالتهابات والحساسية','يساعد في ضبط سكر الدم','يحسن وظائف الرئة والتنفس','مضاد للسرطان والأكسدة','يعالج الصداع النصفي'],
-    usage: ['نصف ملعقة صغيرة مع العسل صباحاً','زيت الحبة السوداء ملعقة صغيرة','سحق وإضافة للطعام أو الشاي'],
-    warnings: 'يخفض ضغط الدم؛ المصابون بانخفاض الضغط يجب الانتباه. لا يُستخدم بكميات كبيرة أثناء الحمل.',
-    category_tag: 'بذور'
+    id: 3, name: 'تمر (عجوة المدينة)', emoji: '🌴', 
+    bg: '#fbe9e7', summary: 'منجم من الفيتامينات والمعادن والطاقة',
+    benefits: ['حماية من السموم والسحر','علاج للأنيميا ونقص الحديد','غذاء مثالي للأطفال والرياضيين'],
+    usage: ['7 تمرات صباحاً','بديل صحي للحلويات']
   },
   {
-    id: 4, name: 'الزنجبيل', emoji: '🫚', latin: 'Ginger - Zingiber officinale',
-    category: 'جذور',
-    bg: '#fff8e1',
-    summary: 'مضاد حيوي طبيعي وعلاج فعّال للغثيان',
-    benefits: ['يخفف الغثيان والتقيؤ بشكل فعّال','يعالج آلام المفاصل والتهاب المفاصل','يساعد في الهضم ويقلل الانتفاخ','يقوي المناعة ويقاوم الإنفلونزا','يحسن الدورة الدموية','يخفف آلام الدورة الشهرية'],
-    usage: ['شريحة زنجبيل طازج مع الشاي','نصف ملعقة مسحوق في الماء الدافئ','إضافة للأكل والعصائر الطازجة'],
-    warnings: 'قد يزيد من تمييع الدم؛ الحذر عند تناول مضادات التخثر. الإفراط يسبب حرقة المعدة.',
-    category_tag: 'جذور'
-  },
-  {
-    id: 5, name: 'الكركم', emoji: '🌼', latin: 'Turmeric - Curcuma longa',
-    category: 'توابل',
-    bg: '#fff3e0',
-    summary: 'الذهب الأصفر، مضاد التهاب طبيعي قوي',
-    benefits: ['مضاد التهاب طبيعي قوي جداً','يحمي الكبد ويحسن وظائفه','يعالج آلام المفاصل والروماتيزم','يحسن وظائف الدماغ والذاكرة','مضاد للسرطان ومثبط للأورام','يحسن صحة القلب والأوعية الدموية'],
-    usage: ['ربع ملعقة صغيرة مع الحليب الدافئ','إضافة للطعام والأرز والحساء','مزج مع الفلفل الأسود لتحسين الامتصاص'],
-    warnings: 'يخفف الدم؛ الحذر مع الأدوية المضادة للتخثر. قد يسبب ضيقاً في المعدة بالجرعات الكبيرة.',
-    category_tag: 'توابل'
-  },
-  {
-    id: 6, name: 'التمر', emoji: '🌴', latin: 'Dates - Phoenix dactylifera',
-    category: 'فاكهة',
-    bg: '#fbe9e7',
-    summary: 'غذاء متكامل ومصدر طاقة طبيعية سريعة',
-    benefits: ['مصدر طاقة فوري وفعّال','غني بالألياف ويعالج الإمساك','يقوي العظام بالكالسيوم والمغنيسيوم','يدعم صحة الجهاز العصبي','غني بالحديد يعالج الأنيميا','يقوي المناعة ويحمي من الأمراض'],
-    usage: ['3-7 تمرات صباحاً على الريق','في رمضان لكسر الصيام','في العصائر الطازجة والحلويات الصحية'],
-    warnings: 'مرتفع السكريات الطبيعية؛ مرضى السكري يحسبونه ضمن حصصهم اليومية. الإفراط يسبب زيادة وزن.',
-    category_tag: 'فاكهة'
-  },
-  {
-    id: 7, name: 'الثوم', emoji: '🧄', latin: 'Garlic - Allium sativum',
-    category: 'خضار',
-    bg: '#f9fbe7',
-    summary: 'مضاد حيوي طبيعي وحارس صحة القلب',
-    benefits: ['مضاد حيوي طبيعي قوي وفعّال','يخفض ضغط الدم المرتفع','يخفض الكوليسترول الضار','يقوي المناعة ويحارب الإنفلونزا','مضاد للفطريات والطفيليات','يحسن صحة القلب والأوعية الدموية'],
-    usage: ['فصّ ثوم طازج مضغ على الريق','إضافة للطعام في أثناء الطهي','مزج مع العسل والليمون لزيادة الفاعلية'],
-    warnings: 'قد يسبب حرقة المعدة لدى بعض الأشخاص. يتفاعل مع أدوية تخفيف الدم؛ يُحتاط مع أدوية التخثر.',
-    category_tag: 'خضار'
-  },
-  {
-    id: 8, name: 'البصل', emoji: '🧅', latin: 'Onion - Allium cepa',
-    category: 'خضار',
-    bg: '#fce4ec',
-    summary: 'درع الجسم ضد الأمراض والعدوى',
-    benefits: ['مضاد للبكتيريا والالتهابات','يقوي المناعة ويحمي من العدوى','يساعد في علاج الرشح والإنفلونزا','يخفض نسبة السكر في الدم','يحمي القلب ويخفض الكوليسترول','مضاد للأكسدة والشيخوخة المبكرة'],
-    usage: ['أكل طازج في السلطات','مغلي بصل مع العسل للسعال','إضافة للطعام في الطهي'],
-    warnings: 'قد يسبب حرقة المعدة عند تناوله نيئاً. يؤثر على رائحة النفس.',
-    category_tag: 'خضار'
-  },
-  {
-    id: 9, name: 'السدر', emoji: '🍃', latin: 'Sidr - Ziziphus spina-christi',
-    category: 'أعشاب',
-    bg: '#e8f5e9',
-    summary: 'طيبة مباركة للشعر والجسم والروح',
-    benefits: ['يقوي الشعر ويمنع تساقطه','يعالج قشرة الرأس وحكة الفروة','يطهر الجسم ويزيل الأوساخ','يعالج الجروح والحروق الموضعية','يهدئ الأعصاب ويريح الجسم','مستخدم في الاغتسال الشرعي'],
-    usage: ['غسيل الشعر بمغلي أوراق السدر','وضع المسحوق على فروة الرأس','الاستحمام بمغلي السدر'],
-    warnings: 'لا توجد موانع مهمة معروفة. جيد للاستخدام الخارجي بشكل عام.',
-    category_tag: 'أعشاب'
-  },
-  {
-    id: 10, name: 'الزعفران', emoji: '🌺', latin: 'Saffron - Crocus sativus',
-    category: 'توابل',
-    bg: '#fff8e1',
-    summary: 'الذهب الأحمر، معزز المزاج وصحة الجهاز العصبي',
-    benefits: ['يحسن المزاج ويعالج الاكتئاب','يقوي الذاكرة والتركيز','يخفف آلام الدورة الشهرية','مضاد قوي للأكسدة','يحسن النوم ويعالج الأرق','يعزز الأداء الجنسي والهرموني'],
-    usage: ['خيوط في الحليب الدافئ والشاي','إضافة للأرز والمطبوخات','لا تزيد عن 30 خيطاً يومياً'],
-    warnings: 'الجرعات الزائدة سامة. الحوامل يجتنبن في الثلث الأول. غالي ويُغش كثيراً؛ شراء من مصادر موثوقة.',
-    category_tag: 'توابل'
-  },
-  {
-    id: 11, name: 'القرفة', emoji: '🌿', latin: 'Cinnamon - Cinnamomum verum',
-    category: 'توابل',
-    bg: '#efebe9',
-    summary: 'منظم سكر الدم الطبيعي وصديق القلب',
-    benefits: ['يضبط مستوى سكر الدم بفاعلية','مضاد للالتهابات والأكسدة','يحسن حساسية الأنسولين','يقلل الكوليسترول الضار','مضاد للبكتيريا والفطريات','يحمي الدماغ من التدهور العصبي'],
-    usage: ['ربع ملعقة صغيرة مع الشاي','رش على الطعام والحبوب والعصائر','مزج مع العسل على الريق'],
-    warnings: 'قرفة سيلون أفضل للاستخدام اليومي. قرفة كاسيا تحتوي كومارين مرتفع قد يضر الكبد بكميات كبيرة.',
-    category_tag: 'توابل'
-  },
-  {
-    id: 12, name: 'زيت الزيتون', emoji: '🫙', latin: 'Olive Oil - Oleum olivae',
-    category: 'زيوت',
-    bg: '#f9fbe7',
-    summary: 'دهن صحي مثالي وعلاج طبيعي متكامل',
-    benefits: ['أفضل زيت للقلب والأوعية الدموية','يقلل الكوليسترول الضار ويرفع الجيد','مضاد قوي للأكسدة والالتهابات','يرطب الجلد ويعالج الجفاف','يساعد في امتصاص الفيتامينات الدهنية','يحمي من سرطان الثدي والقولون'],
-    usage: ['ملعقتان كبيرتان يومياً','استخدام بارداً في السلطات','على الجلد والشعر كترطيب'],
-    warnings: 'غير مناسب للقلي على درجات حرارة عالية جداً. يرفع السعرات الحرارية عند الإفراط.',
-    category_tag: 'زيوت'
+    id: 4, name: 'القسط الهندي', emoji: '🪵', 
+    bg: '#efebe9', summary: 'شفاء من سبعة أصلية في الطب النبوي',
+    benefits: ['تنظيم الهرمونات','علاج لمشاكل الغدة','مضاد للالتهابات الفيروسية'],
+    usage: ['ملعقة صغيرة مع الماء','يخلط مع العسل والزيت']
   }
 ];
-
-const DAYS = ['السبت','الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
 
 const SCHEDULE = {
   'السبت': {
-    breakfast: [{emoji:'🍯',name:'عسل وزبدة على خبز أسمر',desc:'ملعقة عسل + زبدة طبيعية + خبز قمح كامل',tags:['صحي','طاقة']},{emoji:'🌿',name:'شاي أعشاب بالزنجبيل والقرفة',desc:'مقوٍّ للمناعة ومحسّن للهضم',tags:['أعشاب','مناعة']}],
-    lunch: [{emoji:'🥗',name:'سلطة خضراء بزيت الزيتون',desc:'خضروات طازجة + زيتون + ثوم + ليمون',tags:['طازج','قلب']},{emoji:'🍲',name:'شوربة عدس بالكركم',desc:'بروتين نباتي + كركم مضاد للالتهاب',tags:['دافئ','مغذي']}],
-    dinner: [{emoji:'🌾',name:'أرز أسمر بالزعفران',desc:'أرز كامل + زعفران + توابل طبيعية',tags:['خفيف','فاخر']},{emoji:'🐟',name:'سمك مشوي بالثوم والليمون',desc:'بروتين عالي + أوميغا 3 مفيد',tags:['بروتين','صحي']}]
+    breakfast: [{emoji:'🍯', name:'عسل وزيت زيتون', desc:'ملعقة عسل سدر + ملعقة زيت زيتون بكر', tag:'نشاط'}],
+    lunch: [{emoji:'🥘', name:'فراخ منزوعة الجلد', desc:'دجاج مطهو بالأعشاب والكركم والثوم', tag:'بروتين'}],
+    dinner: [{emoji:'🥗', name:'سلطة خضراء', desc:'خضروات متنوعة مع الليمون وزيت الزيتون', tag:'خفيف'}]
   },
   'الأحد': {
-    breakfast: [{emoji:'🌴',name:'تمر طازج مع حليب دافئ',desc:'7 تمرات مباركة + حليب كامل الدسم',tags:['سنّة','طاقة']},{emoji:'🥜',name:'مكسرات نيئة متنوعة',desc:'لوز + جوز + كاجو بدون ملح',tags:['صحي','دهون جيدة']}],
-    lunch: [{emoji:'🧄',name:'مرق دجاج بالثوم والبصل',desc:'مرق ثقيل + خضروات + توابل',tags:['مغذي','مناعة']},{emoji:'🥙',name:'خبز سمسم مع زيت الزيتون',desc:'خبز كامل مع الزيتون والزعتر',tags:['بسيط','مفيد']}],
-    dinner: [{emoji:'🫙',name:'عدس مطبوخ مع الكركم',desc:'غني بالبروتين والحديد والكركم',tags:['بروتين','حديد']},{emoji:'🍃',name:'شاي بالنعناع والزنجبيل',desc:'مهضم خفيف ومريح للمعدة',tags:['هضم','استرخاء']}]
+    breakfast: [{emoji:'🌴', name:'7 تمرات مع حليب', desc:'تمرات المدينة مع حليب طبيعي دافئ', tag:'طاقة'}],
+    lunch: [{emoji:'🥘', name:'فريك بالخضروات', desc:'حبوب كاملة مع تشكيلة خضار موسمية', tag:'ألياف'}],
+    dinner: [{emoji:'🥛', name:'كوب لبن رائب', desc:'لبن طبيعي مهضم ومريح للمعدة', tag:'هضم'}]
   },
   'الإثنين': {
-    breakfast: [{emoji:'🫒',name:'زيتون أسود مع جبنة بيضاء',desc:'زيتون نيئ + جبنة طبيعية + خبز',tags:['مفيد','بروتين']},{emoji:'🍯',name:'عسل بالقرفة على الريق',desc:'معالج لسكر الدم ومقوٍّ للمناعة',tags:['علاجي','صحي']}],
-    lunch: [{emoji:'🥘',name:'كبدة بالثوم والبصل',desc:'غنية بالحديد والفيتامين أ',tags:['حديد','مغذي']},{emoji:'🌾',name:'فريك بالخضروات الموسمية',desc:'حبوب كاملة مع خضروات طازجة',tags:['ألياف','متوازن']}],
-    dinner: [{emoji:'🌱',name:'وصفة الحبة السوداء والعسل',desc:'نصف ملعقة حبة سوداء + ملعقة عسل',tags:['مناعة','علاجي']},{emoji:'🥛',name:'حليب دافئ بالكركم والعسل',desc:'مسكّن ومهدئ قبل النوم',tags:['نوم','هدوء']}]
+    breakfast: [{emoji:'🥚', name:'بيض مسلوق وزعتر', desc:'بروتين عالي مع زعتر وزيت زيتون', tag:'متكامل'}],
+    lunch: [{emoji:'🥘', name:'لحم ضاني (كتف)', desc:'لحم مطهو جيداً بدون دهون كثيفة', tag:'حديد'}],
+    dinner: [{emoji:'🍏', name:'فاكهة موسمية', desc:'تفاح أو برتقال حسب المتوفر', tag:'فيتامينات'}]
   },
   'الثلاثاء': {
-    breakfast: [{emoji:'🥚',name:'بيض مسلوق مع الزعتر',desc:'بروتين عالي مع الزعتر المقوٍّ',tags:['بروتين','مقوٍّ']},{emoji:'🌴',name:'تمر ولبن',desc:'تمر + لبن رائب = وجبة متكاملة',tags:['سنّة','منتجات ألبان']}],
-    lunch: [{emoji:'🐓',name:'فراخ مشوية بالأعشاب',desc:'دجاج + كركم + ثوم + توابل طبيعية',tags:['بروتين','طبيعي']},{emoji:'🥗',name:'فتوش بالزيتون والرمان',desc:'سلطة شرقية بزيت الزيتون والليمون',tags:['طازج','ألوان']}],
-    dinner: [{emoji:'🍲',name:'شوربة شعير وخضروات',desc:'حبوب كاملة مع خضروات الموسم',tags:['خفيف','ألياف']},{emoji:'🌿',name:'شاي إبراهيم بالقرفة والزنجبيل',desc:'خليط حار مقوٍّ وطارد للبرد',tags:['دافئ','مناعة']}]
+    breakfast: [{emoji:'🥣', name:'تلبينة نبوية', desc:'دقيق شعير مع حليب وعسل نحل', tag:'هدوء'}],
+    lunch: [{emoji:'🐟', name:'سمك مشوي', desc:'سمك غني بالأوميجا 3 مع الثوم والليمون', tag:'ذكاء'}],
+    dinner: [{emoji:'🍲', name:'شوربة خضار', desc:'مرق طبيعي مع كوسة وجزر وبطاطس', tag:'صحي'}]
   },
   'الأربعاء': {
-    breakfast: [{emoji:'🌾',name:'خبز كامل مع الزبدة والعسل',desc:'طاقة مستدامة لصباح مثمر',tags:['طاقة','بسيط']},{emoji:'🍋',name:'ماء دافئ بالليمون والزنجبيل',desc:'منظف للجسم ومحفز للهضم',tags:['تنظيف','هضم']}],
-    lunch: [{emoji:'🥙',name:'كبسة أرز بالحبة السوداء',desc:'أرز بسمتي مع توابل وحبة سوداء',tags:['مميز','مقوٍّ']},{emoji:'🧅',name:'سلطة بصل حمراء مع الليمون',desc:'غنية بالكيرستين مضاد الأكسدة',tags:['مضاد أكسدة','خفيف']}],
-    dinner: [{emoji:'🍯',name:'وصفة عسل وزيت الزيتون',desc:'ملعقة عسل + ملعقة زيت زيتون صباحاً',tags:['علاجي','قلب']},{emoji:'🌙',name:'حليب بالزعفران والهيل',desc:'مهدئ فاخر ومريح قبل النوم',tags:['نوم','فاخر']}]
+    breakfast: [{emoji:'🥪', name:'خبز أسمر بجبن قريش', desc:'جبن طبيعي مع حبة البركة وزيت زيتون', tag:'كالسيوم'}],
+    lunch: [{emoji:'🍲', name:'بقوليات (عدس/فول)', desc:'بروتين نباتي مطهو بزيت الزيتون', tag:'شبع'}],
+    dinner: [{emoji:'🍇', name:'عنب أو زبيب', desc:'غذاء مقوي للذاكرة ومصفي للدم', tag:'تركيز'}]
   },
   'الخميس': {
-    breakfast: [{emoji:'🫚',name:'خبز بالسمسم وزيت الزيتون',desc:'طحينة طبيعية أو بذور سمسم مباشرة',tags:['كالسيوم','مغذي']},{emoji:'🌺',name:'شاي الزعفران والقرفة',desc:'منشط للمزاج ومحسن للتركيز',tags:['مزاج','مركز']}],
-    lunch: [{emoji:'🥘',name:'يخنة خضروات بالكركم والثوم',desc:'طبق شرقي صحي بالتوابل الطبيعية',tags:['شرقي','ألياف']},{emoji:'🌾',name:'أرز أسمر بالزبيب والمكسرات',desc:'أرز كامل + زبيب + لوز طبيعي',tags:['متوازن','طاقة']}],
-    dinner: [{emoji:'🍃',name:'مغلي السدر والزيتون',desc:'شاي أعشاب مهدئ قبل النوم',tags:['هدوء','تنظيف']},{emoji:'🌴',name:'تمر ومكسرات خفيفة',desc:'وجبة خفيفة غنية بالمعادن',tags:['خفيف','معادن']}]
+    breakfast: [{emoji:'🥛', name:'زبادي بالعسل', desc:'زبادي طبيعي مع ملعقة عسل نحل', tag:'بروبيوتيك'}],
+    lunch: [{emoji:'🍗', name:'رومي مشوي', desc:'شرائح ديك رومي مع خضار سوتيه', tag:'عضلات'}],
+    dinner: [{emoji:'🥣', name:'بليلة (قمح كامل)', desc:'حبوب قمح مع لبن وقرفة', tag:'مشبع'}]
   },
   'الجمعة': {
-    breakfast: [{emoji:'🍯',name:'عسل وكمأة',desc:'إفطار مبارك مقوٍّ للبصر والمناعة',tags:['سنّة','مبارك']},{emoji:'🌿',name:'شاي الأعشاب المتنوعة',desc:'مزيج من بابونج وزعتر ونعناع',tags:['أعشاب','استرخاء']}],
-    lunch: [{emoji:'🐑',name:'لحم مطبوخ بالتوابل الطبيعية',desc:'لحم + كركم + ثوم + بهارات طبيعية',tags:['بروتين','تقليدي']},{emoji:'🥗',name:'سلطة كبيرة متنوعة الألوان',desc:'7 أنواع خضروات + زيت زيتون + ليمون',tags:['ألوان','ألياف']}],
-    dinner: [{emoji:'🌴',name:'تمر بالسمن الطبيعي',desc:'سنة نبوية في الإفطار اليومي',tags:['سنّة','طاقة']},{emoji:'🫙',name:'وصفة ما تيسر من الطيبات',desc:'خليط شخصي من المفضلات المجربة',tags:['شخصي','محبوب']}]
+    breakfast: [{emoji:'🍳', name:'شكشوكة بالخضار', desc:'بيض مع طماطم وفلفل وبصل وثوم', tag:'منوع'}],
+    lunch: [{emoji:'🥘', name:'كبدة مشوية', desc:'كبدة بلدي بالليمون والكمون', tag:'قوة'}],
+    dinner: [{emoji:'🍯', name:'عسل بماء دافئ', desc:'كوب ماء دافئ مذاب فيه عسل سدر', tag:'تنظيف'}]
   }
 };
 
-const FORBIDDEN = [
-  { emoji:'🥤', name:'المشروبات الغازية', reason:'حمض الفوسفوريك يهشم العظام ويضر بالأسنان', tag:'أسنان وعظام', details:'تحتوي على سكر مكثف يعادل 10 ملاعق في الكوب الواحد، وتضرب الكلى والكبد وتسبب السمنة المفرطة.' },
-  { emoji:'🍟', name:'الأطعمة المقلية بزيوت مهدرجة', reason:'دهون متحولة ضارة بالقلب والشرايين', tag:'قلب وشرايين', details:'الزيوت المهدرجة تحتوي على دهون ترانس الأشد خطراً على القلب، تسبب انسداد الشرايين والسكتة الدماغية.' },
-  { emoji:'🍬', name:'السكر الأبيض المكرر', reason:'يرفع سكر الدم ويسبب الإدمان الغذائي', tag:'سكري وسمنة', details:'السكر المكرر يسبب مقاومة الأنسولين والالتهابات المزمنة ويضعف جهاز المناعة ويسرّع الشيخوخة.' },
-  { emoji:'🧂', name:'الملح بكميات زائدة', reason:'يرفع ضغط الدم ويضر بالكلى', tag:'ضغط الدم', details:'الزيادة في الملح تسبب احتباس الماء وارتفاع ضغط الدم المزمن مما يضاعف خطر أمراض القلب.' },
-  { emoji:'🍖', name:'اللحوم المصنعة والمدخنة', reason:'مواد حافظة مسرطنة', tag:'أورام وسرطان', details:'النيتريت والنيترات المستخدمة في حفظ اللحوم المصنعة مرتبطة ارتباطاً وثيقاً بسرطان القولون.' },
-  { emoji:'🥐', name:'الدقيق الأبيض المكرر', reason:'يرفع سكر الدم بسرعة شديدة', tag:'سكر وطاقة', details:'الدقيق الأبيض يفقد أكثر من 80% من المعادن والفيتامينات في عملية التكرير، ويتصرف كسكر في الجسم.' },
-  { emoji:'🧃', name:'العصائر المعلبة والمحلاة', reason:'سكر عالٍ بدون ألياف', tag:'سكر زائد', details:'العصائر المعلبة تفقد كل الألياف وتبقى السكريات المركزة مما يرفع سكر الدم فجأة ويضر بالكبد.' },
-  { emoji:'🫙', name:'المنكهات والمواد الحافظة', reason:'مواد كيميائية تضر الكبد والكلى', tag:'كيمياء ضارة', details:'الـ MSG والألوان الاصطناعية والحوافظ الكيميائية تراكماتها في الجسم تسبب التسمم التدريجي.' }
-];
-
-const TIPS = [
-  { title:'فائدة العسل', text:'العسل شفاء للناس، يُستخدم على الريق بمقدار ملعقة كبيرة لتعزيز المناعة وتحسين الهضم وتنشيط الطاقة في الصباح.' },
-  { title:'قوة الحبة السوداء', text:'الحبة السوداء شفاء من كل داء إلا الموت. نصف ملعقة يومياً مع العسل تعزز المناعة وتحارب الالتهابات.' },
-  { title:'بركة التمر', text:'الإفطار على 7 تمرات سنة نبوية مباركة؛ تمنح الجسم طاقة فورية وتحمي من كثير من الأمراض.' },
-  { title:'فضل زيت الزيتون', text:'الزيتون مبارك؛ ملعقتان يومياً من الزيت البكر الممتاز تحمي قلبك وتخفض الكوليسترول الضار.' },
-  { title:'الماء دواء', text:'شرب 8-10 أكواب ماء يومياً يطرد السموم ويصفي الجلد ويحسن الهضم وينشط جميع وظائف الجسم.' }
-];
+const DAYS = ['السبت','الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
 
 // ===========================
-// STATE
+// CORE LOGIC
 // ===========================
 let selectedDay = 'السبت';
-let selectedHerbCategory = 'الكل';
-let favorites = JSON.parse(localStorage.getItem('tayyibat_favs') || '[]');
-let currentHerbId = null;
 
-// ===========================
-// NAVIGATION
-// ===========================
 function goTo(pageId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
   window.scrollTo(0,0);
-  if(pageId === 'page-favorites') renderFavorites();
 }
 
-// ===========================
-// TOAST
-// ===========================
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
+  setTimeout(() => t.classList.remove('show'), 2000);
 }
 
-// ===========================
-// SCHEDULE PAGE
-// ===========================
 function initSchedule() {
   const tabs = document.getElementById('weekTabs');
-  tabs.innerHTML = DAYS.map(d =>
-    `<button class="week-tab ${d===selectedDay?'active':''}" onclick="selectDay('${d}')">${d}</button>`
-  ).join('');
+  tabs.innerHTML = DAYS.map(d => `<button class="week-tab ${d===selectedDay?'active':''}" onclick="selectDay('${d}')">${d}</button>`).join('');
   renderSchedule();
 }
 
 function selectDay(day) {
   selectedDay = day;
-  document.querySelectorAll('.week-tab').forEach(t => {
-    t.classList.toggle('active', t.textContent === day);
-  });
+  document.querySelectorAll('.week-tab').forEach(t => t.classList.toggle('active', t.textContent === day));
   renderSchedule();
 }
 
 function renderSchedule() {
   const data = SCHEDULE[selectedDay];
-  const meals = [
-    { key:'breakfast', label:'الفطور', emoji:'🌅' },
-    { key:'lunch', label:'الغداء', emoji:'☀️' },
-    { key:'dinner', label:'العشاء', emoji:'🌙' }
-  ];
+  const meals = [{k:'breakfast', l:'الفطور', e:'🌅'}, {k:'lunch', l:'الغداء', e:'☀️'}, {k:'dinner', l:'العشاء', e:'🌙'}];
   document.getElementById('scheduleContent').innerHTML = meals.map(m => `
     <div class="meal-section">
-      <div class="meal-header">${m.emoji} ${m.label}</div>
-      ${data[m.key].map(item => `
+      <div class="meal-header">${m.e} ${m.l}</div>
+      ${data[m.k].map(item => `
         <div class="meal-card" onclick="showToast('${item.name}')">
           <div class="meal-img">${item.emoji}</div>
           <div class="meal-info">
             <div class="meal-name">${item.name}</div>
             <div class="meal-desc">${item.desc}</div>
-            <div class="meal-tags">${item.tags.map(t => `<span class="meal-tag">${t}</span>`).join('')}</div>
+            <span class="meal-tag">${item.tag}</span>
           </div>
         </div>
       `).join('')}
@@ -1056,181 +432,41 @@ function renderSchedule() {
   `).join('');
 }
 
-// ===========================
-// HERBS PAGE
-// ===========================
-function initHerbs() {
-  const cats = ['الكل', ...new Set(HERBS.map(h => h.category_tag))];
-  document.getElementById('herbFilters').innerHTML = cats.map(c =>
-    `<button class="filter-chip ${c===selectedHerbCategory?'active':''}" onclick="filterByCategory('${c}')">${c}</button>`
-  ).join('');
-  renderHerbs(HERBS);
-}
-
-function filterByCategory(cat) {
-  selectedHerbCategory = cat;
-  document.querySelectorAll('.filter-chip').forEach(c => {
-    c.classList.toggle('active', c.textContent === cat);
-  });
-  const q = document.getElementById('herbSearch').value.trim().toLowerCase();
-  filterHerbs();
-}
-
-function filterHerbs() {
-  const q = document.getElementById('herbSearch').value.trim().toLowerCase();
-  let filtered = HERBS;
-  if(selectedHerbCategory !== 'الكل') filtered = filtered.filter(h => h.category_tag === selectedHerbCategory);
-  if(q) filtered = filtered.filter(h => h.name.includes(q) || h.summary.includes(q));
-  renderHerbs(filtered);
-}
-
 function renderHerbs(list) {
-  document.getElementById('herbsGrid').innerHTML = list.length
-    ? list.map(h => `
-      <div class="herb-card" onclick="openHerb(${h.id})">
-        <div class="herb-emoji-bg" style="background:${h.bg}">${h.emoji}</div>
-        <div class="herb-body">
-          <div class="herb-name">${h.name}</div>
-          <div class="herb-latin">${h.latin}</div>
-          <div class="herb-benefits">${h.summary}</div>
-        </div>
-      </div>
-    `).join('')
-    : '<div style="grid-column:span 2;text-align:center;padding:40px;color:#aaa">لا توجد نتائج</div>';
-}
-
-function openHerb(id) {
-  const h = HERBS.find(x => x.id === id);
-  if(!h) return;
-  currentHerbId = id;
-  document.getElementById('modalHero').style.background = h.bg;
-  document.getElementById('modalHero').textContent = h.emoji;
-  document.getElementById('modalTitle').textContent = h.name;
-  document.getElementById('modalLatin').textContent = h.latin;
-  const isFav = favorites.includes(id);
-  document.getElementById('modalFavBtn').textContent = isFav ? '⭐' : '☆';
-  document.getElementById('modalFavBtn').className = `fav-btn ${isFav?'active':''}`;
-  document.getElementById('modalContent').innerHTML = `
-    <div class="info-card">
-      <h3>🌿 الفوائد الصحية</h3>
-      <ul>${h.benefits.map(b => `<li>${b}</li>`).join('')}</ul>
-    </div>
-    <div class="info-card">
-      <h3>📋 طريقة الاستخدام</h3>
-      <ul>${h.usage.map(u => `<li>${u}</li>`).join('')}</ul>
-    </div>
-    <div class="warning-card">
-      <h3>⚠️ تحذيرات وموانع</h3>
-      <p>${h.warnings}</p>
-    </div>
-  `;
-  document.getElementById('herbModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeHerbModal() {
-  document.getElementById('herbModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function closeModal(e) {
-  if(e.target === document.getElementById('herbModal')) closeHerbModal();
-}
-
-function toggleFavFromModal() {
-  if(!currentHerbId) return;
-  const idx = favorites.indexOf(currentHerbId);
-  if(idx > -1) {
-    favorites.splice(idx, 1);
-    showToast('تم الحذف من المفضلة');
-  } else {
-    favorites.push(currentHerbId);
-    showToast('✅ تمت الإضافة للمفضلة');
-  }
-  localStorage.setItem('tayyibat_favs', JSON.stringify(favorites));
-  const isFav = favorites.includes(currentHerbId);
-  document.getElementById('modalFavBtn').textContent = isFav ? '⭐' : '☆';
-  document.getElementById('modalFavBtn').className = `fav-btn ${isFav?'active':''}`;
-}
-
-// ===========================
-// FORBIDDEN PAGE
-// ===========================
-function initForbidden() {
-  document.getElementById('forbiddenList').innerHTML = FORBIDDEN.map(f => `
-    <div class="forbidden-card">
-      <div class="forbidden-icon">${f.emoji}</div>
-      <div class="forbidden-info">
-        <h4>${f.name}</h4>
-        <p>${f.details}</p>
-        <span class="forbidden-tag">🚨 ${f.tag}</span>
+  document.getElementById('herbsGrid').innerHTML = list.map(h => `
+    <div class="herb-card" onclick="openHerb(${h.id})">
+      <div class="herb-emoji-bg" style="background:${h.bg}">${h.emoji}</div>
+      <div class="herb-body">
+        <div class="herb-name">${h.name}</div>
+        <div class="herb-benefits">${h.summary}</div>
       </div>
     </div>
   `).join('');
 }
 
-// ===========================
-// FAVORITES PAGE
-// ===========================
-function renderFavorites() {
-  const favHerbs = HERBS.filter(h => favorites.includes(h.id));
-  const el = document.getElementById('favoritesContent');
-  if(!favHerbs.length) {
-    el.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-icon">⭐</div>
-        <h3>لا توجد مفضلات بعد</h3>
-        <p>اضغط على نجمة ⭐ في أي طيبة لإضافتها هنا</p>
-      </div>`;
-    return;
-  }
-  el.innerHTML = `
-    <div class="section-title">طياباتي المحفوظة</div>
-    ${favHerbs.map(h => `
-      <div class="herb-card" style="display:flex;align-items:center;gap:12px;padding:12px;margin-bottom:10px;border-radius:var(--radius);background:white;box-shadow:var(--shadow-sm);cursor:pointer" onclick="openHerb(${h.id})">
-        <div style="width:56px;height:56px;border-radius:var(--radius-sm);background:${h.bg};display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0">${h.emoji}</div>
-        <div style="flex:1">
-          <div style="font-size:16px;font-weight:800;color:var(--green-dark)">${h.name}</div>
-          <div style="font-size:12px;color:#888;margin-top:2px">${h.summary}</div>
-        </div>
-        <button class="fav-btn active" onclick="event.stopPropagation();removeFav(${h.id})">⭐</button>
-      </div>
-    `).join('')}
+function filterHerbs() {
+  const q = document.getElementById('herbSearch').value.toLowerCase();
+  const filtered = HERBS.filter(h => h.name.includes(q) || h.summary.includes(q));
+  renderHerbs(filtered);
+}
+
+function openHerb(id) {
+  const h = HERBS.find(x => x.id === id);
+  document.getElementById('modalHero').style.background = h.bg;
+  document.getElementById('modalHero').textContent = h.emoji;
+  document.getElementById('modalTitle').textContent = h.name;
+  document.getElementById('modalContent').innerHTML = `
+    <div class="info-card"><h3>🌿 الفوائد</h3><ul>${h.benefits.map(b=>`<li>${b}</li>`).join('')}</ul></div>
+    <div class="info-card"><h3>📋 الاستخدام</h3><ul>${h.usage.map(u=>`<li>${u}</li>`).join('')}</ul></div>
   `;
+  document.getElementById('herbModal').classList.add('open');
 }
 
-function removeFav(id) {
-  favorites = favorites.filter(f => f !== id);
-  localStorage.setItem('tayyibat_favs', JSON.stringify(favorites));
-  renderFavorites();
-  showToast('تم الحذف من المفضلة');
-}
+function closeHerbModal() { document.getElementById('herbModal').classList.remove('open'); }
 
-// ===========================
-// DAILY TIP ROTATION
-// ===========================
-function initTip() {
-  const tip = TIPS[new Date().getDay() % TIPS.length];
-  document.getElementById('tip-title').textContent = tip.title;
-  document.getElementById('tip-text').textContent = tip.text;
-}
-
-// ===========================
-// SCROLL TOP BUTTON
-// ===========================
-window.addEventListener('scroll', () => {
-  const btn = document.getElementById('scrollTop');
-  btn.classList.toggle('visible', window.scrollY > 300);
-});
-
-// ===========================
-// INIT
-// ===========================
 document.addEventListener('DOMContentLoaded', () => {
   initSchedule();
-  initHerbs();
-  initForbidden();
-  initTip();
+  renderHerbs(HERBS);
 });
 </script>
 </body>
