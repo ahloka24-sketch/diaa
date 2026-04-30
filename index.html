@@ -28,14 +28,34 @@
         .sidebar { position: fixed; right: -280px; top: 0; width: 280px; height: 100%; background: var(--white); z-index: 2001; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding: 30px 20px; border-radius: 30px 0 0 30px; box-shadow: var(--shadow); }
         .sidebar.active { right: 0; }
         .sidebar-header { margin-bottom: 30px; text-align: center; }
-        .side-link { display: flex; align-items: center; gap: 15px; padding: 15px; text-decoration: none; color: var(--primary); font-weight: 700; border-radius: var(--radius-md); transition: 0.3s; margin-bottom: 5px; cursor: pointer; }
+        .side-link { display: flex; align-items: center; gap: 15px; padding: 12px; text-decoration: none; color: var(--primary); font-weight: 700; border-radius: var(--radius-md); transition: 0.3s; margin-bottom: 5px; cursor: pointer; font-size: 14px; }
         .side-link:hover { background: var(--bg-cream); color: var(--accent); }
+        
+        .google-play-btn { background: #000; color: white !important; border-radius: 10px; padding: 10px; margin-top: 20px; display: flex; align-items: center; gap: 10px; text-decoration: none; border: 1px solid #444; }
+        .gp-text { display: flex; flex-direction: column; line-height: 1; }
+        .gp-text span { font-size: 8px; font-weight: 400; }
+        .gp-text b { font-size: 13px; }
 
         /* --- Header --- */
-        header { background: var(--primary); padding: 50px 20px 25px; border-radius: 0 0 40px 40px; color: white; position: relative; box-shadow: var(--shadow); }
-        .nav-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        header { background: var(--primary); padding: 50px 20px 40px; border-radius: 0 0 40px 40px; color: white; position: relative; box-shadow: var(--shadow); z-index: 10; }
+        .nav-top { display: flex; justify-content: space-between; align-items: center; }
         .logo-box { display: flex; align-items: center; gap: 12px; }
         .logo-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-family: 'Amiri'; font-size: 20px; color: var(--primary); font-weight: bold; }
+
+        /* --- Reminder Box Fixed --- */
+        .reminder-card { 
+            position: relative;
+            background: linear-gradient(135deg, var(--accent), #b38f2d); 
+            padding: 15px 20px; 
+            border-radius: var(--radius-md); 
+            margin: 20px 20px 25px; /* تم تعديل المارجن ليكون متناسقاً */
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3);
+            z-index: 5;
+        }
 
         /* --- Pages --- */
         .page { display: none; padding-bottom: 100px; }
@@ -46,6 +66,9 @@
         .store-btns { display: flex; gap: 10px; padding: 0 20px; margin-bottom: 20px; }
         .store-btn { flex: 1; background: var(--white); border: 2px solid var(--primary); color: var(--primary); padding: 12px; border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; text-align: center; }
         .store-btn.active { background: var(--primary); color: white; }
+        
+        .ad-section { margin: 20px; padding: 20px; background: #fff; border: 2px dashed var(--accent); border-radius: var(--radius-md); text-align: center; }
+        .ad-link { color: var(--primary); font-weight: bold; text-decoration: underline; cursor: pointer; }
 
         /* --- Lists Cards --- */
         .content-area { padding: 0 20px; }
@@ -56,9 +79,8 @@
         .card-info p { font-size: 11px; color: #666; line-height: 1.5; }
         .contact-info { margin-top: 5px; font-size: 10px; color: var(--accent); font-weight: bold; }
 
-        .reminder-card { background: linear-gradient(135deg, var(--accent), #b38f2d); padding: 15px 20px; border-radius: var(--radius-md); margin: -20px 20px 25px; color: white; display: flex; align-items: center; gap: 15px; box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3); }
         .tab-bar { display: flex; overflow-x: auto; padding: 0 20px; gap: 10px; scrollbar-width: none; margin-bottom: 20px; }
-        .tab { background: white; padding: 10px 22px; border-radius: 30px; font-weight: 700; font-size: 13px; color: var(--primary); white-space: nowrap; cursor: pointer; }
+        .tab { background: white; padding: 10px 22px; border-radius: 30px; font-weight: 700; font-size: 13px; color: var(--primary); white-space: nowrap; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .tab.active { background: var(--primary); color: white; }
 
         /* --- Bottom Nav --- */
@@ -82,6 +104,15 @@
         <div class="side-link" onclick="navTo('stores'); toggleMenu()"><span>🛒</span> أماكن الشراء</div>
         <div class="side-link" onclick="showToast('قريباً')"><span>💬</span> استشارة طبية</div>
         <div class="side-link" onclick="showToast('قريباً')"><span>📊</span> تقارير الصحة</div>
+        
+        <a href="https://play.google.com/store" class="side-link google-play-btn">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L18.66,14.05C20.44,13.03 20.44,10.97 18.66,9.95L16.81,8.88L14.89,10.8L16.81,15.12M4.69,1.55L15.4,7.67L14.11,8.96L4.69,1.55M14.11,15.04L15.4,16.33L4.69,22.45L14.11,15.04Z"/></svg>
+            <div class="gp-text">
+                <span>تحميل التطبيق من</span>
+                <b>Google Play</b>
+            </div>
+        </a>
+
         <hr style="opacity: 0.1; margin: 15px 0;">
         <p style="text-align:center; font-size:10px; color:#999;">الإصدار 1.1.0</p>
     </div>
@@ -95,7 +126,7 @@
                     <p style="font-size: 10px; opacity: 0.8;">العودة إلى الغذاء الفطري</p>
                 </div>
             </div>
-            <div class="menu-toggle" onclick="toggleMenu()" style="cursor:pointer">☰</div>
+            <div class="menu-toggle" onclick="toggleMenu()" style="cursor:pointer; font-size: 24px;">☰</div>
         </div>
     </header>
 
@@ -123,8 +154,12 @@
             <button id="btn-show-market" class="store-btn" onclick="renderStores('markets')">🛒 السوبر ماركت</button>
         </div>
 
-        <div class="content-area" id="stores-list">
-            </div>
+        <div class="content-area" id="stores-list"></div>
+
+        <div class="ad-section">
+            <p style="font-size: 13px; color: #666;">لإضافة إعلانك في هذه القائمة</p>
+            <a href="https://wa.me/yourlink" class="ad-link">تواصل معنا من خلال هذا الرابط</a>
+        </div>
     </div>
 
     <nav class="bottom-nav">
@@ -152,46 +187,38 @@
         const days = ["السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة"];
         let currentDay = "السبت";
 
-        // بيانات أماكن الشراء
         const storeData = {
             restaurants: [
                 { name: "مطعم الطيبات الأصيل", icon: "🍲", address: "القاهرة - مدينة نصر", phone: "0123456789" },
-                { name: "مشويات الهنا (لحم ضاني)", icon: "🥩", address: "الجيزة - الدقي", phone: "0100000000" },
-                { name: "أسماك البحار", icon: "🐟", address: "الإسكندرية - سموحة", phone: "0112233445" }
+                { name: "مشويات الهنا (لحم ضاني)", icon: "🥩", address: "الجيزة - الدقي", phone: "0100000000" }
             ],
             markets: [
                 { name: "سوبر ماركت ريتش بيك", icon: "🍞", address: "جميع الفروع - توست الردة", phone: "19000" },
-                { name: "ماركت صحي وطيب", icon: "🧀", address: "المعادي - شارع 9", phone: "0155555555" },
-                { name: "منفذ بيع السمن البلدي", icon: "🫙", address: "وسط البلد", phone: "0128888888" }
+                { name: "ماركت صحي وطيب", icon: "🧀", address: "المعادي - شارع 9", phone: "0155555555" }
             ]
         };
 
         const allowedData = [
             { icon: '🍞', t: 'توست بالردة', d: 'ريتش بيك حصراً' },
             { icon: '🫒', t: 'دهون طيبة', d: 'زيت زيتون، زبدة وسمن بلدي، قشطة' },
-            { icon: '🧀', t: 'أجبان مسموحة', d: 'شيدر، موتزريلا، كشكفال، برميزان، رومي، أجبان مطبوخة' },
-            { icon: '🍚', t: 'نشويات', d: 'أرز، بطاطس، بطاطا، قرع، قلقاس، فريك، مشروم' },
-            { icon: '🍎', t: 'فواكه', d: 'كل الأنواع ما عدا البطيخ. التفاح والكمثرى بدون قشر.' },
-            { icon: '🥩', t: 'البروتينات', d: 'لحم ضاني، بقري مسلوق جيداً، حمام، سمان، أرانب، أسماك' }
+            { icon: '🧀', t: 'أجبان مسموحة', d: 'شيدر، موتزريلا، كشكفال، برميزان، رومي' },
+            { icon: '🍚', t: 'نشويات', d: 'أرز، بطاطس، بطاطا، قرع، قلقاس' }
         ];
 
         const forbiddenData = [
-            { icon: '🍗', t: 'الدجاج وملحقاته', d: 'ممنوع الفراخ، الكبد وقوانص الفراخ، البط، والديك الرومي' },
+            { icon: '🍗', t: 'الدجاج وملحقاته', d: 'ممنوع الفراخ، الكبد وقوانص الفراخ' },
             { icon: '🥚', t: 'البيض', d: 'ممنوع بكافة أشكاله' },
-            { icon: '🥛', t: 'الألبان', d: 'ممنوع اللبن، الزبادي، الرايب، والجبنة القريش' },
-            { icon: '🍞', t: 'الدقيق الأبيض', d: 'فينو، مكرونة، كيك، مخبوزات، حلويات شرقيه' },
-            { icon: '🥗', t: 'الخضار النيء', d: 'سلطة، خيار، خس، جرجير، فلفل ألوان' },
-            { icon: '🥤', t: 'المشروبات', d: 'مياه غازية، مبيضات القهوة' }
+            { icon: '🥛', t: 'الألبان', d: 'ممنوع اللبن، الزبادي، الرايب' }
         ];
 
         const weeklyMenu = {
-            "السبت": [{ type: "فطور", t: " شيدر وتوست", d: "توست ريتش بيك مع زيت زيتون", i: "🧀" }, { type: "غداء", t: "أرز وبطاطس مطبوخة", d: "بطاطس بالسمن البلدي", i: "🍚" }, { type: "عشاء", t: "مربى وقشطة", d: "وجبة خفيفة", i: "🍯" }],
-            "الأحد": [{ type: "فطور", t: "حلاوة طحينية", d: "توست ردة مع طحينة", i: "🥪" }, { type: "غداء", t: "سمك مشوي", d: "سمك مع أرز أبيض", i: "🐟" }, { type: "عشاء", t: "بطاطس محمرة", d: "شيبسي منزلي بزيت زيتون", i: "🍟" }],
-            "الاثنين": [{ type: "سحور", t: "تمر وقشطة", d: "7 تمرات مع ملعقة قشطة", i: "🌴" }, { type: "إفطار", t: "لحم ضاني مسلوق", d: "لحم مطهو جيداً", i: "🍲" }, { type: "سهرة", t: "بسبوسة سادة", d: "بدون لبن أو بيض", i: "🍰" }],
-            "الثلاثاء": [{ type: "فطور", t: "جبنة رومي", d: "توست محمص", i: "🧀" }, { type: "غداء", t: "أرانب محمرة", d: "أرانب مع شوربة لسان عصفور", i: "🐇" }, { type: "عشاء", t: "عصير مانجو", d: "مصفى من الألياف", i: "🥭" }],
-            "الأربعاء": [{ type: "فطور", t: "عسل نحل وزبدة", d: "توست بالردة مع عسل وزبدة", i: "🍯" }, { type: "غداء", t: "كوارع وممبار", d: "وجبة دسمة مسموحة", i: "🥘" }, { type: "عشاء", t: "فاكهة مقشرة", d: "تفاح بدون قشر", i: "🍎" }],
-            "الخميس": [{ type: "سحور", t: "بطاطا حلوة", d: "بطاطا مشوية", i: "🍠" }, { type: "إفطار", t: "حمام محشي", d: "حمام محشي بالأرز", i: "🦆" }, { type: "سهرة", t: "شوكولاتة نوتيلا", d: "ملعقة للتحلية", i: "🍫" }],
-            "الجمعة": [{ type: "فطور", t: "طحينة وعسل", d: "طحينة غامقة مع عسل أسود", i: "🥣" }, { type: "غداء", t: "كبدة وكوارع", d: "كبدة ضاني وسلطة زيتون", i: "🥩" }, { type: "عشاء", t: "جيلو فواكه", d: "جيلو مسموح", i: "🍧" }]
+            "السبت": [{ type: "فطور", t: " شيدر وتوست", d: "توست ريتش بيك", i: "🧀" }, { type: "غداء", t: "أرز وبطاطس", d: "سمن بلدي", i: "🍚" }, { type: "عشاء", t: "مربى وقشطة", d: "وجبة خفيفة", i: "🍯" }],
+            "الأحد": [{ type: "فطور", t: "حلاوة طحينية", d: "توست ردة", i: "🥪" }, { type: "غداء", t: "سمك مشوي", d: "سمك مع أرز", i: "🐟" }, { type: "عشاء", t: "بطاطس محمرة", d: "زيت زيتون", i: "🍟" }],
+            "الاثنين": [{ type: "سحور", t: "تمر وقشطة", d: "7 تمرات مع قشطة", i: "🌴" }, { type: "إفطار", t: "لحم ضاني", d: "لحم مطهو جيداً", i: "🍲" }, { type: "سهرة", t: "بسبوسة سادة", d: "بدون لبن", i: "🍰" }],
+            "الثلاثاء": [{ type: "فطور", t: "جبنة رومي", d: "توست محمص", i: "🧀" }, { type: "غداء", t: "أرانب محمرة", d: "لسان عصفور", i: "🐇" }, { type: "عشاء", t: "عصير مانجو", d: "مصفى", i: "🥭" }],
+            "الأربعاء": [{ type: "فطور", t: "عسل ونحل", d: "توست مع زبدة", i: "🍯" }, { type: "غداء", t: "كوارع وممبار", d: "وجبة دسمة", i: "🥘" }, { type: "عشاء", t: "فاكهة مقشرة", d: "تفاح", i: "🍎" }],
+            "الخميس": [{ type: "سحور", t: "بطاطا حلوة", d: "بطاطا مشوية", i: "🍠" }, { type: "إفطار", t: "حمام محشي", d: "حمام بالأرز", i: "🦆" }, { type: "سهرة", t: "شوكولاتة نوتيلا", d: "للتحلية", i: "🍫" }],
+            "الجمعة": [{ type: "فطور", t: "طحينة وعسل", d: "طحينة غامقة", i: "🥣" }, { type: "غداء", t: "كبدة وكوارع", d: "كبدة ضاني", i: "🥩" }, { type: "عشاء", t: "جيلو فواكه", d: "جيلو مسموح", i: "🍧" }]
         };
 
         function init() {
@@ -211,7 +238,7 @@
             renderTabs();
             const list = document.getElementById('schedule-list');
             list.innerHTML = weeklyMenu[day].map(m => `
-                <div class="card-item fade-in">
+                <div class="card-item">
                     <div class="card-icon">${m.i}</div>
                     <div class="card-info">
                         <span style="font-size:10px; color:var(--accent); font-weight:900;">${m.type}</span>
@@ -225,18 +252,16 @@
         function renderStores(category) {
             const list = document.getElementById('stores-list');
             const data = storeData[category];
-            
-            // تحديث حالة الأزرار
             document.getElementById('btn-show-rest').classList.toggle('active', category === 'restaurants');
             document.getElementById('btn-show-market').classList.toggle('active', category === 'markets');
 
             list.innerHTML = data.map(s => `
-                <div class="card-item fade-in">
+                <div class="card-item">
                     <div class="card-icon">${s.icon}</div>
                     <div class="card-info">
                         <h3>${s.name}</h3>
                         <p>📍 ${s.address}</p>
-                        <div class="contact-info">📞 رقم التواصل: ${s.phone}</div>
+                        <div class="contact-info">📞 ${s.phone}</div>
                     </div>
                 </div>
             `).join('');
@@ -246,12 +271,12 @@
             const box = document.getElementById('reminder-box');
             let txt = (day === "الاثنين" || day === "الخميس") ? "تذكير بالصيام" : "نصيحة اليوم";
             let sub = (day === "الاثنين" || day === "الخميس") ? "صيام سنة نبوية وجزء من النظام." : "البروتين يوم بعد يوم لراحة القولون.";
-            box.innerHTML = `<div class="reminder-card fade-in"><span>💡</span><div><b>${txt}</b><p>${sub}</p></div></div>`;
+            box.innerHTML = `<div class="reminder-card"><span>💡</span><div><b>${txt}</b><p>${sub}</p></div></div>`;
         }
 
         function renderLists() {
-            document.getElementById('allowed-list').innerHTML = allowedData.map(i => `<div class="card-item fade-in"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
-            document.getElementById('forbidden-list').innerHTML = forbiddenData.map(i => `<div class="card-item forbidden fade-in"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
+            document.getElementById('allowed-list').innerHTML = allowedData.map(i => `<div class="card-item"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
+            document.getElementById('forbidden-list').innerHTML = forbiddenData.map(i => `<div class="card-item forbidden"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
         }
 
         function navTo(page) {
@@ -263,8 +288,10 @@
         }
 
         function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('overlay').style.display = document.getElementById('sidebar').classList.contains('active') ? 'block' : 'none';
+            const sb = document.getElementById('sidebar');
+            const ov = document.getElementById('overlay');
+            sb.classList.toggle('active');
+            ov.style.display = sb.classList.contains('active') ? 'block' : 'none';
         }
 
         function showToast(msg) {
