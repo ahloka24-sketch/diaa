@@ -38,9 +38,14 @@
         .logo-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-family: 'Amiri'; font-size: 20px; color: var(--primary); font-weight: bold; }
 
         /* --- Pages --- */
-        .page { display: none; padding-bottom: 120px; }
+        .page { display: none; padding-bottom: 100px; }
         .page.active { display: block; animation: fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Store Page Style --- */
+        .store-btns { display: flex; gap: 10px; padding: 0 20px; margin-bottom: 20px; }
+        .store-btn { flex: 1; background: var(--white); border: 2px solid var(--primary); color: var(--primary); padding: 12px; border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; text-align: center; }
+        .store-btn.active { background: var(--primary); color: white; }
 
         /* --- Lists Cards --- */
         .content-area { padding: 0 20px; }
@@ -49,20 +54,20 @@
         .card-icon { width: 55px; height: 55px; background: var(--bg-cream); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
         .card-info h3 { font-size: 15px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
         .card-info p { font-size: 11px; color: #666; line-height: 1.5; }
-        .recipe-details { font-size: 11px; color: var(--primary-light); margin-top: 8px; background: #f0f7f4; padding: 8px; border-radius: 8px; border: 1px solid #e0eee8; }
+        .contact-info { margin-top: 5px; font-size: 10px; color: var(--accent); font-weight: bold; }
 
-        .reminder-card { background: linear-gradient(135deg, var(--accent), #b38f2d); padding: 15px 20px; border-radius: var(--radius-md); margin: 25px 20px 25px; color: white; display: flex; align-items: center; gap: 15px; box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3); }
+        .reminder-card { background: linear-gradient(135deg, var(--accent), #b38f2d); padding: 15px 20px; border-radius: var(--radius-md); margin: -20px 20px 25px; color: white; display: flex; align-items: center; gap: 15px; box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3); }
         .tab-bar { display: flex; overflow-x: auto; padding: 0 20px; gap: 10px; scrollbar-width: none; margin-bottom: 20px; }
         .tab { background: white; padding: 10px 22px; border-radius: 30px; font-weight: 700; font-size: 13px; color: var(--primary); white-space: nowrap; cursor: pointer; }
         .tab.active { background: var(--primary); color: white; }
 
         /* --- Bottom Nav --- */
-        .bottom-nav { position: fixed; bottom: 20px; left: 10px; right: 10px; background: var(--primary); border-radius: 25px; padding: 12px 5px; display: flex; justify-content: space-around; box-shadow: 0 15px 35px rgba(26,61,43,0.3); z-index: 1000; }
-        .nav-btn { background: none; border: none; color: rgba(255,255,255,0.5); font-family: 'Tajawal'; font-size: 10px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; flex: 1; }
+        .bottom-nav { position: fixed; bottom: 20px; left: 20px; right: 20px; background: var(--primary); border-radius: 25px; padding: 12px 5px; display: flex; justify-content: space-around; box-shadow: 0 15px 35px rgba(26,61,43,0.3); z-index: 1000; }
+        .nav-btn { background: none; border: none; color: rgba(255,255,255,0.5); font-family: 'Tajawal'; font-size: 10px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
         .nav-btn.active { color: var(--accent-light); }
         .nav-btn svg { width: 22px; height: 22px; }
 
-        .section-divider { padding: 10px 20px; font-weight: 800; color: var(--accent); font-size: 14px; border-bottom: 1px solid #ddd; margin-bottom: 15px; background: #eee; }
+        .toast { position: fixed; top: 40px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 12px 30px; border-radius: 50px; font-size: 13px; z-index: 3000; display: none; }
     </style>
 </head>
 <body>
@@ -74,10 +79,11 @@
             <h2 style="color:var(--primary); font-size: 18px;">نظام الطيبات</h2>
         </div>
         <div class="side-link" onclick="navTo('home'); toggleMenu()"><span>🏠</span> الرئيسية</div>
-        <div class="side-link" onclick="navTo('allowed'); toggleMenu()"><span>✅</span> المسموحات</div>
-        <div class="side-link" onclick="navTo('forbidden'); toggleMenu()"><span>❌</span> الممنوعات</div>
-        <div class="side-link" onclick="navTo('recipes'); toggleMenu()"><span>👩‍🍳</span> وصفات الطيبات</div>
         <div class="side-link" onclick="navTo('stores'); toggleMenu()"><span>🛒</span> أماكن الشراء</div>
+        <div class="side-link" onclick="showToast('قريباً')"><span>💬</span> استشارة طبية</div>
+        <div class="side-link" onclick="showToast('قريباً')"><span>📊</span> تقارير الصحة</div>
+        <hr style="opacity: 0.1; margin: 15px 0;">
+        <p style="text-align:center; font-size:10px; color:#999;">الإصدار 1.1.0</p>
     </div>
 
     <header>
@@ -89,7 +95,7 @@
                     <p style="font-size: 10px; opacity: 0.8;">العودة إلى الغذاء الفطري</p>
                 </div>
             </div>
-            <div class="menu-toggle" onclick="toggleMenu()" style="cursor:pointer; font-size: 24px;">☰</div>
+            <div class="menu-toggle" onclick="toggleMenu()" style="cursor:pointer">☰</div>
         </div>
     </header>
 
@@ -109,14 +115,16 @@
         <div class="content-area" id="forbidden-list"></div>
     </div>
 
-    <div id="page-recipes" class="page">
-        <div style="padding: 20px 20px 15px;"><h2 style="font-size: 18px; color: var(--primary);">أشهى وصفات الطيبات 👩‍🍳</h2></div>
-        <div class="content-area" id="recipes-list"></div>
-    </div>
-
     <div id="page-stores" class="page">
-        <div style="padding: 20px 20px 15px;"><h2 style="font-size: 18px; color: var(--primary);">أماكن الشراء 🛒</h2></div>
-        <div class="content-area" id="stores-list"></div>
+        <div style="padding: 20px 20px 15px;"><h2 style="font-size: 18px; color: var(--primary);">أين أجد منتجات الطيبات؟</h2></div>
+        
+        <div class="store-btns">
+            <button id="btn-show-rest" class="store-btn active" onclick="renderStores('restaurants')">🍴 المطاعم</button>
+            <button id="btn-show-market" class="store-btn" onclick="renderStores('markets')">🛒 السوبر ماركت</button>
+        </div>
+
+        <div class="content-area" id="stores-list">
+            </div>
     </div>
 
     <nav class="bottom-nav">
@@ -129,27 +137,39 @@
             <span>المسموحات</span>
         </button>
         <button class="nav-btn" id="btn-forbidden" onclick="navTo('forbidden')">
-            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>
             <span>الممنوعات</span>
         </button>
-        <button class="nav-btn" id="btn-recipes" onclick="navTo('recipes')">
-            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M8.1,13.34l2.83-2.83L3.91,3.5c-1.56,1.56-1.56,4.09,0,5.66L8.1,13.34z M12.04,12.04l-2.83,2.83l7.02,7.02l2.83-2.83 L12.04,12.04z M20.49,3.51c-1.56-1.56-4.09-1.56-5.66,0l-4.24,4.24l2.83,2.83l4.24-4.24c0.78-0.78,2.05-0.78,2.83,0l1.41,1.41 L23.32,6.34L20.49,3.51z"/></svg>
-            <span>الوصفات</span>
-        </button>
         <button class="nav-btn" id="btn-stores" onclick="navTo('stores')">
-            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/></svg>
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>أماكن الشراء</span>
         </button>
     </nav>
+
+    <div class="toast" id="toast"></div>
 
     <script>
         const days = ["السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة"];
         let currentDay = "السبت";
 
+        // بيانات أماكن الشراء
+        const storeData = {
+            restaurants: [
+                { name: "مطعم الطيبات الأصيل", icon: "🍲", address: "القاهرة - مدينة نصر", phone: "0123456789" },
+                { name: "مشويات الهنا (لحم ضاني)", icon: "🥩", address: "الجيزة - الدقي", phone: "0100000000" },
+                { name: "أسماك البحار", icon: "🐟", address: "الإسكندرية - سموحة", phone: "0112233445" }
+            ],
+            markets: [
+                { name: "سوبر ماركت ريتش بيك", icon: "🍞", address: "جميع الفروع - توست الردة", phone: "19000" },
+                { name: "ماركت صحي وطيب", icon: "🧀", address: "المعادي - شارع 9", phone: "0155555555" },
+                { name: "منفذ بيع السمن البلدي", icon: "🫙", address: "وسط البلد", phone: "0128888888" }
+            ]
+        };
+
         const allowedData = [
-            { icon: '🍞', t: 'توست بالردة', d: 'ريتش بيك حصراً (البني)' },
-            { icon: '🫒', t: 'دهون طيبة', d: 'زيت زيتون، زبدة وسمن بلدي، قشطة بلدي' },
-            { icon: '🧀', t: 'أجبان مطبوخة وشيدر', d: 'شيدر، موتزريلا، كشكفال، برميزان، رومي' },
+            { icon: '🍞', t: 'توست بالردة', d: 'ريتش بيك حصراً' },
+            { icon: '🫒', t: 'دهون طيبة', d: 'زيت زيتون، زبدة وسمن بلدي، قشطة' },
+            { icon: '🧀', t: 'أجبان مسموحة', d: 'شيدر، موتزريلا، كشكفال، برميزان، رومي، أجبان مطبوخة' },
             { icon: '🍚', t: 'نشويات', d: 'أرز، بطاطس، بطاطا، قرع، قلقاس، فريك، مشروم' },
             { icon: '🍎', t: 'فواكه', d: 'كل الأنواع ما عدا البطيخ. التفاح والكمثرى بدون قشر.' },
             { icon: '🥩', t: 'البروتينات', d: 'لحم ضاني، بقري مسلوق جيداً، حمام، سمان، أرانب، أسماك' }
@@ -164,41 +184,21 @@
             { icon: '🥤', t: 'المشروبات', d: 'مياه غازية، مبيضات القهوة' }
         ];
 
-        const recipesData = [
-            { icon: "🍲", t: "فتة كوارع الطيبات", ingredients: "كوارع، أرز أبيض، توست ريتش بيك محمص، سمن بلدي.", method: "تُسلق الكوارع جيداً ويُحمص التوست بالسمن ويُسقى بالشوربة." },
-            { icon: "🥩", t: "كبدة ضاني بالقشطة", ingredients: "كبدة ضاني، سمن بلدي، قشطة بلدي.", method: "تُشوح الكبدة في السمن وتُضاف القشطة في النهاية." }
-        ];
-
         const weeklyMenu = {
-            "السبت": [{ type: "فطور", t: "توست وقشطة وعسل", d: "توست ريتش بيك", i: "🍯" }, { type: "غداء", t: "أرز وبطاطس مطبوخة", d: "بالشوربة والسمن", i: "🍚" }, { type: "عشاء", t: "بطاطا مشوية", d: "وجبة دافئة", i: "🍠" }],
-            "الأحد": [{ type: "فطور", t: "طحينة وعسل أسود", d: "مع توست الردة", i: "🥣" }, { type: "غداء", t: "سمك مشوي وأرز", d: "سمك بوري أو بلطي", i: "🐟" }, { type: "عشاء", t: "مربى وقشطة", d: "بدون لبن", i: "🍓" }],
-            "الاثنين": [{ type: "سحور", t: "7 تمرات وقشطة", d: "سنة نبوية", i: "🌴" }, { type: "إفطار", t: "لحم ضاني مسلوق", d: "أرز بالشوربة", i: "🍲" }, { type: "سهرة", t: "فاكهة مقشرة", d: "تفاح أو كمثرى", i: "🍎" }],
-            "الثلاثاء": [{ type: "فطور", t: "مشروم مشوح", d: "بالسمن البلدي", i: "🍄" }, { type: "غداء", t: "حمام محشي أرز", d: "مطبوخ جيداً", i: "🕊️" }, { type: "عشاء", t: "بطاطس محمرة", d: "بزيت زيتون", i: " Fries" }],
-            "الأربعاء": [{ type: "فطور", t: "حلاوة طحينية", d: "توست ريتش بيك", i: "🥪" }, { type: "غداء", t: "كوارع وفتة", d: "بدون ثوم", i: "🥘" }, { type: "عشاء", t: "عصير مانجو", d: "مصفى تماماً", i: "🥭" }],
-            "الخميس": [{ type: "سحور", t: "بطاطا مهروسة", d: "بالسمن والعسل", i: "🍠" }, { type: "إفطار", t: "أرانب ولسان عصفور", d: "شوربة أرانب دسمة", i: "🐇" }, { type: "سهرة", t: "شوكولاتة داكنة", d: "قطعة صغيرة", i: "🍫" }],
-            "الجمعة": [{ type: "فطور", t: "توست وزيت زيتون", d: "مع زعتر", i: "🫒" }, { type: "غداء", t: "كبدة ضاني وقشطة", d: "مع توست ريتش بيك", i: "🥩" }, { type: "عشاء", t: "جيلو فواكه", d: "صنع منزلي", i: "🍧" }]
-        };
-
-        // --- أماكن الشراء (المطاعم والماركت بالحرف) ---
-        const storesData = {
-            restaurants: [
-                { name: "مطاعم الأسماك", icon: "🐟", d: "طلب سمك مشوي أو سنجاري (بدون سلطة نية)" },
-                { name: "مطاعم المشويات", icon: "🥩", d: "لحم ضاني أو كباب (تأكد من السمن البلدي)" },
-                { name: "مطاعم الكوارع", icon: "🥘", d: "طلب فتة كوارع بالشوربة والخل فقط" }
-            ],
-            markets: [
-                { name: "ريتش بيك (Rich Bake)", icon: "🍞", d: "للحصول على توست الردة (البني) المعتمد" },
-                { name: "أماكن الزبدة الفلاحي", icon: "🫙", d: "لشراء السمن والزبدة والقشطة البلدي" },
-                { name: "العطارة الموثوقة", icon: "🌿", d: "للفريك، الأرز، والبهارات المسموحة" }
-            ]
+            "السبت": [{ type: "فطور", t: " شيدر وتوست", d: "توست ريتش بيك مع زيت زيتون", i: "🧀" }, { type: "غداء", t: "أرز وبطاطس مطبوخة", d: "بطاطس بالسمن البلدي", i: "🍚" }, { type: "عشاء", t: "مربى وقشطة", d: "وجبة خفيفة", i: "🍯" }],
+            "الأحد": [{ type: "فطور", t: "حلاوة طحينية", d: "توست ردة مع طحينة", i: "🥪" }, { type: "غداء", t: "سمك مشوي", d: "سمك مع أرز أبيض", i: "🐟" }, { type: "عشاء", t: "بطاطس محمرة", d: "شيبسي منزلي بزيت زيتون", i: "🍟" }],
+            "الاثنين": [{ type: "سحور", t: "تمر وقشطة", d: "7 تمرات مع ملعقة قشطة", i: "🌴" }, { type: "إفطار", t: "لحم ضاني مسلوق", d: "لحم مطهو جيداً", i: "🍲" }, { type: "سهرة", t: "بسبوسة سادة", d: "بدون لبن أو بيض", i: "🍰" }],
+            "الثلاثاء": [{ type: "فطور", t: "جبنة رومي", d: "توست محمص", i: "🧀" }, { type: "غداء", t: "أرانب محمرة", d: "أرانب مع شوربة لسان عصفور", i: "🐇" }, { type: "عشاء", t: "عصير مانجو", d: "مصفى من الألياف", i: "🥭" }],
+            "الأربعاء": [{ type: "فطور", t: "عسل نحل وزبدة", d: "توست بالردة مع عسل وزبدة", i: "🍯" }, { type: "غداء", t: "كوارع وممبار", d: "وجبة دسمة مسموحة", i: "🥘" }, { type: "عشاء", t: "فاكهة مقشرة", d: "تفاح بدون قشر", i: "🍎" }],
+            "الخميس": [{ type: "سحور", t: "بطاطا حلوة", d: "بطاطا مشوية", i: "🍠" }, { type: "إفطار", t: "حمام محشي", d: "حمام محشي بالأرز", i: "🦆" }, { type: "سهرة", t: "شوكولاتة نوتيلا", d: "ملعقة للتحلية", i: "🍫" }],
+            "الجمعة": [{ type: "فطور", t: "طحينة وعسل", d: "طحينة غامقة مع عسل أسود", i: "🥣" }, { type: "غداء", t: "كبدة وكوارع", d: "كبدة ضاني وسلطة زيتون", i: "🥩" }, { type: "عشاء", t: "جيلو فواكه", d: "جيلو مسموح", i: "🍧" }]
         };
 
         function init() {
             renderTabs();
             renderDay("السبت");
             renderLists();
-            renderRecipes();
-            renderStores();
+            renderStores('restaurants');
         }
 
         function renderTabs() {
@@ -211,7 +211,7 @@
             renderTabs();
             const list = document.getElementById('schedule-list');
             list.innerHTML = weeklyMenu[day].map(m => `
-                <div class="card-item">
+                <div class="card-item fade-in">
                     <div class="card-icon">${m.i}</div>
                     <div class="card-info">
                         <span style="font-size:10px; color:var(--accent); font-weight:900;">${m.type}</span>
@@ -222,55 +222,55 @@
             updateReminder(day);
         }
 
-        function renderRecipes() {
-            const list = document.getElementById('recipes-list');
-            list.innerHTML = recipesData.map(r => `
-                <div class="card-item">
-                    <div class="card-icon">${r.icon}</div>
+        function renderStores(category) {
+            const list = document.getElementById('stores-list');
+            const data = storeData[category];
+            
+            // تحديث حالة الأزرار
+            document.getElementById('btn-show-rest').classList.toggle('active', category === 'restaurants');
+            document.getElementById('btn-show-market').classList.toggle('active', category === 'markets');
+
+            list.innerHTML = data.map(s => `
+                <div class="card-item fade-in">
+                    <div class="card-icon">${s.icon}</div>
                     <div class="card-info">
-                        <h3>${r.t}</h3>
-                        <div class="recipe-details"><b>المكونات:</b> ${r.ingredients}</div>
-                        <p style="margin-top:5px;"><b>الطريقة:</b> ${r.method}</p>
+                        <h3>${s.name}</h3>
+                        <p>📍 ${s.address}</p>
+                        <div class="contact-info">📞 رقم التواصل: ${s.phone}</div>
                     </div>
                 </div>
             `).join('');
         }
 
-        function renderLists() {
-            document.getElementById('allowed-list').innerHTML = allowedData.map(i => `<div class="card-item"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
-            document.getElementById('forbidden-list').innerHTML = forbiddenData.map(i => `<div class="card-item forbidden"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
-        }
-
-        function renderStores() {
-            const list = document.getElementById('stores-list');
-            let html = '<div class="section-divider">🍽️ المطاعم</div>';
-            html += storesData.restaurants.map(s => `<div class="card-item"><div class="card-icon">${s.icon}</div><div class="card-info"><h3>${s.name}</h3><p>${s.d}</p></div></div>`).join('');
-            html += '<div class="section-divider" style="margin-top:20px;">🛒 الماركت</div>';
-            html += storesData.markets.map(s => `<div class="card-item"><div class="card-icon">${s.icon}</div><div class="card-info"><h3>${s.name}</h3><p>${s.d}</p></div></div>`).join('');
-            list.innerHTML = html;
-        }
-
         function updateReminder(day) {
             const box = document.getElementById('reminder-box');
-            let txt = (day === "الاثنين" || day === "الخميس") ? "تذكير بالصيام" : "قاعدة ذهبية";
-            let sub = (day === "الاثنين" || day === "الخميس") ? "صيام سنة نبوية يريح جهازك الهضمي." : "البروتين يوم بعد يوم، والدهون الطيبة أساس الشفاء.";
-            box.innerHTML = `<div class="reminder-card"><span>💡</span><div><b>${txt}</b><p>${sub}</p></div></div>`;
+            let txt = (day === "الاثنين" || day === "الخميس") ? "تذكير بالصيام" : "نصيحة اليوم";
+            let sub = (day === "الاثنين" || day === "الخميس") ? "صيام سنة نبوية وجزء من النظام." : "البروتين يوم بعد يوم لراحة القولون.";
+            box.innerHTML = `<div class="reminder-card fade-in"><span>💡</span><div><b>${txt}</b><p>${sub}</p></div></div>`;
+        }
+
+        function renderLists() {
+            document.getElementById('allowed-list').innerHTML = allowedData.map(i => `<div class="card-item fade-in"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
+            document.getElementById('forbidden-list').innerHTML = forbiddenData.map(i => `<div class="card-item forbidden fade-in"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
         }
 
         function navTo(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('page-'+page).classList.add('active');
-            const btn = document.getElementById('btn-'+page);
-            if(btn) btn.classList.add('active');
+            if(document.getElementById('btn-'+page)) document.getElementById('btn-'+page).classList.add('active');
             window.scrollTo(0,0);
         }
 
         function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.toggle('active');
-            overlay.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('overlay').style.display = document.getElementById('sidebar').classList.contains('active') ? 'block' : 'none';
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg; t.style.display = 'block';
+            setTimeout(() => t.style.display = 'none', 2000);
         }
 
         window.onload = init;
