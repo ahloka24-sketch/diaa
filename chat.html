@@ -2,137 +2,135 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>مساعد نظام الطيبات الذكي</title>
     <style>
-        /* تعريف الألوان والمتغيرات - تصميم أبيض وأسود احترافي */
         :root {
-            --primary-color: #000000; /* أسود */
-            --bg-color: #ffffff; /* أبيض */
-            --chat-bg: #f9f9f9; /* رمادي فاتح جداً للخلفية */
+            --primary-color: #000000;
+            --bg-color: #ffffff;
+            --chat-bg: #f9f9f9;
             --text-dark: #1a1a1a;
             --text-light: #ffffff;
-            --bot-msg-bg: #f1f1f1; /* رمادي فاتح لرسائل البوت */
+            --bot-msg-bg: #f1f1f1;
             --border-color: #e0e0e0;
         }
 
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            height: 100vh;
-            color: var(--text-dark);
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* حاوية الشات الرئيسية - مرنة لتناسب الجوال */
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            /* استخدام dvh لضمان الطول الصحيح على جميع المتصفحات */
+            height: 100vh;
+            height: 100dvh; 
+            overflow: hidden;
+        }
+
         .chat-container {
             width: 100%;
-            max-width: 600px; /* أقصى عرض للشاشات الكبيرة */
+            max-width: 600px;
             height: 100%;
-            background: var(--bg-color);
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            background: var(--bg-color);
             border-left: 1px solid var(--border-color);
             border-right: 1px solid var(--border-color);
         }
 
-        /* الهيدر - تصميم بسيط */
         .chat-header {
             background: var(--primary-color);
             color: var(--text-light);
-            padding: 15px 20px;
+            padding: 12px;
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
         }
 
-        /* نافذة المحادثة */
         #chat-window {
             flex: 1;
-            padding: 20px;
+            padding: 15px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             background: var(--chat-bg);
+            /* تحسين السكرول على الموبايل */
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* فقاعات الرسائل */
         .message {
             max-width: 85%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            position: relative;
+            padding: 10px 14px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.5;
             word-wrap: break-word;
         }
 
-        /* رسالة البوت */
         .bot-msg {
             align-self: flex-start;
             background: var(--bot-msg-bg);
             color: var(--text-dark);
-            border-top-left-radius: 4px;
+            border-bottom-right-radius: 2px;
         }
 
-        /* رسالة المستخدم */
         .user-msg {
             align-self: flex-end;
             background: var(--primary-color);
             color: var(--text-light);
-            border-top-right-radius: 4px;
+            border-bottom-left-radius: 2px;
         }
 
-        /* عنوان داخل الرسالة */
         .response-title {
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             display: block;
-            font-size: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 3px;
         }
 
-        /* قائمة الخيارات الصغرى - شبكة متجاوبة */
+        /* شبكة الأزرار المحسنة للموبايل */
         .options-grid {
-            padding: 15px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(2, 1fr); /* زرين في كل صف دائماً */
+            gap: 8px;
+            padding: 10px;
             background: var(--bg-color);
             border-top: 1px solid var(--border-color);
+            flex-shrink: 0; /* منع الضغط عند ظهور الكيبورد */
         }
 
-        /* تصميم الأزرار - أبيض وأسود */
         button {
-            padding: 12px;
-            border: 1px solid var(--primary-color);
+            padding: 10px 5px;
+            border: 1.5px solid var(--primary-color);
             background: var(--bg-color);
             color: var(--primary-color);
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.2s ease;
-            font-family: inherit;
-            font-size: 0.9rem;
-            outline: none;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            white-space: nowrap; /* منع انقسام النص داخل الزر */
         }
 
-        button:hover, button:active {
+        button:active {
             background: var(--primary-color);
             color: var(--text-light);
         }
 
-        /* تحسينات للشاشات الصغيرة جداً */
-        @media (max-width: 480px) {
-            .chat-header { font-size: 1rem; padding: 12px; }
-            .message { max-width: 90%; font-size: 0.9rem; }
-            .options-grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px; }
-            button { padding: 10px; font-size: 0.85rem; }
+        /* للهواتف الصغيرة جداً (مثل iPhone SE) */
+        @media (max-width: 360px) {
+            .message { font-size: 0.85rem; }
+            button { font-size: 0.75rem; padding: 8px 4px; }
+            .chat-header { font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -143,9 +141,7 @@
         مساعد نظام الطيبات (د. ضياء العوضي)
     </div>
     
-    <div id="chat-window">
-        <!-- الرسائل ستظهر هنا -->
-    </div>
+    <div id="chat-window"></div>
 
     <div class="options-grid">
         <button onclick="getResponse('allowed')">المسموحات ✅</button>
@@ -158,23 +154,22 @@
 <script>
     const chatWindow = document.getElementById('chat-window');
 
-    // البيانات المحدثة بناءً على الصور المرفقة
     const data = {
         allowed: {
-            title: "المسموحات في نظام الطيبات (الأساسيات):",
-            content: "• <b>النشويات:</b> الأرز بجميع أشكاله، البطاطس بجميع أشكالها (مسلوقة، مطبوخة)، خبز التوست الأبيض المحمص (النخالة ممنوعة).<br>• <b>البروتين:</b> اللحوم (ضأن، أرانب)، السمك فيليه، الحمام والسمان.<br>• <b>الدهون:</b> زيت الزيتون، السمن البلدي.<br>• <b>الفواكه:</b> تمر، تين، عنب، جوافة، رمان، موز، فراولة، مشمش.<br>• <b>أخرى:</b> عسل، مربى، نوتيلا، زيتون، أجبان محددة (شيدر، موتزاريلا)، حلاوة طحينية غامقة، قهوة تركي، شاي أخضر."
+            title: "المسموحات (الطيبات):",
+            content: "• <b>نشويات:</b> أرز، بطاطس، توست أبيض محمص.<br>• <b>بروتين:</b> لحم ضأن، أرانب، سمك فيليه، حمام.<br>• <b>دهون:</b> زيت زيتون، سمن بلدي.<br>• <b>فاكهة:</b> تمر، تين، عنب، جوافة، رمان، موز.<br>• <b>أخرى:</b> عسل، مربى، نوتيلا، جبن شيدر."
         },
         forbidden: {
-            title: "الممنوعات القطعية (تجنبها تماماً):",
-            content: "• <b>النشويات الممنوعة:</b> الدقيق ومشتقاته (الخبز الأسمر، المكرونة، الكيك)، البقوليات (فول، عدس، لوبيا، حمص، فول سوداني).<br>• <b>البروتين الممنوع:</b> الدجاج، البيض، الجمبري والحبار.<br>• <b>الألبان:</b> الحليب ومشتقاته (الجبن القريش، الزبادي).<br>• <b>الخضروات والورقيات:</b> الخضار النيء (خس، طماطم، فلفل)، الورقيات بشكل عام.<br>• <b>الفواكه الممنوعة:</b> البطيخ والشمام.<br>• <b>أخرى:</b> المشروبات الغازية، مياه الطاقة، الشاي الأحمر، الحلويات المصنعة، الأدوية غير الضرورية."
+            title: "الممنوعات (الخبائث):",
+            content: "• <b>ممنوع:</b> الدقيق الأسمر، المكرونة، البقوليات (فول/عدس).<br>• <b>ممنوع:</b> الدجاج، البيض، الجمبري.<br>• <b>ممنوع:</b> الحليب والزبادي والقريش.<br>• <b>ممنوع:</b> الخضار النيء والورقيات.<br>• <b>ممنوع:</b> المشروبات الغازية والشاي الأحمر."
         },
         recipes: {
-            title: "نموذج يومي 'طيب' (وصفات مقترحة):",
-            content: "<b>فطور:</b><br>توست أبيض محمص مع سمن بلدي وعسل نحل، أو شريحة جبن شيدر مع زيتون.<br><br><b>غداء:</b><br>صينية بطاطس باللحم الضأن (مطبوخة جيداً وبدون بصل نcheck) + أرز بسمتي أبيض.<br><br><b>عشاء:</b><br>حبة بطاطس مسلوقة ومهروسة مع زيت زيتون ورشة ملح، أو قطع فاكهة مسموحة (موز وعنب)."
+            title: "مقترح وجبات اليوم:",
+            content: "<b>فطور:</b> توست محمص + سمن وعسل.<br><b>غداء:</b> أرز بسمتي + صينية بطاطس باللحم.<br><b>عشاء:</b> بطاطس مهروسة بزيت الزيتون أو فواكه مسموحة."
         },
         bio: {
-            title: "عن الدكتور ضياء العوضي ونظامه:",
-            content: "الدكتور ضياء العوضي هو أستاذ الرعاية المركزة بكلية الطب جامعة عين شمس. طور نظام 'الطيبات' كمنهج غذائي طبي يهدف إلى تقليل الالتهابات ومشاكل الجهاز الهضمي من خلال التركيز على أطعمة سهلة الهضم (الطيبات) وتجنب الأطعمة المهيجة للأمعاء (الخبائث/الممنوعات)."
+            title: "د. ضياء العوضي:",
+            content: "أستاذ بكلية الطب جامعة عين شمس، مؤسس نظام الطيبات لتقليل الالتهابات ورفع المناعة عبر تجنب مهيجات الأمعاء."
         }
     };
 
@@ -183,25 +178,23 @@
         div.className = `message ${sender}-msg`;
         div.innerHTML = text;
         chatWindow.appendChild(div);
-        chatWindow.scrollTop = chatWindow.scrollHeight; // سكرول تلقائي للأسفل
+        chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 
     function getResponse(type) {
-        // العثور على نص الزر الذي تم النقر عليه
-        const buttonText = event.target.innerText;
-        addMessage(buttonText, 'user');
+        // نستخدم النص من البيانات بدلاً من نص الزر لضمان الثبات
+        const labels = {allowed: 'المسموحات ✅', forbidden: 'الممنوعات ❌', recipes: 'وصفات 🍽️', bio: 'عن الدكتور 👨‍⚕️'};
+        addMessage(labels[type], 'user');
 
-        // إضافة رد البوت بعد تأخير بسيط لإعطاء إحساس بالاستجابة
         setTimeout(() => {
             const responseHTML = `<span class="response-title">${data[type].title}</span>${data[type].content}`;
             addMessage(responseHTML, 'bot');
         }, 400);
     }
 
-    // رسالة الترحيب عند تحميل الصفحة
     window.onload = () => {
         setTimeout(() => {
-            addMessage("مرحباً بك في مساعد نظام الطيبات للدكتور ضياء العوضي. <br>أنا هنا للإجابة على استفساراتك حول الأطعمة المناسبة. اختر قسماً للبدء:", 'bot');
+            addMessage("مرحباً بك! أنا مساعدك في نظام الطيبات. اختر قسماً من الأسفل لمعرفة المزيد:", 'bot');
         }, 500);
     };
 </script>
