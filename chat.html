@@ -27,7 +27,6 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            /* استخدام dvh لضمان الطول الصحيح على جميع المتصفحات */
             height: 100vh;
             height: 100dvh; 
             overflow: hidden;
@@ -62,7 +61,6 @@
             flex-direction: column;
             gap: 12px;
             background: var(--chat-bg);
-            /* تحسين السكرول على الموبايل */
             -webkit-overflow-scrolling: touch;
         }
 
@@ -97,15 +95,19 @@
             padding-bottom: 3px;
         }
 
-        /* شبكة الأزرار المحسنة للموبايل */
         .options-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* زرين في كل صف دائماً */
+            grid-template-columns: repeat(2, 1fr); 
             gap: 8px;
             padding: 10px;
             background: var(--bg-color);
             border-top: 1px solid var(--border-color);
-            flex-shrink: 0; /* منع الضغط عند ظهور الكيبورد */
+            flex-shrink: 0;
+        }
+
+        /* جعل زر الرئيسية يأخذ عرض الصف كاملاً في حال كان العدد فردياً أو لتمييزه */
+        .full-width {
+            grid-column: span 2;
         }
 
         button {
@@ -118,7 +120,7 @@
             font-weight: 600;
             font-size: 0.85rem;
             transition: all 0.2s;
-            white-space: nowrap; /* منع انقسام النص داخل الزر */
+            white-space: nowrap;
         }
 
         button:active {
@@ -126,7 +128,6 @@
             color: var(--text-light);
         }
 
-        /* للهواتف الصغيرة جداً (مثل iPhone SE) */
         @media (max-width: 360px) {
             .message { font-size: 0.85rem; }
             button { font-size: 0.75rem; padding: 8px 4px; }
@@ -148,6 +149,8 @@
         <button onclick="getResponse('forbidden')">الممنوعات ❌</button>
         <button onclick="getResponse('recipes')">وصفات 🍽️</button>
         <button onclick="getResponse('bio')">عن الدكتور 👨‍⚕️</button>
+        <!-- الزر الجديد -->
+        <button class="full-width" onclick="window.location.href='https://taybat.online'">الرئيسية 🏠</button>
     </div>
 </div>
 
@@ -182,7 +185,6 @@
     }
 
     function getResponse(type) {
-        // نستخدم النص من البيانات بدلاً من نص الزر لضمان الثبات
         const labels = {allowed: 'المسموحات ✅', forbidden: 'الممنوعات ❌', recipes: 'وصفات 🍽️', bio: 'عن الدكتور 👨‍⚕️'};
         addMessage(labels[type], 'user');
 
