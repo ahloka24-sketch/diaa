@@ -13,300 +13,972 @@
     <meta name="google-adsense-account" content="ca-pub-1442620098322459">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1442620098322459"
      crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
+      <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لحومي  | مصدرك الأول في البروتين </title>
+
+    <title>لحومي | مصدرك الأول للبروتين</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
+
         :root {
-            --primary: #1a3d2b;
-            --primary-light: #2d6a4f;
-            --accent: #c9a84c;
-            --accent-light: #f0d080;
-            --bg-cream: #f8f4e8;
+
+            --primary: #6e1414;
+
+            --primary-light: #a61e1e;
+
+            --accent: #d4a017;
+
+            --accent-light: #f6d365;
+
+            --bg-cream: #fff8f6;
+
             --white: #ffffff;
-            --danger: #e74c3c;
-            --text-main: #2c3e50;
-            --shadow: 0 10px 30px rgba(26, 61, 43, 0.1);
-            --radius-lg: 24px;
-            --radius-md: 15px;
+
+            --danger: #1f5f4a;
+
+            --text-main: #2f1f1f;
+
+            --shadow: 0 12px 35px rgba(110, 20, 20, 0.12);
+
+            --radius-lg: 26px;
+
+            --radius-md: 18px;
+
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Tajawal', sans-serif; background: var(--bg-cream); color: var(--text-main); overflow-x: hidden; scroll-behavior: smooth; }
+        * {
 
-        /* --- Sidebar --- */
-        .sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 2000; display: none; backdrop-filter: blur(4px); }
-        .sidebar { position: fixed; right: -280px; top: 0; width: 280px; height: 100%; background: var(--white); z-index: 2001; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding: 30px 20px; border-radius: 30px 0 0 30px; box-shadow: var(--shadow); }
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+            -webkit-tap-highlight-color: transparent;
+
+        }
+
+        body {
+
+            font-family: 'Tajawal', sans-serif;
+
+            background:
+
+                radial-gradient(circle at top left, rgba(166,30,30,0.05), transparent 30%),
+
+                radial-gradient(circle at top right, rgba(212,160,23,0.06), transparent 35%),
+
+                var(--bg-cream);
+
+            color: var(--text-main);
+
+            overflow-x: hidden;
+
+            scroll-behavior: smooth;
+
+        }
+
+        .sidebar-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0,0,0,0.45);
+
+            z-index: 2000;
+
+            display: none;
+
+            backdrop-filter: blur(4px);
+
+        }
+
+        .sidebar {
+
+            position: fixed;
+
+            right: -280px;
+
+            top: 0;
+
+            width: 280px;
+
+            height: 100%;
+
+            background: var(--white);
+
+            z-index: 2001;
+
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+            padding: 30px 20px;
+
+            border-radius: 30px 0 0 30px;
+
+            box-shadow: var(--shadow);
+
+            border-left: 4px solid rgba(166,30,30,0.08);
+
+        }
+
         .sidebar.active { right: 0; }
-        .sidebar-header { margin-bottom: 30px; text-align: center; }
-        .side-link { display: flex; align-items: center; gap: 15px; padding: 15px; text-decoration: none; color: var(--primary); font-weight: 700; border-radius: var(--radius-md); transition: 0.3s; margin-bottom: 5px; cursor: pointer; }
-        .side-link:hover { background: var(--bg-cream); color: var(--accent); }
 
-        /* --- Header --- */
-        header { background: var(--primary); padding: 50px 20px 25px; border-radius: 0 0 40px 40px; color: white; position: relative; box-shadow: var(--shadow); }
-        .nav-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .logo-box { display: flex; align-items: center; gap: 12px; }
-        .logo-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-family: 'Amiri'; font-size: 20px; color: var(--primary); font-weight: bold; }
+        .sidebar-header {
 
-        /* --- Pages --- */
-        .page { display: none; padding-bottom: 100px; }
-        .page.active { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+            margin-bottom: 30px;
 
-        /* --- Store Page Style --- */
-        .store-btns { display: flex; gap: 10px; padding: 0 20px; margin-bottom: 20px; }
-        .store-btn { flex: 1; background: var(--white); border: 2px solid var(--primary); color: var(--primary); padding: 12px; border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; text-align: center; }
-        .store-btn.active { background: var(--primary); color: white; }
+            text-align: center;
 
-        /* --- Lists Cards --- */
+        }
+
+        .side-link {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 15px;
+
+            text-decoration: none;
+
+            color: var(--primary);
+
+            font-weight: 700;
+
+            border-radius: var(--radius-md);
+
+            transition: 0.3s;
+
+            margin-bottom: 5px;
+
+            cursor: pointer;
+
+        }
+
+        .side-link:hover {
+
+            background: #fff4f4;
+
+            color: var(--primary-light);
+
+        }
+
+        header {
+
+            background:
+
+                linear-gradient(135deg, rgba(110,20,20,0.96), rgba(166,30,30,0.92)),
+
+                url('https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop') center/cover;
+
+            background-blend-mode: overlay;
+
+            padding: 50px 20px 25px;
+
+            border-radius: 0 0 40px 40px;
+
+            color: white;
+
+            position: relative;
+
+            box-shadow: var(--shadow);
+
+        }
+
+        .nav-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+        }
+
+        .logo-box {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+        .logo-icon {
+
+            width: 52px;
+
+            height: 52px;
+
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+
+            border-radius: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-family: 'Amiri';
+
+            font-size: 20px;
+
+            color: var(--primary);
+
+            font-weight: bold;
+
+            box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+
+        }
+
+        .page {
+
+            display: none;
+
+            padding-bottom: 100px;
+
+        }
+
+        .page.active {
+
+            display: block;
+
+            animation: fadeIn 0.5s ease;
+
+        }
+
+        @keyframes fadeIn {
+
+            from { opacity: 0; transform: translateY(10px); }
+
+            to { opacity: 1; transform: translateY(0); }
+
+        }
+
+        .store-btns {
+
+            display: flex;
+
+            gap: 10px;
+
+            padding: 0 20px;
+
+            margin-bottom: 20px;
+
+        }
+
+        .store-btn {
+
+            flex: 1;
+
+            background: var(--white);
+
+            border: 2px solid var(--primary);
+
+            color: var(--primary);
+
+            padding: 12px;
+
+            border-radius: 14px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            text-align: center;
+
+        }
+
+        .store-btn.active {
+
+            background: var(--primary);
+
+            color: white;
+
+        }
+
         .content-area { padding: 0 20px; }
-        .card-item { background: white; border-radius: var(--radius-md); padding: 18px; margin-bottom: 15px; display: flex; align-items: center; gap: 18px; box-shadow: var(--shadow); border-right: 5px solid var(--primary-light); }
+
+        .card-item {
+
+            background: rgba(255,255,255,0.92);
+
+            backdrop-filter: blur(8px);
+
+            border-radius: var(--radius-md);
+
+            padding: 18px;
+
+            margin-bottom: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            box-shadow: var(--shadow);
+
+            border-right: 5px solid var(--primary-light);
+
+        }
+
         .card-item.forbidden { border-right-color: var(--danger); }
-        .card-icon { width: 55px; height: 55px; background: var(--bg-cream); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
-        .card-info h3 { font-size: 15px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
-        .card-info p { font-size: 11px; color: #666; line-height: 1.5; }
-        .contact-info { margin-top: 5px; font-size: 10px; color: var(--accent); font-weight: bold; }
 
-        .reminder-card { background: linear-gradient(135deg, var(--accent), #b38f2d); padding: 15px 20px; border-radius: var(--radius-md); margin: 20px 20px 25px; color: white; display: flex; align-items: center; gap: 15px; box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3); }
-        .tab-bar { display: flex; overflow-x: auto; padding: 0 20px; gap: 10px; scrollbar-width: none; margin-bottom: 20px; }
-        .tab { background: white; padding: 10px 22px; border-radius: 30px; font-weight: 700; font-size: 13px; color: var(--primary); white-space: nowrap; cursor: pointer; }
-        .tab.active { background: var(--primary); color: white; }
+        .card-icon {
 
-        /* --- Bottom Nav --- */
-        .bottom-nav { position: fixed; bottom: 20px; left: 20px; right: 20px; background: var(--primary); border-radius: 25px; padding: 12px 5px; display: flex; justify-content: space-around; box-shadow: 0 15px 35px rgba(26,61,43,0.3); z-index: 1000; }
-        .nav-btn { background: none; border: none; color: rgba(255,255,255,0.5); font-family: 'Tajawal'; font-size: 10px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
+            width: 58px;
+
+            height: 58px;
+
+            background: linear-gradient(135deg, #fff3f3, #fffdf8);
+
+            border-radius: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 28px;
+
+            flex-shrink: 0;
+
+        }
+
+        .card-info h3 {
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            color: var(--primary);
+
+            margin-bottom: 4px;
+
+        }
+
+        .card-info p {
+
+            font-size: 11px;
+
+            color: #666;
+
+            line-height: 1.6;
+
+        }
+
+        .contact-info {
+
+            margin-top: 5px;
+
+            font-size: 10px;
+
+            color: var(--accent);
+
+            font-weight: bold;
+
+        }
+
+        .reminder-card {
+
+            background: linear-gradient(135deg, var(--accent), #b8860b);
+
+            padding: 16px 20px;
+
+            border-radius: var(--radius-md);
+
+            margin: 20px 20px 25px;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            box-shadow: 0 10px 22px rgba(212, 160, 23, 0.28);
+
+        }
+
+        .tab-bar {
+
+            display: flex;
+
+            overflow-x: auto;
+
+            padding: 0 20px;
+
+            gap: 10px;
+
+            scrollbar-width: none;
+
+            margin-bottom: 20px;
+
+        }
+
+        .tab {
+
+            background: white;
+
+            padding: 10px 22px;
+
+            border-radius: 30px;
+
+            font-weight: 700;
+
+            font-size: 13px;
+
+            color: var(--primary);
+
+            white-space: nowrap;
+
+            cursor: pointer;
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+
+        }
+
+        .tab.active {
+
+            background: var(--primary);
+
+            color: white;
+
+        }
+
+        .bottom-nav {
+
+            position: fixed;
+
+            bottom: 20px;
+
+            left: 20px;
+
+            right: 20px;
+
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+
+            border-radius: 25px;
+
+            padding: 12px 5px;
+
+            display: flex;
+
+            justify-content: space-around;
+
+            box-shadow: 0 15px 35px rgba(110,20,20,0.28);
+
+            z-index: 1000;
+
+        }
+
+        .nav-btn {
+
+            background: none;
+
+            border: none;
+
+            color: rgba(255,255,255,0.55);
+
+            font-family: 'Tajawal';
+
+            font-size: 10px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 4px;
+
+            cursor: pointer;
+
+        }
+
         .nav-btn.active { color: var(--accent-light); }
+
         .nav-btn svg { width: 22px; height: 22px; }
 
-        .toast { position: fixed; top: 40px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 12px 30px; border-radius: 50px; font-size: 13px; z-index: 3000; display: none; }
+        .toast {
+
+            position: fixed;
+
+            top: 40px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background: rgba(0,0,0,0.85);
+
+            color: white;
+
+            padding: 12px 30px;
+
+            border-radius: 50px;
+
+            font-size: 13px;
+
+            z-index: 3000;
+
+            display: none;
+
+        }
+
     </style>
+
 </head>
+
 <body>
-   
 
-    <div class="sidebar-overlay" id="overlay" onclick="toggleMenu()"></div>
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <div class="logo-icon" style="margin: 0 auto 10px;">لحومي</div>
-            <h2 style="color:var(--primary); font-size: 18px;"> لحومي</h2>
-        </div>
-        <div class="side-link" onclick="navTo('home'); toggleMenu()"><span>🏠</span> الرئيسية</div>
-        <div class="side-link" onclick="navTo('stores'); toggleMenu()"><span>🛒</span> أماكن الشراء</div>
-        <div class="side-link" onclick="showToast('قريباً')"><span>💬</span> استشارة لحومي</div>
-        <div class="side-link" onclick="window.location.href='https://taybat.online/chat.html';">
-    <span>💬</span> شات لحومي
-</div>
-        <div class="side-link" onclick="window.location.href='https://taybat.online/Recipes.html';">
-    <span>🥩</span> وصفات لحومي
-</div>
-        <div class="side-link" onclick="window.location.href='https://taybat.online/articles.html';">
-    <span>✍️</span> مقالات لحومي
-</div>
-        <div class="side-link" onclick="window.location.href='https://taybat.online/contact.html';">
-    <span>👨🏻‍💻</span>  تواصل معنا
-</div>
-        
-<div class="side-link" onclick="window.location.href='https://taybat.online/privacy.html';">
-    <span>🕵️‍♂️</span>  سياسة الخصوصية
-</div>
+<div class="sidebar-overlay" id="overlay" onclick="toggleMenu()"></div>
 
-        <div class="side-link" onclick="window.location.href='https://taybat.online/about.html';">
-    <span>💁🏻‍♂️</span> من نحن ؟ 
-        </div>
+<div class="sidebar" id="sidebar">
 
-        <hr style="opacity: 0.1; margin: 15px 0;">
-        <p style="text-align:center; font-size:10px; color:#999;">الإصدار 1.1.0</p>
+    <div class="sidebar-header">
+
+        <div class="logo-icon" style="margin: 0 auto 10px;">لحومي</div>
+
+        <h2 style="color:var(--primary); font-size: 18px;">لحومي</h2>
+
     </div>
 
-    <header>
-        <div class="nav-top">
-            <div class="logo-box">
-                <div class="logo-icon">ط</div>
-                <div>
-                    <h1 style="font-size: 18px; font-weight: 900;"> taybaty</h1>
-                    <p style="font-size: 10px; opacity: 0.8;">العودة إلى فطرة الإنسان</p>
-                </div>
+    <div class="side-link" onclick="navTo('home'); toggleMenu()"><span>🏠</span> الرئيسية</div>
+
+    <div class="side-link" onclick="navTo('stores'); toggleMenu()"><span>🛒</span> أماكن الشراء</div>
+
+    <div class="side-link" onclick="showToast('قريباً')"><span>💬</span> استشارة لحومي</div>
+
+    <div class="side-link" onclick="window.location.href='https://taybat.online/chat.html';"><span>💬</span> شات لحومي</div>
+
+    <div class="side-link" onclick="window.location.href='https://taybat.online/Recipes.html';"><span>🥩</span> وصفات لحومي</div>
+
+    <div class="side-link" onclick="window.location.href='https://taybat.online/articles.html';"><span>✍️</span> مقالات لحومي</div>
+
+    <div class="side-link" onclick="window.location.href='https://taybat.online/contact.html';"><span>👨🏻‍💻</span> تواصل معنا</div>
+
+    <div class="side-link" onclick="window.location.href='https://taybat.online/privacy.html';"><span>🕵️‍♂️</span> سياسة الخصوصية</div>
+
+    <div class="side-link" onclick="window.location.href='https://taybat.online/about.html';"><span>💁🏻‍♂️</span> من نحن ؟</div>
+
+    <hr style="opacity: 0.1; margin: 15px 0;">
+
+    <p style="text-align:center; font-size:10px; color:#999;">الإصدار 2.0.0</p>
+
+</div>
+
+<header>
+
+    <div class="nav-top">
+
+        <div class="logo-box">
+
+            <div class="logo-icon">ل</div>
+
+            <div>
+
+                <h1 style="font-size: 18px; font-weight: 900;">لحومي</h1>
+
+                <p style="font-size: 10px; opacity: 0.85;">دليلك الذكي للبروتين النقي</p>
+
             </div>
-            <div class="menu-toggle" onclick="toggleMenu()" style="cursor:pointer">☰</div>
-        </div>
-    </header>
 
-    <div id="page-home" class="page active">
-        <div id="reminder-box"></div>
-        <div class="tab-bar" id="day-tabs"></div>
-        <div class="content-area" id="schedule-list"></div>
-    </div>
-
-    <div id="page-allowed" class="page">
-        <div style="padding: 20px 20px 5px;"><h2 style="font-size: 18px; color: var(--primary);">قائمة المسموحات ✅</h2></div>
-        <div class="content-area" id="allowed-list"></div>
-    </div>
-
-    <div id="page-forbidden" class="page">
-        <div style="padding: 20px 20px 5px;"><h2 style="font-size: 18px; color: var(--danger);">قائمة الممنوعات ❌</h2></div>
-        <div class="content-area" id="forbidden-list"></div>
-    </div>
-
-    <div id="page-stores" class="page">
-        <div style="padding: 20px 20px 15px;"><h2 style="font-size: 18px; color: var(--primary);"> أين أجد منتجات الطيبات ؟ .. سوف يتم إضافة المطاعم والسوبارماركت قريبا 😍  </h2></div>
-        
-        <div class="store-btns">
-            <button id="btn-show-rest" class="store-btn active" onclick="renderStores('restaurants')">🍴 المطاعم</button>
-            <button id="btn-show-market" class="store-btn" onclick="renderStores('markets')">🛒 السوبر ماركت</button>
         </div>
 
-        <div class="content-area" id="stores-list">
+        <div class="menu-toggle" onclick="toggleMenu()" style="cursor:pointer">☰</div>
+
+    </div>
+
+</header>
+
+<div id="page-home" class="page active">
+
+    <div id="reminder-box"></div>
+
+    <div class="tab-bar" id="day-tabs"></div>
+
+    <div class="content-area" id="schedule-list"></div>
+
+</div>
+
+<div id="page-allowed" class="page">
+
+    <div style="padding: 20px 20px 5px;"><h2 style="font-size: 18px; color: var(--primary);">لحوم ودواجن وبيض 🍗</h2></div>
+
+    <div class="content-area" id="allowed-list"></div>
+
+</div>
+
+<div id="page-forbidden" class="page">
+
+    <div style="padding: 20px 20px 5px;"><h2 style="font-size: 18px; color: var(--danger);">أسماك ومأكولات بحرية 🐟</h2></div>
+
+    <div class="content-area" id="forbidden-list"></div>
+
+</div>
+
+<div id="page-stores" class="page">
+
+    <div style="padding: 20px 20px 15px;"><h2 style="font-size: 18px; color: var(--primary);">أفضل أماكن شراء البروتين الطازج 😍</h2></div>
+
+    <div class="store-btns">
+
+        <button id="btn-show-rest" class="store-btn active" onclick="renderStores('restaurants')">🥩 محلات اللحوم</button>
+
+        <button id="btn-show-market" class="store-btn" onclick="renderStores('markets')">🐟 الأسماك والدواجن</button>
+
+    </div>
+
+    <div class="content-area" id="stores-list"></div>
+
+</div>
+
+<nav class="bottom-nav">
+
+    <button class="nav-btn active" id="btn-home" onclick="navTo('home')">
+
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+
+        <span>الرئيسية</span>
+
+    </button>
+
+    <button class="nav-btn" id="btn-allowed" onclick="navTo('allowed')">
+
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+
+        <span>لحوم</span>
+
+    </button>
+
+    <button class="nav-btn" id="btn-forbidden" onclick="navTo('forbidden')">
+
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>
+
+        <span>أسماك</span>
+
+    </button>
+
+    <button class="nav-btn" id="btn-stores" onclick="navTo('stores')">
+
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+
+        <span>أماكن الشراء</span>
+
+    </button>
+
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+const days = ["السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة"];
+
+let currentDay = "السبت";
+
+const storeData = {
+
+    restaurants: [
+
+        { name: "ملحمة السلطان", icon: "🥩", address: "القاهرة - مدينة نصر", phone: "0123456789" },
+
+        { name: "جزارة الريف البلدي", icon: "🍖", address: "الجيزة - الدقي", phone: "0100000000" },
+
+        { name: "بيت اللحوم الممتازة", icon: "🥩", address: "الإسكندرية - سموحة", phone: "0112233445" }
+
+    ],
+
+    markets: [
+
+        { name: "سوق البحّار", icon: "🐟", address: "الإسكندرية - بحري", phone: "19000" },
+
+        { name: "دواجن المزرعة", icon: "🍗", address: "المعادي - شارع 9", phone: "0155555555" },
+
+        { name: "مزرعة البيض الطازج", icon: "🥚", address: "وسط البلد", phone: "0128888888" }
+
+    ]
+
+};
+
+const allowedData = [
+
+    { icon: '🥩', t: 'اللحم البقري', d: 'ريش، إنتركوت، موزة، كبدة، مفروم، ستيك، برجر بلدي' },
+
+    { icon: '🍖', t: 'اللحم الضاني', d: 'ريش ضاني، فخدة، رقبة، كبدة ضاني، ممبار، كرشة' },
+
+    { icon: '🐄', t: 'أحشاء ومشتقات', d: 'كبدة، قلب، كلاوي، لسان، مخ، كوارع، عكاوي' },
+
+    { icon: '🍗', t: 'الدجاج', d: 'صدور، أوراك، أجنحة، كبد وقوانص، دجاج بلدي، دجاج مشوي' },
+
+    { icon: '🦃', t: 'الدواجن الأخرى', d: 'ديك رومي، بط، حمام، سمان، أرانب' },
+
+    { icon: '🥚', t: 'البيض', d: 'بيض أبيض، بلدي، أحمر، سمان، مسلوق، أومليت، مقلي' }
+
+];
+
+const forbiddenData = [
+
+    { icon: '🐟', t: 'الأسماك البيضاء', d: 'بلطي، بوري، دنيس، قاروص، موزة، لوت' },
+
+    { icon: '🦐', t: 'المأكولات البحرية', d: 'جمبري، كاليماري، سبيط، كابوريا، جندوفلي' },
+
+    { icon: '🐠', t: 'الأسماك الدهنية', d: 'سلمون، تونة، ماكريل، سردين، رنجة' },
+
+    { icon: '🦈', t: 'الأسماك الكبيرة', d: 'هامور، وقار، شعور، مرجان، حريد' },
+
+    { icon: '🐙', t: 'أصناف بحرية', d: 'أخطبوط، محار، بلح بحر، استاكوزا' },
+
+    { icon: '🧂', t: 'طرق التقديم', d: 'مشوي، مقلي، سنجاري، فيليه، شوربة بحرية' }
+
+];
+
+const weeklyMenu = {
+
+    "السبت": [
+
+        { type: "فطور", t: "بيض بلدي مسلوق", d: "بيضتين مع رشة ملح وفلفل", i: "🥚" },
+
+        { type: "غداء", t: "ستيك بقري", d: "قطعة ستيك مشوية متوسطة", i: "🥩" },
+
+        { type: "عشاء", t: "تونة خفيفة", d: "تونة بالماء مع ليمون", i: "🐟" }
+
+    ],
+
+    "الأحد": [
+
+        { type: "فطور", t: "أومليت جبّار", d: "3 بيضات مع أعشاب", i: "🍳" },
+
+        { type: "غداء", t: "فراخ مشوية", d: "صدر دجاج متبل ومشوي", i: "🍗" },
+
+        { type: "عشاء", t: "سردين", d: "سردين مشوي خفيف", i: "🐠" }
+
+    ],
+
+    "الاثنين": [
+
+        { type: "فطور", t: "بيض سمان", d: "5 بيضات سمان", i: "🥚" },
+
+        { type: "غداء", t: "كبدة بقري", d: "كبدة مشوحة سريعة", i: "🐄" },
+
+        { type: "عشاء", t: "جمبري", d: "جمبري مشوي بالثوم", i: "🦐" }
+
+    ],
+
+    "الثلاثاء": [
+
+        { type: "فطور", t: "بيض مقلي", d: "بيضتان في زبدة", i: "🍳" },
+
+        { type: "غداء", t: "ريش ضاني", d: "ريش ضاني مشوية", i: "🍖" },
+
+        { type: "عشاء", t: "تونة", d: "علبة تونة مصفاة", i: "🐟" }
+
+    ],
+
+    "الأربعاء": [
+
+        { type: "فطور", t: "أومليت ديك رومي", d: "بيض مع شرائح ديك رومي", i: "🦃" },
+
+        { type: "غداء", t: "سلمون", d: "شريحة سلمون مشوية", i: "🐠" },
+
+        { type: "عشاء", t: "بيض مسلوق", d: "بيضتان خفيفتان", i: "🥚" }
+
+    ],
+
+    "الخميس": [
+
+        { type: "فطور", t: "بيض بلدي", d: "بيضتان بلدي", i: "🥚" },
+
+        { type: "غداء", t: "بط مشوي", d: "ربع بطة متبلة", i: "🦆" },
+
+        { type: "عشاء", t: "كاليماري", d: "كاليماري مشوي", i: "🦑" }
+
+    ],
+
+    "الجمعة": [
+
+        { type: "فطور", t: "بيض + كبدة", d: "فطور بروتين قوي", i: "🍳" },
+
+        { type: "غداء", t: "مشكل لحوم", d: "بقري وضاني وكفتة", i: "🥩" },
+
+        { type: "عشاء", t: "شوربة سي فود", d: "شوربة بحرية غنية", i: "🍲" }
+
+    ]
+
+};
+
+function init() {
+
+    renderTabs();
+
+    renderDay("السبت");
+
+    renderLists();
+
+    renderStores('restaurants');
+
+}
+
+function renderTabs() {
+
+    const h = document.getElementById('day-tabs');
+
+    h.innerHTML = days.map(d => `<div class="tab ${d===currentDay?'active':''}" onclick="renderDay('${d}')">${d}</div>`).join('');
+
+}
+
+function renderDay(day) {
+
+    currentDay = day;
+
+    renderTabs();
+
+    const list = document.getElementById('schedule-list');
+
+    list.innerHTML = weeklyMenu[day].map(m => `
+
+        <div class="card-item">
+
+            <div class="card-icon">${m.i}</div>
+
+            <div class="card-info">
+
+                <span style="font-size:10px; color:var(--accent); font-weight:900;">${m.type}</span>
+
+                <h3>${m.t}</h3>
+
+                <p>${m.d}</p>
+
             </div>
-    </div>
 
-    <nav class="bottom-nav">
-        <button class="nav-btn active" id="btn-home" onclick="navTo('home')">
-            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-            <span>الرئيسية</span>
-        </button>
-        <button class="nav-btn" id="btn-allowed" onclick="navTo('allowed')">
-            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            <span>لحوم</span>
-        </button>
-        <button class="nav-btn" id="btn-forbidden" onclick="navTo('forbidden')">
-            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>
-            <span>أسماك</span>
-        </button>
-        <button class="nav-btn" id="btn-stores" onclick="navTo('stores')">
-            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>أماكن الشراء</span>
-        </button>
-    </nav>
+        </div>
 
-    <div class="toast" id="toast"></div>
+    `).join('');
 
-        <script>
-        const days = ["السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة"];
-        let currentDay = "السبت";
+    updateReminder(day);
 
-‎        // بيانات أماكن الشراء
-        const storeData = {
-            restaurants: [
-                { name: "مطعم الطيبات الأصيل", icon: "🍲", address: "القاهرة - مدينة نصر", phone: "0123456789" },
-                { name: "مشويات الهنا (لحم ضاني)", icon: "🥩", address: "الجيزة - الدقي", phone: "0100000000" },
-                { name: "أسماك البحار", icon: "🐟", address: "الإسكندرية - سموحة", phone: "0112233445" }
-            ],
-            markets: [
-                { name: "سوبر ماركت ريتش بيك", icon: "🍞", address: "جميع الفروع - توست الردة", phone: "19000" },
-                { name: "ماركت صحي وطيب", icon: "🧀", address: "المعادي - شارع 9", phone: "0155555555" },
-                { name: "منفذ بيع السمن البلدي", icon: "🫙", address: "وسط البلد", phone: "0128888888" }
-            ]
-        };
+}
 
-        const allowedData = [
-            { icon: '🍞', t: 'توست بالردة', d: 'ريتش بيك حصراً' },
-            { icon: '🫒', t: 'دهون طيبة', d: 'زيت زيتون، زبدة وسمن بلدي، قشطة' },
-            { icon: '🧀', t: 'أجبان مسموحة', d: 'شيدر، موتزريلا، كشكفال، برميزان، رومي، أجبان مطبوخة' },
-            { icon: '🍚', t: 'نشويات', d: 'أرز، بطاطس، بطاطا، قرع، قلقاس، فريك، مشروم' },
-            { icon: '🍎', t: 'فواكه', d: 'كل الأنواع ما عدا البطيخ. التفاح والكمثرى بدون قشر.' },
-            { icon: '🥩', t: 'البروتينات', d: 'لحم ضاني، بقري مسلوق جيداً، حمام، سمان، أرانب، أسماك' }
-        ];
+function renderStores(category) {
 
-        const forbiddenData = [
-            { icon: '🍗', t: 'الدجاج وملحقاته', d: 'ممنوع الفراخ، الكبد وقوانص الفراخ، البط، والديك الرومي' },
-            { icon: '🥚', t: 'البيض', d: 'ممنوع بكافة أشكاله' },
-            { icon: '🥛', t: 'الألبان', d: 'ممنوع اللبن، الزبادي، الرايب، والجبنة القريش' },
-            { icon: '🍞', t: 'الدقيق الأبيض', d: 'فينو، مكرونة، كيك، مخبوزات، حلويات شرقيه' },
-            { icon: '🥗', t: 'الخضار النيء', d: 'سلطة، خيار، خس، جرجير، فلفل ألوان' },
-            { icon: '🥤', t: 'المشروبات', d: 'مياه غازية، مبيضات القهوة' }
-        ];
+    const list = document.getElementById('stores-list');
 
-        const weeklyMenu = {
-‎            "السبت": [{ type: "فطور", t: " شيدر وتوست", d: "توست ريتش بيك مع زيت زيتون", i: "🧀" }, { type: "غداء", t: "أرز وبطاطس مطبوخة", d: "بطاطس بالسمن البلدي", i: "🍚" }, { type: "عشاء", t: "مربى وقشطة", d: "وجبة خفيفة", i: "🍯" }],
-‎            "الأحد": [{ type: "فطور", t: "حلاوة طحينية", d: "توست ردة مع طحينة", i: "🥪" }, { type: "غداء", t: "سمك مشوي", d: "سمك مع أرز أبيض", i: "🐟" }, { type: "عشاء", t: "بطاطس محمرة", d: "شيبسي منزلي بزيت زيتون", i: "🍟" }],
-‎            "الاثنين": [{ type: "سحور", t: "تمر وقشطة", d: "7 تمرات مع ملعقة قشطة", i: "🌴" }, { type: "إفطار", t: "لحم ضاني مسلوق", d: "لحم مطهو جيداً", i: "🍲" }, { type: "سهرة", t: "بسبوسة سادة", d: "بدون لبن أو بيض", i: "🍰" }],
-‎            "الثلاثاء": [{ type: "فطور", t: "جبنة رومي", d: "توست محمص", i: "🧀" }, { type: "غداء", t: "أرانب محمرة", d: "أرانب مع شوربة لسان عصفور", i: "🐇" }, { type: "عشاء", t: "عصير مانجو", d: "مصفى من الألياف", i: "🥭" }],
-‎            "الأربعاء": [{ type: "فطور", t: "عسل نحل وزبدة", d: "توست بالردة مع عسل وزبدة", i: "🍯" }, { type: "غداء", t: "كوارع وممبار", d: "وجبة دسمة مسموحة", i: "🥘" }, { type: "عشاء", t: "فاكهة مقشرة", d: "تفاح بدون قشر", i: "🍎" }],
-‎            "الخميس": [{ type: "سحور", t: "بطاطا حلوة", d: "بطاطا مشوية", i: "🍠" }, { type: "إفطار", t: "حمام محشي", d: "حمام محشي بالأرز", i: "🦆" }, { type: "سهرة", t: "شوكولاتة نوتيلا", d: "ملعقة للتحلية", i: "🍫" }],
-‎            "الجمعة": [{ type: "فطور", t: "طحينة وعسل", d: "طحينة غامقة مع عسل أسود", i: "🥣" }, { type: "غداء", t: "كبدة وكوارع", d: "كبدة ضاني وسلطة زيتون", i: "🥩" }, { type: "عشاء", t: "جيلو فواكه", d: "جيلو مسموح", i: "🍧" }]
-        };
+    const data = storeData[category];
 
-        function init() {
-            renderTabs();
-            renderDay("السبت");
-            renderLists();
-            renderStores('restaurants');
-        }
+    document.getElementById('btn-show-rest').classList.toggle('active', category === 'restaurants');
 
-        function renderTabs() {
-            const h = document.getElementById('day-tabs');
-            h.innerHTML = days.map(d => `<div class="tab ${d===currentDay?'active':''}" onclick="renderDay('${d}')">${d}</div>`).join('');
-        }
+    document.getElementById('btn-show-market').classList.toggle('active', category === 'markets');
 
-        function renderDay(day) {
-            currentDay = day;
-            renderTabs();
-            const list = document.getElementById('schedule-list');
-            list.innerHTML = weeklyMenu[day].map(m => `
-                <div class="card-item fade-in">
-                    <div class="card-icon">${m.i}</div>
-                    <div class="card-info">
-                        <span style="font-size:10px; color:var(--accent); font-weight:900;">${m.type}</span>
-                        <h3>${m.t}</h3><p>${m.d}</p>
-                    </div>
-                </div>
-            `).join('');
-            updateReminder(day);
-        }
+    list.innerHTML = data.map(s => `
 
-        function renderStores(category) {
-            const list = document.getElementById('stores-list');
-            const data = storeData[category];
-            
-‎            // تحديث حالة الأزرار
-            document.getElementById('btn-show-rest').classList.toggle('active', category === 'restaurants');
-            document.getElementById('btn-show-market').classList.toggle('active', category === 'markets');
+        <div class="card-item">
 
-            list.innerHTML = data.map(s => `
-                <div class="card-item fade-in">
-                    <div class="card-icon">${s.icon}</div>
-                    <div class="card-info">
-                        <h3>${s.name}</h3>
-                        <p>📍 ${s.address}</p>
-                        <div class="contact-info">📞 رقم التواصل: ${s.phone}</div>
-                    </div>
-                </div>
-            `).join('');
-        }
+            <div class="card-icon">${s.icon}</div>
 
-        function updateReminder(day) {
-            const box = document.getElementById('reminder-box');
-            let txt = (day === "الاثنين" || day === "الخميس") ? "تذكير بالصيام" : "نصيحة اليوم";
-            let sub = (day === "الاثنين" || day === "الخميس") ? "صيام سنة نبوية وجزء من النظام." : "البروتين يوم بعد يوم لراحة القولون.";
-            box.innerHTML = `<div class="reminder-card fade-in"><span>💡</span><div><b>${txt}</b><p>${sub}</p></div></div>`;
-        }
+            <div class="card-info">
 
-        function renderLists() {
-            document.getElementById('allowed-list').innerHTML = allowedData.map(i => `<div class="card-item fade-in"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
-            document.getElementById('forbidden-list').innerHTML = forbiddenData.map(i => `<div class="card-item forbidden fade-in"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`).join('');
-        }
+                <h3>${s.name}</h3>
 
-        function navTo(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('page-'+page).classList.add('active');
-            if(document.getElementById('btn-'+page)) document.getElementById('btn-'+page).classList.add('active');
-            window.scrollTo(0,0);
-        }
+                <p>📍 ${s.address}</p>
 
-        function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('overlay').style.display = document.getElementById('sidebar').classList.contains('active') ? 'block' : 'none';
-        }
+                <div class="contact-info">📞 رقم التواصل: ${s.phone}</div>
 
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.textContent = msg; t.style.display = 'block';
-            setTimeout(() => t.style.display = 'none', 2000);
-        }
+            </div>
 
-        window.onload = init;
-    </script>
+        </div>
+
+    `).join('');
+
+}
+
+function updateReminder(day) {
+
+    const box = document.getElementById('reminder-box');
+
+    let txt = "نصيحة البروتين";
+
+    let sub = day === "الجمعة"
+
+        ? "نوّع بين اللحوم والأسماك والبيض لملف أميني متكامل."
+
+        : "وزّع البروتين على 3 وجبات يوميًا لتحسين الشبع وبناء العضلات.";
+
+    box.innerHTML = `<div class="reminder-card"><span>💡</span><div><b>${txt}</b><p>${sub}</p></div></div>`;
+
+}
+
+function renderLists() {
+
+    document.getElementById('allowed-list').innerHTML = allowedData.map(i =>
+
+        `<div class="card-item"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`
+
+    ).join('');
+
+    document.getElementById('forbidden-list').innerHTML = forbiddenData.map(i =>
+
+        `<div class="card-item forbidden"><div class="card-icon">${i.icon}</div><div class="card-info"><h3>${i.t}</h3><p>${i.d}</p></div></div>`
+
+    ).join('');
+
+}
+
+function navTo(page) {
+
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+    document.getElementById('page-' + page).classList.add('active');
+
+    if (document.getElementById('btn-' + page)) document.getElementById('btn-' + page).classList.add('active');
+
+    window.scrollTo(0, 0);
+
+}
+
+function toggleMenu() {
+
+    document.getElementById('sidebar').classList.toggle('active');
+
+    document.getElementById('overlay').style.display =
+
+        document.getElementById('sidebar').classList.contains('active') ? 'block' : 'none';
+
+}
+
+function showToast(msg) {
+
+    const t = document.getElementById('toast');
+
+    t.textContent = msg;
+
+    t.style.display = 'block';
+
+    setTimeout(() => t.style.display = 'none', 2000);
+
+}
+
+window.onload = init;
+
+</script>
+
 </body>
+
 </html>
