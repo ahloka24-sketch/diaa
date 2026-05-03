@@ -8,93 +8,77 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>مقالات نظام الطيبات | taybat.online</title>
-
-  <meta name="description" content="مقالات نظام الطيبات وفق المسموحات والممنوعات المعتمدة، دليل مبسط ومرتب لتحسين الهضم والطاقة وتنظيم الأكل بأسلوب واضح وسهل." />
+  <title>مقالات لحومي | البروتينات</title>
 
   <style>
+
+    :root{
+
+      --primary:#6e1414;
+
+      --primary-light:#a61e1e;
+
+      --bg:#fff8f6;
+
+      --text:#2f1f1f;
+
+      --muted:#6b4b4b;
+
+      --white:#fff;
+
+      --shadow:0 10px 25px rgba(110,20,20,0.12);
+
+    }
 
     *{margin:0;padding:0;box-sizing:border-box}
 
     body{
 
-      font-family:'Tahoma',sans-serif;
+      font-family:Tahoma;
 
-      background:#f8f6f1;
+      background:var(--bg);
 
-      color:#222;
+      color:var(--text);
 
       line-height:1.9;
 
     }
-        .home-btn{
+
+    header{
+
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
+
+      color:#fff;
+
+      text-align:center;
+
+      padding:35px 20px;
+
+      position:relative;
+
+    }
+
+    .home-btn{
 
       position:absolute;
 
-      top:14px;
+      top:12px;
 
-      left:14px;
+      left:12px;
 
       background:#fff;
 
-      color:#114232;
-
-      text-decoration:none;
+      color:var(--primary);
 
       padding:7px 14px;
 
       border-radius:20px;
 
-      font-size:.8rem;
-
       font-weight:bold;
 
-      box-shadow:0 3px 8px rgba(0,0,0,.10);
+      text-decoration:none;
 
-      transition:.25s ease;
-
-    }
-
-    .home-btn:hover{
-
-      background:#f4fbf7;
-
-      transform:translateY(-2px);
-
-    }
-
-
-    header{
-
-      background:linear-gradient(135deg,#114232,#1d5c46);
-
-      color:#fff;
-
-      padding:30px 20px;
-
-      text-align:center;
-
-      box-shadow:0 4px 12px rgba(0,0,0,.12);
-
-    }
-
-    header h1{
-
-      font-size:2rem;
-
-      margin-bottom:10px;
-
-    }
-
-    header p{
-
-      font-size:1rem;
-
-      opacity:.95;
-
-      max-width:900px;
-
-      margin:auto;
+      font-size:13px;
 
     }
 
@@ -106,35 +90,13 @@
 
     }
 
-    .hero-note{
-
-      background:#fff;
-
-      border-right:6px solid #1d5c46;
-
-      padding:18px;
-
-      border-radius:14px;
-
-      margin-bottom:25px;
-
-      box-shadow:0 4px 12px rgba(0,0,0,.06);
-
-    }
-
-    .hero-note strong{
-
-      color:#114232;
-
-    }
-
-    .articles{
+    .grid{
 
       display:grid;
 
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 
-      gap:22px;
+      gap:20px;
 
     }
 
@@ -142,123 +104,111 @@
 
       background:#fff;
 
-      border-radius:18px;
+      padding:18px;
 
-      padding:22px;
+      border-radius:16px;
 
-      box-shadow:0 8px 20px rgba(0,0,0,.07);
+      box-shadow:var(--shadow);
 
-      transition:.25s ease;
+      border-right:4px solid var(--primary);
 
-      border:1px solid #ece8de;
+      display:flex;
 
-    }
+      flex-direction:column;
 
-    .card:hover{
-
-      transform:translateY(-4px);
+      justify-content:space-between;
 
     }
 
-    .badge{
+    .tag{
 
-      display:inline-block;
-
-      background:#114232;
+      background:var(--primary);
 
       color:#fff;
 
-      padding:6px 12px;
+      padding:4px 10px;
 
-      border-radius:30px;
+      border-radius:20px;
 
-      font-size:.85rem;
+      font-size:12px;
 
-      margin-bottom:12px;
+      display:inline-block;
 
-    }
+      margin-bottom:8px;
 
-    .card h2{
-
-      font-size:1.35rem;
-
-      color:#114232;
-
-      margin-bottom:12px;
-
-      line-height:1.5;
+      width:max-content;
 
     }
 
-    .card p{
+    .num{
 
-      color:#444;
+      font-size:13px;
 
-      font-size:.97rem;
+      font-weight:bold;
 
-      margin-bottom:12px;
+      color:var(--primary);
 
-    }
-
-    .card ul{
-
-      padding-right:18px;
-
-      margin-bottom:12px;
+      margin-bottom:6px;
 
     }
 
-    .card ul li{
+    h2{
+
+      font-size:16px;
+
+      margin-bottom:10px;
+
+      color:var(--primary);
+
+    }
+
+    .q{
+
+      font-weight:bold;
+
+      color:var(--primary);
+
+      margin-top:8px;
+
+    }
+
+    .a{
+
+      color:var(--muted);
 
       margin-bottom:8px;
 
     }
 
-    .tip{
+    .btn{
 
-      background:#f4fbf7;
+      margin-top:15px;
 
-      border:1px solid #dcefe5;
-
-      color:#114232;
-
-      padding:12px;
-
-      border-radius:12px;
-
-      font-size:.92rem;
-
-    }
-
-    .tags{
-
-      margin-top:14px;
-
-      padding-top:12px;
-
-      border-top:1px dashed #d8d2c6;
-
-      font-size:.85rem;
-
-      color:#666;
-
-      line-height:1.8;
-
-    }
-
-    footer{
-
-      margin-top:35px;
-
-      background:#114232;
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
 
       color:#fff;
 
       text-align:center;
 
-      padding:20px;
+      padding:10px;
 
-      font-size:.95rem;
+      border-radius:12px;
+
+      text-decoration:none;
+
+      font-weight:bold;
+
+      transition:0.3s;
+
+      display:block;
+
+    }
+
+    .btn:hover{
+
+      transform:translateY(-3px);
+
+      opacity:0.9;
 
     }
 
@@ -269,242 +219,206 @@
 <body>
 
 <header>
-  
-  <a href="/" class="home-btn">الرئيسية</a>
 
-  <h1>مقالات نظام الطيبات</h1>
+  <a class="home-btn" href="index.html">الرئيسية</a>
 
-  <p>دليل مبسط وجذاب عن التغذية وفق نظام الطيبات، ملتزم فقط بالمسموحات المعتمدة دون الخروج عنها، بصياغة سهلة ومحسنة لمحركات البحث.</p>
+  <h1>مقالات لحومي</h1>
+
+  <p>فوائد البروتين (لحوم - دجاج - أسماك - بيض)</p>
 
 </header>
 
 <div class="container">
 
-  <div class="hero-note">
+<div class="grid">
 
-    <strong>تنبيه مهم:</strong> جميع المقالات التالية ملتزمة فقط بالمسموحات الواضحة في نظام الطيبات:
+<!-- 1 -->
 
-    الخبز (توست النخالة)، الجبن المطبوخ، الزيتون، النوتيلا، المربى، العسل، البطاطس، الأرز، اللحوم، السمك، التمر، العنب، الجوافة، الرمان، التين، الموز، الفراولة، المشمش، والشاي الأخضر.
+<div class="card">
 
-  </div>
+<div class="num">المقال 1</div>
 
-  <section class="articles">
+<span class="tag">بروتين</span>
 
-    <article class="card">
+<h2>ما هو البروتين ولماذا مهم للجسم؟</h2>
 
-      <span class="badge">مقال 1</span>
+<div class="q">س: ما هو البروتين؟</div>
 
-      <h2>ما هو نظام الطيبات؟ ولماذا أصبح من أشهر أنظمة التغذية؟</h2>
+<div class="a">ج: عنصر أساسي لبناء العضلات والخلايا.</div>
 
-      <p>نظام الطيبات هو أسلوب غذائي يعتمد على الوضوح والبساطة في الطعام، ويركز على اختيار الأطعمة المسموحة فقط لتقليل الضغط على الهضم وتحسين الطاقة اليومية.</p>
+<div class="q">س: لماذا مهم؟</div>
 
-      <p>الهدف الأساسي من النظام هو تقليل الفوضى الغذائية، والاعتماد على أطعمة واضحة ومباشرة تساعد الجسم على الراحة بدلًا من الإرهاق.</p>
+<div class="a">ج: يساعد على النمو والطاقة.</div>
 
-      <ul>
-
-        <li>يركز على الطعام البسيط</li>
-
-        <li>يعتمد على أكل واضح وسهل</li>
-
-        <li>يقلل الخمول والانتفاخ</li>
-
-      </ul>
-
-      <div class="tip">كلما كانت الوجبة أبسط، كان الهضم أفضل.</div>
-
-      <div class="tags">#نظام_الطيبات #الطيبات #رجيم #دايت #تغذية #أكل_صحي #صحة #هضم #نظام_غذائي #خسارة_الوزن #diet #healthyfood #nutrition #weightloss #healthylifestyle</div>
-
-    </article>
-
-    <article class="card">
-
-      <span class="badge">مقال 2</span>
-
-      <h2>أفضل فطور في نظام الطيبات يمنحك طاقة وتركيز من الصباح</h2>
-
-      <p>الفطور في نظام الطيبات يجب أن يكون بسيطًا ومريحًا للمعدة، ويعتمد على أطعمة تعطي طاقة واضحة بدون ثقل.</p>
-
-      <ul>
-
-        <li>توست النخالة مع عسل</li>
-
-        <li>توست النخالة مع مربى</li>
-
-        <li>جبن مطبوخ مع خبز</li>
-
-        <li>شاي أخضر</li>
-
-      </ul>
-
-      <p>هذا النوع من الفطور يمنح الجسم بداية خفيفة ومريحة ويقلل الخمول في أول اليوم.</p>
-
-      <div class="tip">فطورك البسيط هو أول خطوة ليوم خفيف.</div>
-
-      <div class="tags">#فطور_صحي #فطور #نظام_الطيبات #أكل_صحي #صباح_صحي #طاقة #healthybreakfast #breakfast #dietfood #nutritiontips #healthyeating</div>
-
-    </article>
-
-    <article class="card">
-
-      <span class="badge">مقال 3</span>
-
-      <h2>لماذا يعتبر العسل من أهم أطعمة نظام الطيبات؟</h2>
-
-      <p>العسل من الأطعمة الأساسية في نظام الطيبات لأنه غذاء واضح وبسيط وسهل التناول، ويمكن استخدامه في بداية اليوم أو كخيار خفيف بين الوجبات.</p>
-
-      <p>يمتاز العسل بسهولة استخدامه، ومذاقه المقبول، ومرونته في النظام الغذائي.</p>
-
-      <div class="tip">العسل خيار بسيط وسريع ومناسب للطاقة الخفيفة.</div>
-
-      <div class="tags">#عسل #فوائد_العسل #نظام_الطيبات #تغذية #أكل_صحي #صحة #honey #naturalfood #healthyfood #immunity #nutrition</div>
-
-    </article>
-
-    <article class="card">
-
-      <span class="badge">مقال 4</span>
-
-      <h2>اللحوم في نظام الطيبات: كيف تأكلها بشكل صحيح؟</h2>
-
-      <p>اللحوم من الأطعمة المسموحة والمهمة في نظام الطيبات، لأنها مصدر غذائي أساسي يعتمد عليه كثير من الناس في وجباتهم الرئيسية.</p>
-
-      <ul>
-
-        <li>تناول اللحوم بوجبة واضحة</li>
-
-        <li>اجعل الوجبة بسيطة</li>
-
-        <li>لا تبالغ في تنوع الأصناف داخل الطبق</li>
-
-      </ul>
-
-      <div class="tip">اللحوم مناسبة حين تكون الوجبة مرتبة وواضحة.</div>
-
-      <div class="tags">#لحوم #بروتين #نظام_الطيبات #تغذية #أكل_صحي #protein #meat #diet #nutrition #healthymeals</div>
-
-    </article>
-
-    <article class="card">
-
-      <span class="badge">مقال 5</span>
-
-      <h2>السمك في نظام الطيبات: خيار خفيف ومناسب للهضم</h2>
-
-      <p>السمك من أفضل الأطعمة المسموحة في نظام الطيبات، ويُفضله كثيرون لأنه وجبة أخف من غيره ويمنح شعورًا أفضل بعد الأكل.</p>
-
-      <p>الاعتماد على السمك كوجبة رئيسية يجعل اليوم أخف ويقلل الإحساس بالثقل بعد الطعام.</p>
-
-      <div class="tip">السمك من أكثر الوجبات راحة داخل النظام.</div>
-
-      <div class="tags">#سمك #فوائد_السمك #نظام_الطيبات #أكل_صحي #صحة #fish #healthyfood #omega3 #nutrition #dietfood</div>
-
-    </article>
-
-    <article class="card">
-
-      <span class="badge">مقال 6</span>
-
-      <h2>الفواكه المسموحة في نظام الطيبات: أفضل اختيار للحلا الطبيعي</h2>
-
-      <p>يسمح نظام الطيبات بعدد محدد من الفواكه الواضحة مثل: التمر، العنب، الجوافة، الرمان، التين، الموز، الفراولة، والمشمش.</p>
-
-      <p>هذه الفواكه تُعد خيارًا مناسبًا لمن يريد طعمًا حلوًا بشكل بسيط وواضح.</p>
-
-      <div class="tip">الفاكهة المسموحة أفضل من الحلويات الثقيلة.</div>
-
-      <div class="tags">#فواكه #فاكهة #نظام_الطيبات #تغذية #أكل_صحي #صحة #fruits #healthyfood #nutrition #naturalfood #diet</div>
-
-    </article>
-
-    <article class="card">
-
-      <span class="badge">مقال 7</span>
-
-      <h2>الأرز والبطاطس في نظام الطيبات: هل هما مسموحان؟</h2>
-
-      <p>نعم، الأرز والبطاطس من المسموحات في نظام الطيبات، وهذه نقطة مهمة تجعل النظام أسهل وأقرب لحياة الناس اليومية.</p>
-
-      <ul>
-
-        <li>الأرز مسموح بجميع أشكاله</li>
-
-        <li>البطاطس مسموحة بجميع أشكالها</li>
-
-      </ul>
-
-      <p>وهذا يمنح مرونة كبيرة في بناء وجبات مشبعة وسهلة.</p>
-
-      <div class="tip">النظام لا يعتمد على الحرمان، بل على الاختيار الواضح.</div>
-
-      <div class="tags">#أرز #بطاطس #نظام_الطيبات #أكل_صحي #تغذية #rice #potato #dietfood #healthymeals #nutrition</div>
-
-    </article>
-
-    <article class="card">
-
-      <span class="badge">مقال 8</span>
-
-      <h2>الشاي الأخضر في نظام الطيبات: لماذا يفضله كثيرون؟</h2>
-
-      <p>الشاي الأخضر من أشهر المشروبات المسموحة في نظام الطيبات، ويُستخدم كثيرًا كخيار خفيف ومريح خلال اليوم.</p>
-
-      <p>يمتاز بأنه بسيط، واضح، ومناسب لأسلوب النظام الهادئ والمنظم.</p>
-
-      <div class="tip">الشاي الأخضر خيار يومي مناسب داخل النظام.</div>
-
-      <div class="tags">#شاي_أخضر #الشاي_الأخضر #نظام_الطيبات #تغذية #صحة #greentea #detox #healthyfood #diet #nutrition</div>
-
-    </article>
-
-    <article class="card">
-
-      <span class="badge">مقال 9</span>
-
-      <h2>كيف ترتب يومك على نظام الطيبات بدون تعقيد؟</h2>
-
-      <p>النجاح في نظام الطيبات لا يعتمد على التعقيد، بل على البساطة. ابدأ يومك بفطور واضح، ثم وجبة رئيسية مرتبة، ثم خيار خفيف من المسموحات.</p>
-
-      <ul>
-
-        <li>فطور بسيط</li>
-
-        <li>وجبة رئيسية واضحة</li>
-
-        <li>فاكهة أو شاي أخضر</li>
-
-      </ul>
-
-      <div class="tip">النظام ينجح مع البساطة لا مع التعقيد.</div>
-
-      <div class="tags">#نظام_الطيبات #تنظيم_الأكل #أكل_صحي #تغذية #صحة #dietplan #mealplan #healthyhabits #nutritiontips</div>
-
-    </article>
-
-    <article class="card">
-
-      <span class="badge">مقال 10</span>
-
-      <h2>هل نظام الطيبات مناسب للاستمرار؟ ولماذا يتمسك به كثيرون؟</h2>
-
-      <p>يتمسك كثير من الناس بنظام الطيبات لأنه بسيط، مفهوم، وسهل التطبيق في الحياة اليومية دون حسابات معقدة.</p>
-
-      <p>وجود أطعمة واضحة ومسموحة يجعل الالتزام أسهل، ويجعل النظام أقرب لأن يكون أسلوب حياة من مجرد تجربة مؤقتة.</p>
-
-      <div class="tip">كلما كان النظام أوضح، كان الاستمرار عليه أسهل.</div>
-
-      <div class="tags">#نظام_الطيبات #لايف_ستايل #أكل_صحي #تغذية #صحة #healthylifestyle #diet #nutrition #healthyhabits #wellness</div>
-
-    </article>
-
-  </section>
+<a class="btn" href="article1.html">اقرأ المقال كاملاً</a>
 
 </div>
 
-<footer>
+<!-- 2 -->
 
-  جميع المقالات مكتوبة وفق نظام الطيبات والمسموحات المعتمدة فقط © taybat.online
+<div class="card">
 
-</footer>
+<div class="num">المقال 2</div>
+
+<span class="tag">لحوم</span>
+
+<h2>فوائد اللحوم الحمراء</h2>
+
+<div class="q">س: هل اللحوم مفيدة؟</div>
+
+<div class="a">ج: نعم لبناء العضلات.</div>
+
+<a class="btn" href="article2.html">اقرأ المقال كاملاً</a>
+
+</div>
+
+<!-- 3 -->
+
+<div class="card">
+
+<div class="num">المقال 3</div>
+
+<span class="tag">دجاج</span>
+
+<h2>فوائد الدجاج</h2>
+
+<div class="q">س: لماذا الدجاج مهم؟</div>
+
+<div class="a">ج: بروتين خفيف وسهل الهضم.</div>
+
+<a class="btn" href="article3.html">اقرأ المقال كاملاً</a>
+
+</div>
+
+<!-- 4 -->
+
+<div class="card">
+
+<div class="num">المقال 4</div>
+
+<span class="tag">أسماك</span>
+
+<h2>فوائد السمك</h2>
+
+<div class="q">س: أهم فائدة؟</div>
+
+<div class="a">ج: أوميغا 3.</div>
+
+<a class="btn" href="article4.html">اقرأ المقال كاملاً</a>
+
+</div>
+
+<!-- 5 -->
+
+<div class="card">
+
+<div class="num">المقال 5</div>
+
+<span class="tag">بيض</span>
+
+<h2>فوائد البيض</h2>
+
+<div class="q">س: هل هو بروتين كامل؟</div>
+
+<div class="a">ج: نعم.</div>
+
+<a class="btn" href="article5.html">اقرأ المقال كاملاً</a>
+
+</div>
+
+<!-- 6 -->
+
+<div class="card">
+
+<div class="num">المقال 6</div>
+
+<span class="tag">بروتين</span>
+
+<h2>كم يحتاج الجسم بروتين؟</h2>
+
+<div class="q">س: الكمية؟</div>
+
+<div class="a">ج: حسب الوزن والنشاط.</div>
+
+<a class="btn" href="article6.html">اقرأ المقال كاملاً</a>
+
+</div>
+
+<!-- 7 -->
+
+<div class="card">
+
+<div class="num">المقال 7</div>
+
+<span class="tag">دجاج</span>
+
+<h2>الدجاج بعد التمرين</h2>
+
+<div class="q">س: لماذا بعد التمرين؟</div>
+
+<div class="a">ج: لاستشفاء العضلات.</div>
+
+<a class="btn" href="article7.html">اقرأ المقال كاملاً</a>
+
+</div>
+
+<!-- 8 -->
+
+<div class="card">
+
+<div class="num">المقال 8</div>
+
+<span class="tag">لحوم</span>
+
+<h2>اللحوم والطاقة</h2>
+
+<div class="q">س: هل تقوي الجسم؟</div>
+
+<div class="a">ج: نعم جدًا.</div>
+
+<a class="btn" href="article8.html">اقرأ المقال كاملاً</a>
+
+</div>
+
+<!-- 9 -->
+
+<div class="card">
+
+<div class="num">المقال 9</div>
+
+<span class="tag">أسماك</span>
+
+<h2>السمك والدماغ</h2>
+
+<div class="q">س: هل يقوي الذاكرة؟</div>
+
+<div class="a">ج: نعم.</div>
+
+<a class="btn" href="article9.html">اقرأ المقال كاملاً</a>
+
+</div>
+
+<!-- 10 -->
+
+<div class="card">
+
+<div class="num">المقال 10</div>
+
+<span class="tag">بيض</span>
+
+<h2>البيض والرياضة</h2>
+
+<div class="q">س: هل مفيد للعضلات؟</div>
+
+<div class="a">ج: نعم جدًا.</div>
+
+<a class="btn" href="article10.html">اقرأ المقال كاملاً</a>
+
+</div>
+
+</div>
+
+</div>
 
 </body>
 
