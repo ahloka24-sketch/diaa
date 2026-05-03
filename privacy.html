@@ -8,21 +8,61 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>سياسة الخصوصية | نظام الطيبات</title>
+  <title>سياسة الخصوصية | لحومي</title>
 
-  <meta name="description" content="سياسة الخصوصية لموقع نظام الطيبات توضح كيفية جمع البيانات واستخدام الكوكيز والإعلانات مع إخلاء مسؤولية طبي حول المحتوى الغذائي.">
+  <meta name="description" content="سياسة الخصوصية لموقع لحومي توضح كيفية جمع البيانات واستخدام الكوكيز والإعلانات مع إخلاء مسؤولية حول المحتوى الغذائي والبروتيني.">
 
   <style>
 
-    body{
+    :root{
+
+      --primary:#6e1414;
+
+      --primary-light:#a61e1e;
+
+      --accent:#d4a017;
+
+      --accent-light:#f6d365;
+
+      --bg:#fff8f6;
+
+      --white:#ffffff;
+
+      --text:#2f1f1f;
+
+      --muted:#6b4b4b;
+
+      --shadow:0 10px 30px rgba(110,20,20,0.10);
+
+      --radius:18px;
+
+    }
+
+    *{
 
       margin:0;
 
-      font-family: Arial, sans-serif;
+      padding:0;
 
-      background:#f3faf4;
+      box-sizing:border-box;
 
-      color:#1f2d1f;
+      -webkit-tap-highlight-color:transparent;
+
+    }
+
+    body{
+
+      font-family:Arial,sans-serif;
+
+      background:
+
+        radial-gradient(circle at top right, rgba(166,30,30,0.05), transparent 35%),
+
+        radial-gradient(circle at top left, rgba(212,160,23,0.06), transparent 30%),
+
+        var(--bg);
+
+      color:var(--text);
 
       line-height:1.9;
 
@@ -30,41 +70,75 @@
 
     header{
 
-      background:#1f6b3a;
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
 
       color:white;
 
-      padding:16px;
+      padding:18px 16px;
 
       position:relative;
 
       text-align:center;
 
-    }
+      border-radius:0 0 28px 28px;
 
-    /* زر الرئيسية */
+      box-shadow:var(--shadow);
+
+    }
 
     .home-btn{
 
       position:absolute;
 
-      top:12px;
+      top:14px;
 
-      left:12px;
+      left:14px;
 
       background:white;
 
-      color:#1f6b3a;
+      color:var(--primary);
 
-      padding:6px 12px;
+      padding:7px 14px;
 
-      border-radius:8px;
+      border-radius:10px;
 
       text-decoration:none;
 
       font-size:13px;
 
       font-weight:bold;
+
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+
+      transition:.3s;
+
+    }
+
+    .home-btn:hover{
+
+      background:#fff4f4;
+
+    }
+
+    header h1{
+
+      font-size:26px;
+
+      margin-bottom:4px;
+
+    }
+
+    /* ✅ التعديل هنا: العنوان الفرعي أبيض وواضح */
+
+    header p{
+
+      font-size:14px;
+
+      color:#ffffff;
+
+      font-weight:600;
+
+      text-shadow:0 2px 6px rgba(0,0,0,0.35);
 
     }
 
@@ -76,7 +150,7 @@
 
       margin:auto;
 
-      padding:12px;
+      padding:14px;
 
       box-sizing:border-box;
 
@@ -84,25 +158,39 @@
 
     .card{
 
-      background:white;
+      background:rgba(255,255,255,0.96);
 
-      padding:16px;
+      backdrop-filter:blur(8px);
 
-      margin:12px 0;
+      padding:18px;
 
-      border-radius:12px;
+      margin:14px 0;
 
-      box-shadow:0 2px 8px rgba(0,0,0,0.08);
+      border-radius:var(--radius);
 
-      border-right:4px solid #1f6b3a;
+      box-shadow:var(--shadow);
+
+      border-right:5px solid var(--primary-light);
+
+      transition:.25s ease;
+
+    }
+
+    .card:hover{
+
+      transform:translateY(-2px);
+
+      box-shadow:0 14px 30px rgba(110,20,20,0.12);
 
     }
 
     h2{
 
-      color:#1f6b3a;
+      color:var(--primary);
 
       margin-top:0;
+
+      margin-bottom:10px;
 
       font-size:20px;
 
@@ -112,27 +200,45 @@
 
       font-size:15px;
 
+      color:var(--muted);
+
+    }
+
+    strong{
+
+      color:var(--primary);
+
     }
 
     ul{
 
-      padding-right:18px;
+      padding-right:20px;
+
+      margin:10px 0;
+
+    }
+
+    li{
+
+      margin-bottom:6px;
 
     }
 
     footer{
 
-      background:#1f6b3a;
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
 
       color:white;
 
       text-align:center;
 
-      padding:14px;
+      padding:16px;
 
-      margin-top:18px;
+      margin-top:20px;
 
       font-size:14px;
+
+      border-radius:24px 24px 0 0;
 
     }
 
@@ -140,7 +246,13 @@
 
       header h1{
 
-        font-size:18px;
+        font-size:20px;
+
+      }
+
+      header p{
+
+        font-size:12px;
 
       }
 
@@ -148,13 +260,25 @@
 
         font-size:12px;
 
-        padding:5px 10px;
+        padding:6px 10px;
 
       }
 
       .card{
 
-        padding:14px;
+        padding:15px;
+
+      }
+
+      h2{
+
+        font-size:18px;
+
+      }
+
+      p, li{
+
+        font-size:14px;
 
       }
 
@@ -172,7 +296,7 @@
 
   <h1>سياسة الخصوصية</h1>
 
-  <p>نظام الطيبات - حماية بيانات الزوار</p>
+  <p>لحومي - حماية بيانات الزوار</p>
 
 </header>
 
@@ -184,7 +308,7 @@
 
     <p>
 
-      نرحب بكم في موقع <strong>نظام الطيبات</strong>، ونؤكد التزامنا بحماية خصوصية المستخدمين 
+      نرحب بكم في موقع <strong>لحومي</strong>، ونؤكد التزامنا بحماية خصوصية المستخدمين
 
       وتوضيح كيفية جمع واستخدام البيانات بشكل شفاف وآمن.
 
@@ -198,7 +322,7 @@
 
     <p>
 
-      يستخدم الموقع ملفات تعريف الارتباط لتحسين تجربة التصفح وتحليل الأداء 
+      يستخدم الموقع ملفات تعريف الارتباط لتحسين تجربة التصفح وتحليل الأداء
 
       وعرض محتوى وإعلانات مناسبة عبر Google AdSense.
 
@@ -248,7 +372,7 @@
 
     <p>
 
-      نحن لا نقوم بجمع أي بيانات شخصية حساسة مثل الاسم أو رقم الهاتف أو البيانات المالية.  
+      نحن لا نقوم بجمع أي بيانات شخصية حساسة مثل الاسم أو رقم الهاتف أو البيانات المالية.
 
       يتم التعامل مع البيانات بشكل آمن ووفق معايير الحماية الحديثة.
 
@@ -270,19 +394,19 @@
 
   <div class="card">
 
-    <h2>⚠️ إخلاء مسؤولية طبية</h2>
+    <h2>⚠️ إخلاء مسؤولية غذائية</h2>
 
     <p>
 
-      لا يقدم موقع <strong>نظام الطيبات</strong> أي إرشادات طبية أو وصفات علاجية أو أدوية أو بدائل طبية لأي حالة صحية.
+      لا يقدم موقع <strong>لحومي</strong> أي إرشادات طبية أو وصفات علاجية أو أدوية أو بدائل طبية لأي حالة صحية.
 
     </p>
 
     <p>
 
-      يقتصر دور الموقع فقط على عرض الأطعمة المفيدة للجسم، والتي تم التوافق عليها بشكل عام في الإرشادات الغذائية
+      يقتصر دور الموقع فقط على عرض المعلومات الغذائية الخاصة بالبروتينات ومصادرها
 
-      والمتفق عليها من قبل معظم الأطباء والجهات الصحية والسياسات الغذائية المعتمدة في الدول.
+      مثل اللحوم والأسماك والدواجن والبيض، وفقًا للمعلومات الغذائية العامة.
 
     </p>
 
@@ -300,7 +424,7 @@
 
     <p>
 
-      باستخدامك لموقع نظام الطيبات، فإنك توافق على سياسة الخصوصية هذه.
+      باستخدامك لموقع <strong>لحومي</strong>، فإنك توافق على سياسة الخصوصية هذه.
 
     </p>
 
@@ -310,7 +434,7 @@
 
 <footer>
 
-  © نظام الطيبات - جميع الحقوق محفوظة
+  © لحومي - جميع الحقوق محفوظة
 
 </footer>
 
