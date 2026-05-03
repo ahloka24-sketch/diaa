@@ -16,7 +16,7 @@
         
      </script>
 
-      <meta charset="UTF-8">
+        <meta charset="UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -130,25 +130,21 @@
 
     }
 
-    .nav-top{
+    .nav-top{display:flex;justify-content:space-between;align-items:center;}
 
-      display:flex; justify-content:space-between; align-items:center;
-
-    }
-
-    .logo-box{display:flex; align-items:center; gap:12px;}
+    .logo-box{display:flex;align-items:center;gap:12px;}
 
     .logo-icon{
 
-      width:52px; height:52px;
+      width:52px;height:52px;
 
       background:linear-gradient(135deg,var(--accent),var(--accent-light));
 
       border-radius:16px;
 
-      display:flex; align-items:center; justify-content:center;
+      display:flex;align-items:center;justify-content:center;
 
-      font-family:'Amiri'; font-size:20px; color:var(--primary); font-weight:bold;
+      font-family:'Amiri';font-size:20px;color:var(--primary);font-weight:bold;
 
       box-shadow:0 8px 18px rgba(0,0,0,.12);
 
@@ -168,19 +164,19 @@
 
     .tab-bar{
 
-      display:flex; overflow-x:auto; padding:0 20px; gap:10px;
+      display:flex;overflow-x:auto;padding:0 20px;gap:10px;
 
-      scrollbar-width:none; margin:20px 0;
+      scrollbar-width:none;margin:20px 0;
 
     }
 
     .tab{
 
-      background:white; padding:10px 22px; border-radius:30px;
+      background:white;padding:10px 22px;border-radius:30px;
 
-      font-weight:700; font-size:13px; color:var(--primary);
+      font-weight:700;font-size:13px;color:var(--primary);
 
-      white-space:nowrap; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,.04);
+      white-space:nowrap;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.04);
 
     }
 
@@ -260,15 +256,41 @@
 
     }
 
-    .store-btns{display:flex;gap:10px;padding:0 20px;margin-bottom:20px;}
+    .store-btns{
+
+      display:grid;
+
+      grid-template-columns:repeat(3,1fr);
+
+      gap:10px;
+
+      padding:0 20px;
+
+      margin-bottom:20px;
+
+    }
 
     .store-btn{
 
-      flex:1;background:var(--white);border:2px solid var(--primary);
+      background:var(--white);
 
-      color:var(--primary);padding:12px;border-radius:14px;font-weight:800;
+      border:2px solid var(--primary);
 
-      cursor:pointer;transition:.3s;text-align:center;
+      color:var(--primary);
+
+      padding:12px;
+
+      border-radius:14px;
+
+      font-weight:800;
+
+      cursor:pointer;
+
+      transition:.3s;
+
+      text-align:center;
+
+      font-size:13px;
 
     }
 
@@ -342,13 +364,13 @@
 
   <div class="side-link" onclick="window.location.href='https://taybat.online/';"><span>👨🏻‍💻</span> تواصل معنا</div>
 
-  <div class="side-link" onclick="window.location.href='https://taybat.online/privacy.html';"><span>🕵️‍♂️</span> سياسة الخصوصية</div>
+  <div class="side-link" onclick="window.location.href='https://taybat.online/';"><span>🕵️‍♂️</span> سياسة الخصوصية</div>
 
   <div class="side-link" onclick="window.location.href='https://taybat.online/';"><span>💁🏻‍♂️</span> من نحن ؟</div>
 
   <hr style="opacity:.1;margin:15px 0;">
 
-  <p style="text-align:center;font-size:10px;color:#999;">الإصدار 1.1.0</p>
+  <p style="text-align:center;font-size:10px;color:#999;">الإصدار 2.2.0</p>
 
 </div>
 
@@ -412,13 +434,19 @@
 
 <div id="page-stores" class="page">
 
-  <div style="padding:20px 20px 15px;"><h2 style="font-size:18px;color:var(--primary);">أفضل أماكن شراء البروتين الطازج 😍</h2></div>
+  <div style="padding:20px 20px 15px;">
+
+    <h2 style="font-size:18px;color:var(--primary);">أفضل أماكن شراء البروتين الطازج 😍</h2>
+
+  </div>
 
   <div class="store-btns">
 
-    <button id="btn-show-rest" class="store-btn active" onclick="renderStores('restaurants')">🥩 محلات اللحوم</button>
+    <button id="btn-show-meat" class="store-btn active" onclick="renderStores('meat')">🥩 لحوم</button>
 
-    <button id="btn-show-market" class="store-btn" onclick="renderStores('markets')">🐟 الأسماك والدواجن</button>
+    <button id="btn-show-fish" class="store-btn" onclick="renderStores('fish')">🐟 أسماك</button>
+
+    <button id="btn-show-chicken" class="store-btn" onclick="renderStores('chicken')">🍗 دجاج</button>
 
   </div>
 
@@ -480,23 +508,33 @@ let currentDay = "السبت";
 
 const storeData = {
 
-  restaurants: [
+  meat: [
 
-    { name:"ملحمة السلطان", icon:"🥩", address:"القاهرة - مدينة نصر", phone:"0123456789" },
+    { name:"ملحمة السلطان", icon:"🥩", address:"القاهرة - مدينة نصر", phone:"01000000000" },
 
-    { name:"جزارة الريف البلدي", icon:"🍖", address:"الجيزة - الدقي", phone:"0100000000" },
+    { name:"جزارة الريف البلدي", icon:"🍖", address:"الجيزة - الدقي", phone:"01100000000" },
 
-    { name:"بيت اللحوم الممتازة", icon:"🥩", address:"الإسكندرية - سموحة", phone:"0112233445" }
+    { name:"بيت اللحوم الممتازة", icon:"🥩", address:"الإسكندرية - سموحة", phone:"01200000000" }
 
   ],
 
-  markets: [
+  fish: [
 
-    { name:"سوق البحّار", icon:"🐟", address:"الإسكندرية - بحري", phone:"19000" },
+    { name:"سوق البحّار", icon:"🐟", address:"الإسكندرية - بحري", phone:"01000000000" },
 
-    { name:"دواجن المزرعة", icon:"🍗", address:"المعادي - شارع 9", phone:"0155555555" },
+    { name:"أسماك البحر الطازجة", icon:"🦐", address:"بورسعيد - الشرق", phone:"01100000000" },
 
-    { name:"مزرعة البيض الطازج", icon:"🥚", address:"وسط البلد", phone:"0128888888" }
+    { name:"بيت السمك", icon:"🐠", address:"السويس - الأربعين", phone:"01200000000" }
+
+  ],
+
+  chicken: [
+
+    { name:"دواجن المزرعة", icon:"🍗", address:"القاهرة - المعادي", phone:"01000000000" },
+
+    { name:"بيت الفراخ الطازجة", icon:"🐔", address:"الجيزة - فيصل", phone:"01100000000" },
+
+    { name:"مزرعة الدواجن", icon:"🥚", address:"المنصورة - المشاية", phone:"01200000000" }
 
   ]
 
@@ -512,7 +550,7 @@ const allowedData = [
 
   { icon:'🥘', t:'اللحوم الشعبية', d:'كوارع، طرب، سجق بلدي، حواوشي لحمة، بيف برجر' },
 
-  { icon:'🔥', t:'طرق الطهي', d:'مشوي، مسلوق، مطهي ببطء، طاجن، مدخن، محمر' }
+  { icon:'🔥', t:'طرق الطهي', d:'مشوي، مسلوق، طاجن، مدخن، محمر' }
 
 ];
 
@@ -626,7 +664,7 @@ function init(){
 
   renderLists();
 
-  renderStores("restaurants");
+  renderStores("meat");
 
 }
 
@@ -676,9 +714,11 @@ function renderStores(category){
 
   const data = storeData[category];
 
-  document.getElementById("btn-show-rest").classList.toggle("active", category==="restaurants");
+  document.getElementById("btn-show-meat").classList.toggle("active", category==="meat");
 
-  document.getElementById("btn-show-market").classList.toggle("active", category==="markets");
+  document.getElementById("btn-show-fish").classList.toggle("active", category==="fish");
+
+  document.getElementById("btn-show-chicken").classList.toggle("active", category==="chicken");
 
   list.innerHTML = data.map(s => `
 
