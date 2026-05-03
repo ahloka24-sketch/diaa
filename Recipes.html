@@ -10,19 +10,35 @@
 
   <title>وصفات البروتين | لحومي</title>
 
-  <meta name="description" content="وصفات بروتين عالية الجودة من لحومي لبناء العضلات وتحسين الصحة والطاقة، وصفات مفصلة وسهلة التحضير." />
-
   <style>
+
+    :root{
+
+      --primary:#6e1414;
+
+      --primary-light:#a61e1e;
+
+      --bg:#fff8f6;
+
+      --text:#2f1f1f;
+
+      --muted:#6b4b4b;
+
+      --white:#fff;
+
+      --shadow:0 10px 25px rgba(110,20,20,0.12);
+
+    }
 
     *{margin:0;padding:0;box-sizing:border-box}
 
     body{
 
-      font-family:'Tahoma',sans-serif;
+      font-family:Tahoma;
 
-      background:#fff;
+      background:var(--bg);
 
-      color:#222;
+      color:var(--text);
 
       line-height:1.9;
 
@@ -30,13 +46,13 @@
 
     header{
 
-      background:linear-gradient(135deg,#114232,#1d5c46);
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
 
       color:#fff;
 
-      padding:38px 20px 30px;
-
       text-align:center;
+
+      padding:35px 20px;
 
       position:relative;
 
@@ -46,29 +62,25 @@
 
       position:absolute;
 
-      top:14px;
+      top:12px;
 
-      left:14px;
+      left:12px;
 
       background:#fff;
 
-      color:#114232;
-
-      text-decoration:none;
+      color:var(--primary);
 
       padding:7px 14px;
 
       border-radius:20px;
 
-      font-size:.8rem;
-
       font-weight:bold;
 
+      text-decoration:none;
+
+      font-size:13px;
+
     }
-
-    header h1{font-size:2rem;margin-bottom:10px}
-
-    header p{font-size:1rem;opacity:.95}
 
     .container{
 
@@ -82,25 +94,25 @@
 
       background:#fff;
 
-      border-right:6px solid #114232;
+      border-right:4px solid var(--primary);
 
-      padding:18px;
+      padding:15px;
 
-      border-radius:14px;
+      border-radius:12px;
 
-      margin-bottom:25px;
+      margin-bottom:20px;
 
-      box-shadow:0 4px 12px rgba(0,0,0,.06);
+      box-shadow:var(--shadow);
 
     }
 
-    .articles{
+    .grid{
 
       display:grid;
 
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 
-      gap:22px;
+      gap:20px;
 
     }
 
@@ -108,45 +120,71 @@
 
       background:#fff;
 
-      border-radius:18px;
+      padding:18px;
 
-      padding:22px;
+      border-radius:16px;
 
-      box-shadow:0 8px 20px rgba(0,0,0,.07);
+      box-shadow:var(--shadow);
 
-      border:1px solid #eee;
+      border-right:4px solid var(--primary);
 
-      transition:.2s;
+      display:flex;
+
+      flex-direction:column;
 
     }
 
-    .card:hover{transform:translateY(-4px)}
+    .tag{
+
+      background:var(--primary);
+
+      color:#fff;
+
+      padding:4px 10px;
+
+      border-radius:20px;
+
+      font-size:12px;
+
+      width:max-content;
+
+      margin-bottom:8px;
+
+    }
 
     .badge{
 
       display:inline-block;
 
-      background:#114232;
+      background:var(--primary);
 
       color:#fff;
 
-      padding:6px 12px;
+      padding:5px 10px;
 
-      border-radius:30px;
+      border-radius:20px;
 
-      font-size:.85rem;
+      font-size:12px;
 
-      margin-bottom:12px;
+      margin-bottom:10px;
 
     }
 
-    .card h2{
+    h2{
 
-      color:#114232;
+      font-size:16px;
 
-      font-size:1.3rem;
+      color:var(--primary);
 
       margin-bottom:10px;
+
+    }
+
+    p{
+
+      font-size:14px;
+
+      margin-bottom:8px;
 
     }
 
@@ -154,13 +192,15 @@
 
       display:inline-block;
 
-      margin-top:12px;
+      margin-top:10px;
 
-      background:#114232;
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
 
       color:#fff;
 
-      padding:10px 16px;
+      padding:10px;
+
+      text-align:center;
 
       border-radius:10px;
 
@@ -168,11 +208,15 @@
 
       font-weight:bold;
 
+      transition:0.3s;
+
     }
 
     .article-link:hover{
 
-      background:#1d5c46;
+      transform:translateY(-3px);
+
+      opacity:0.9;
 
     }
 
@@ -180,7 +224,7 @@
 
       margin-top:35px;
 
-      background:#114232;
+      background:var(--primary);
 
       color:#fff;
 
@@ -214,9 +258,9 @@
 
   </div>
 
-  <section class="articles">
+  <section class="grid">
 
-    <article class="card">
+    <div class="card">
 
       <span class="badge">وصفة 1</span>
 
@@ -228,9 +272,9 @@
 
       <a href="/fish.html" class="article-link">اقرأ المقال الكامل</a>
 
-    </article>
+    </div>
 
-    <article class="card">
+    <div class="card">
 
       <span class="badge">وصفة 2</span>
 
@@ -242,9 +286,9 @@
 
       <a href="/meat.html" class="article-link">اقرأ المقال الكامل</a>
 
-    </article>
+    </div>
 
-    <article class="card">
+    <div class="card">
 
       <span class="badge">وصفة 3</span>
 
@@ -256,9 +300,9 @@
 
       <a href="/potatoes.html" class="article-link">اقرأ المقال الكامل</a>
 
-    </article>
+    </div>
 
-    <article class="card">
+    <div class="card">
 
       <span class="badge">وصفة 4</span>
 
@@ -270,9 +314,9 @@
 
       <a href="/fasting.html" class="article-link">اقرأ المقال الكامل</a>
 
-    </article>
+    </div>
 
-    <article class="card">
+    <div class="card">
 
       <span class="badge">وصفة 5</span>
 
@@ -284,9 +328,9 @@
 
       <a href="/articles.html" class="article-link">اقرأ المقال الكامل</a>
 
-    </article>
+    </div>
 
-    <article class="card">
+    <div class="card">
 
       <span class="badge">وصفة 6</span>
 
@@ -298,9 +342,9 @@
 
       <a href="/articles.html" class="article-link">اقرأ المقال الكامل</a>
 
-    </article>
+    </div>
 
-    <article class="card">
+    <div class="card">
 
       <span class="badge">وصفة 7</span>
 
@@ -312,9 +356,9 @@
 
       <a href="/articles.html" class="article-link">اقرأ المقال الكامل</a>
 
-    </article>
+    </div>
 
-    <article class="card">
+    <div class="card">
 
       <span class="badge">وصفة 8</span>
 
@@ -326,9 +370,9 @@
 
       <a href="/articles.html" class="article-link">اقرأ المقال الكامل</a>
 
-    </article>
+    </div>
 
-    <article class="card">
+    <div class="card">
 
       <span class="badge">وصفة 9</span>
 
@@ -340,9 +384,9 @@
 
       <a href="/articles.html" class="article-link">اقرأ المقال الكامل</a>
 
-    </article>
+    </div>
 
-    <article class="card">
+    <div class="card">
 
       <span class="badge">وصفة 10</span>
 
@@ -354,7 +398,7 @@
 
       <a href="/articles.html" class="article-link">اقرأ المقال الكامل</a>
 
-    </article>
+    </div>
 
   </section>
 
