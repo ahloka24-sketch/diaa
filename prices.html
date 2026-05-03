@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>أسعار الأصناف الأسبوعية</title>
+
+  <style>
+
+    *{
+
+      margin:0;
+
+      padding:0;
+
+      box-sizing:border-box;
+
+      font-family:"Tahoma",sans-serif;
+
+    }
+
+    body{
+
+      background:linear-gradient(135deg,#f7f3ea,#efe3c8);
+
+      color:#222;
+
+      padding:20px;
+
+    }
+
+    .wrap{
+
+      max-width:1100px;
+
+      margin:auto;
+
+    }
+
+    .title{
+
+      text-align:center;
+
+      font-size:32px;
+
+      font-weight:bold;
+
+      color:#7a1f1f;
+
+      margin-bottom:10px;
+
+    }
+
+    .sub{
+
+      text-align:center;
+
+      color:#555;
+
+      margin-bottom:25px;
+
+      font-size:15px;
+
+    }
+
+    .tabs{
+
+      display:flex;
+
+      gap:10px;
+
+      overflow-x:auto;
+
+      padding-bottom:10px;
+
+      margin-bottom:20px;
+
+      scrollbar-width:none;
+
+    }
+
+    .tabs::-webkit-scrollbar{
+
+      display:none;
+
+    }
+
+    .tab{
+
+      border:none;
+
+      background:#fff;
+
+      color:#7a1f1f;
+
+      padding:12px 18px;
+
+      border-radius:14px;
+
+      font-size:15px;
+
+      font-weight:bold;
+
+      cursor:pointer;
+
+      white-space:nowrap;
+
+      box-shadow:0 4px 10px rgba(0,0,0,.08);
+
+      transition:.25s;
+
+    }
+
+    .tab.active{
+
+      background:#7a1f1f;
+
+      color:#fff;
+
+    }
+
+    .cards{
+
+      display:grid;
+
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+      gap:18px;
+
+    }
+
+    .card{
+
+      background:#fff;
+
+      border-radius:20px;
+
+      padding:18px;
+
+      box-shadow:0 8px 18px rgba(0,0,0,.08);
+
+      transition:.25s;
+
+      border:1px solid #eee;
+
+    }
+
+    .card:hover{
+
+      transform:translateY(-4px);
+
+    }
+
+    .top{
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      margin-bottom:14px;
+
+    }
+
+    .unit{
+
+      background:#f6ead7;
+
+      color:#7a1f1f;
+
+      padding:8px 14px;
+
+      border-radius:12px;
+
+      font-weight:bold;
+
+      font-size:14px;
+
+    }
+
+    .icon{
+
+      font-size:34px;
+
+    }
+
+    .name{
+
+      color:#a11d1d;
+
+      font-size:20px;
+
+      font-weight:bold;
+
+      margin-bottom:8px;
+
+    }
+
+    .price{
+
+      color:#222;
+
+      font-size:18px;
+
+      font-weight:bold;
+
+      margin-bottom:10px;
+
+    }
+
+    .desc{
+
+      color:#666;
+
+      line-height:1.8;
+
+      font-size:14px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="wrap">
+
+    <div class="title">أسعار الأصناف الأسبوعية</div>
+
+    <div class="sub">تابع أسعار اللحوم والأسماك والدواجن والأعلاف يوميًا بنفس التصميم الأصلي</div>
+
+    <div class="tabs" id="tabs"></div>
+
+    <div class="cards" id="cards"></div>
+
+  </div>
+
+  <script>
+
+    const weeklyMenu = {
+
+      "لحوم":[
+
+        { type:"كيلو", t:"لحم بقري بلدي", d:"سعر اليوم شامل أفضل القطع الطازجة للاستهلاك المحلي", i:"🥩", p:"420 جنيه" },
+
+        { type:"كيلو", t:"لحم ضاني بلدي", d:"سعر مميز للحوم الضأن الطازجة المناسبة للشوي والطهي", i:"🍖", p:"510 جنيه" },
+
+        { type:"كيلو", t:"كبدة بقري طازجة", d:"كبدة ممتازة طازجة مناسبة للمطاعم والمنازل", i:"🐄", p:"290 جنيه" }
+
+      ],
+
+      "أسماك":[
+
+        { type:"كيلو", t:"بلطي ممتاز", d:"بلطي طازج متوسط الحجم مناسب للقلي والشوي", i:"🐟", p:"95 جنيه" },
+
+        { type:"كيلو", t:"سلمون مستورد", d:"سلمون عالي الجودة مناسب للوجبات الصحية", i:"🐠", p:"480 جنيه" },
+
+        { type:"كيلو", t:"جمبري وسط", d:"جمبري طازج ممتاز للطهي والشوي", i:"🦐", p:"360 جنيه" }
+
+      ],
+
+      "دجاج":[
+
+        { type:"كيلو", t:"دجاج أبيض طازج", d:"فراخ بيضاء طازجة مذبوحة يوميًا", i:"🍗", p:"110 جنيه" },
+
+        { type:"كيلو", t:"أوراك دجاج", d:"أوراك دجاج طازجة مناسبة للشوي والتحمير", i:"🍖", p:"98 جنيه" },
+
+        { type:"كيلو", t:"صدور دجاج", d:"صدور دجاج ممتازة قليلة الدهون", i:"🍗", p:"145 جنيه" }
+
+      ],
+
+      "بيض":[
+
+        { type:"كرتونة", t:"بيض أبيض", d:"بيض أبيض طازج إنتاج يومي", i:"🥚", p:"155 جنيه" },
+
+        { type:"كرتونة", t:"بيض أحمر", d:"بيض أحمر بلدي عالي الجودة", i:"🍳", p:"165 جنيه" },
+
+        { type:"طبق", t:"بيض سمان", d:"بيض سمان طازج غني بالبروتين", i:"🥚", p:"75 جنيه" }
+
+      ],
+
+      "حليب":[
+
+        { type:"لتر", t:"حليب بقري طازج", d:"حليب طبيعي كامل الدسم طازج يوميًا", i:"🥛", p:"38 جنيه" },
+
+        { type:"لتر", t:"حليب جاموسي", d:"حليب جاموسي غني بالدسم والقيمة الغذائية", i:"🥛", p:"46 جنيه" },
+
+        { type:"لتر", t:"حليب ماعز", d:"حليب ماعز طبيعي طازج", i:"🐐", p:"52 جنيه" }
+
+      ],
+
+      "علف مواشي":[
+
+        { type:"طن", t:"علف تسمين مواشي", d:"علف متكامل لزيادة الوزن وتحسين النمو", i:"🌾", p:"13200 جنيه" },
+
+        { type:"طن", t:"ردة ناعمة", d:"ردة ممتازة مناسبة للتغذية اليومية", i:"🌿", p:"9800 جنيه" },
+
+        { type:"طن", t:"ذرة صفراء علف", d:"ذرة صفراء مستوردة عالية الجودة", i:"🌽", p:"11800 جنيه" }
+
+      ],
+
+      "علف دواجن":[
+
+        { type:"طن", t:"علف بادئ دواجن", d:"علف بادئ متكامل للكتاكيت في بداية النمو", i:"🐔", p:"14800 جنيه" },
+
+        { type:"طن", t:"علف نامي دواجن", d:"علف نامي عالي البروتين لتحسين التحويل", i:"🌾", p:"14500 جنيه" },
+
+        { type:"طن", t:"علف ناهي دواجن", d:"علف ناهي ممتاز للتسمين النهائي", i:"🐓", p:"14100 جنيه" }
+
+      ],
+
+      "كتاكيت":[
+
+        { type:"كتكوت", t:"كتكوت أبيض", d:"كتكوت تسمين أبيض عمر يوم", i:"🐥", p:"27 جنيه" },
+
+        { type:"كتكوت", t:"كتكوت ساسو", d:"كتكوت ساسو قوي ومناسب للتربية المنزلية", i:"🐣", p:"19 جنيه" },
+
+        { type:"كتكوت", t:"كتكوت بلدي", d:"كتكوت بلدي عمر يوم عالي التحمل", i:"🐤", p:"14 جنيه" }
+
+      ]
+
+    };
+
+    const tabs = document.getElementById("tabs");
+
+    const cards = document.getElementById("cards");
+
+    const keys = Object.keys(weeklyMenu);
+
+    function renderTabs(){
+
+      tabs.innerHTML = "";
+
+      keys.forEach((day,index)=>{
+
+        const btn = document.createElement("button");
+
+        btn.className = "tab" + (index===0 ? " active":"");
+
+        btn.textContent = day;
+
+        btn.onclick = ()=>{
+
+          document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+
+          btn.classList.add("active");
+
+          renderCards(day);
+
+        };
+
+        tabs.appendChild(btn);
+
+      });
+
+    }
+
+    function renderCards(day){
+
+      cards.innerHTML = "";
+
+      weeklyMenu[day].forEach(item=>{
+
+        cards.innerHTML += `
+
+          <div class="card">
+
+            <div class="top">
+
+              <div class="unit">${item.type}</div>
+
+              <div class="icon">${item.i}</div>
+
+            </div>
+
+            <div class="name">${item.t}</div>
+
+            <div class="price">${item.p}</div>
+
+            <div class="desc">${item.d}</div>
+
+          </div>
+
+        `;
+
+      });
+
+    }
+
+    renderTabs();
+
+    renderCards(keys[0]);
+
+  </script>
+
+</body>
+
+</html>
