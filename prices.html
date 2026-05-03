@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>أسعار الأصناف الأسبوعية</title>
+  <title>أسعار اليوم </title>
 
   <style>
 
@@ -30,7 +30,125 @@
 
       color:#222;
 
-      padding:20px;
+    }
+
+    /* ===== Header نفس الرئيسية ===== */
+
+    .topbar{
+
+      background:linear-gradient(135deg,#7a1f1f,#4e1111);
+
+      color:#fff;
+
+      padding:18px 20px;
+
+      box-shadow:0 4px 14px rgba(0,0,0,.15);
+
+      position:sticky;
+
+      top:0;
+
+      z-index:999;
+
+    }
+
+    .topbar-wrap{
+
+      max-width:1100px;
+
+      margin:auto;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:15px;
+
+    }
+
+    .brand{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:12px;
+
+    }
+
+    .brand-icon{
+
+      width:46px;
+
+      height:46px;
+
+      border-radius:14px;
+
+      background:rgba(255,255,255,.12);
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      font-size:24px;
+
+      backdrop-filter:blur(4px);
+
+    }
+
+    .brand-text h1{
+
+      font-size:20px;
+
+      margin-bottom:2px;
+
+    }
+
+    .brand-text p{
+
+      font-size:12px;
+
+      opacity:.85;
+
+    }
+
+    .home-btn{
+
+      background:#fff;
+
+      color:#7a1f1f;
+
+      text-decoration:none;
+
+      padding:10px 16px;
+
+      border-radius:14px;
+
+      font-size:14px;
+
+      font-weight:bold;
+
+      box-shadow:0 4px 10px rgba(0,0,0,.15);
+
+      transition:.25s;
+
+      display:flex;
+
+      align-items:center;
+
+      gap:8px;
+
+    }
+
+    .home-btn:hover{
+
+      transform:translateY(-2px);
+
+      background:#f7f3ea;
 
     }
 
@@ -39,6 +157,8 @@
       max-width:1100px;
 
       margin:auto;
+
+      padding:20px;
 
     }
 
@@ -230,11 +350,37 @@
 
 <body>
 
+  <!-- Header -->
+
+  <header class="topbar">
+
+    <div class="topbar-wrap">
+
+      <a href="index.html" class="home-btn">🏠 </a>
+
+      <div class="brand">
+
+        <div class="brand-icon">🥩</div>
+
+        <div class="brand-text">
+
+          <h1>لحومي </h1>
+
+          <p>أسعار اللحوم والدواجن والأسماك والأعلاف والألبان</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
   <div class="wrap">
 
     <div class="title">أسعار الأصناف الأسبوعية</div>
 
-    <div class="sub">تابع أسعار اللحوم والأسماك والدواجن والأعلاف يوميًا بنفس التصميم الأصلي</div>
+    <div class="sub">تابع أسعار اللحوم والأسماك والدواجن والأعلاف و الألبان يوميًا    </div>
 
     <div class="tabs" id="tabs"></div>
 
