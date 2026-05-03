@@ -8,4 +8,4 @@ Disallow: /assets/
 
 Disallow: /scripts/
 
-Sitemap: https://taybat.online/sitemap.xml
+Sitemap: https://lohomy.online/sitemap.xml
