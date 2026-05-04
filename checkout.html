@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إتمام الدفع | لحومي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6e1414;
+      --primary-light: #a61e1e;
+      --accent: #d4a017;
+      --accent-light: #f6d365;
+      --bg-checkout: #ffffff;
+      --text-main: #1a1a1a;
+      --shadow: 0 12px 35px rgba(0,0,0,0.08);
+      --radius-md: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body { 
+      font-family: 'Tajawal', sans-serif; 
+      background-color: #fcfcfc; 
+      color: var(--text-main); 
+      overflow-x: hidden; 
+    }
+
+    /* --- الهيدر (مطابق تماماً للأول) --- */
+    header {
+      background:
+        linear-gradient(135deg, rgba(110,20,20,.96), rgba(166,30,30,.92)),
+        url('https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop') center/cover;
+      background-blend-mode: overlay;
+      padding: 50px 20px 25px;
+      border-radius: 0 0 40px 40px;
+      color: white;
+      box-shadow: 0 12px 35px rgba(110,20,20,0.12);
+    }
+    .nav-top { display: flex; justify-content: space-between; align-items: center; }
+    .logo-box { display: flex; align-items: center; gap: 12px; }
+    .logo-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 16px; display: flex; align-items: center; justify-content: center;
+      font-family: 'Amiri'; font-size: 20px; color: var(--primary); font-weight: bold;
+      box-shadow: 0 8px 18px rgba(0,0,0,.12);
+    }
+
+    /* --- محتوى الدفع (أبيض وأسود احترافي) --- */
+    .checkout-container { padding: 25px 20px 50px; max-width: 500px; margin: 0 auto; }
+    .section-title { font-size: 17px; font-weight: 800; margin: 25px 0 15px; color: #000; border-right: 4px solid var(--primary); padding-right: 10px; }
+
+    /* ملخص الطلب */
+    .order-card { background: white; border-radius: var(--radius-md); padding: 20px; box-shadow: var(--shadow); border: 1px solid #eee; }
+    .summary-line { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; color: #555; }
+    .total-line { border-top: 2px solid #f0f0f0; padding-top: 15px; margin-top: 10px; font-weight: 900; font-size: 19px; color: #000; }
+
+    /* الحقول */
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 800; margin-bottom: 8px; color: #777; }
+    .form-group input {
+      width: 100%; padding: 15px; border: 1.5px solid #eee; border-radius: 14px;
+      font-family: 'Tajawal'; font-size: 14px; outline: none; transition: 0.3s; background: #fff;
+    }
+    .form-group input:focus { border-color: #000; box-shadow: 0 0 0 4px rgba(0,0,0,0.05); }
+
+    /* وسائل الدفع */
+    .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .pay-option {
+      background: white; border: 2px solid #f0f0f0; border-radius: 16px; padding: 15px;
+      text-align: center; cursor: pointer; transition: 0.3s;
+    }
+    .pay-option img { height: 28px; object-fit: contain; margin-bottom: 8px; display: block; margin: 0 auto 8px; }
+    .pay-option span { font-size: 12px; font-weight: 800; color: #444; }
+    
+    .pay-option.active { border-color: #000; background: #f9f9f9; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .pay-option.active span { color: #000; }
+
+    /* زر التأكيد الأسود الاحترافي */
+    .btn-submit {
+      width: 100%; background: #000; color: white; padding: 18px; border: none;
+      border-radius: 18px; font-size: 16px; font-weight: 800; margin-top: 30px;
+      cursor: pointer; transition: 0.3s; box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .btn-submit:active { transform: scale(0.97); }
+
+    /* زر الرجوع للرئيسية - إكمال التسوق */
+    .btn-back-home {
+      width: 100%; background: transparent; color: #666; padding: 15px; border: 1.5px solid #eee;
+      border-radius: 18px; font-size: 14px; font-weight: 700; margin-top: 12px;
+      cursor: pointer; transition: 0.3s;
+    }
+    .btn-back-home:hover { background: #f0f0f0; color: #000; }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-top">
+    <div class="logo-box">
+      <div class="logo-icon">ل</div>
+      <div>
+        <h1 style="font-size:18px;font-weight:900;">لحومي</h1>
+        <p style="font-size:10px;opacity:.85;">إتمام الطلب والدفع الآمن</p>
+      </div>
+    </div>
+    <!-- تم تعديل الرابط ليعود للرئيسية -->
+    <div onclick="location.href='index.html'" style="cursor:pointer; font-size:22px; padding: 5px;">✕</div>
+  </div>
+</header>
+
+<div class="checkout-container">
+  
+  <div class="section-title">📊 ملخص الفاتورة</div>
+  <div class="order-card">
+    <div class="summary-line"><span>قيمة المنتجات:</span> <span id="items-price">450 ج</span></div>
+    <div class="summary-line"><span>رسوم التوصيل:</span> <span>35 ج</span></div>
+    <div class="total-line"><span>الإجمالي النهائي:</span> <span id="final-total">485 ج</span></div>
+  </div>
+
+  <div class="section-title">👤 بيانات المستلم</div>
+  <div class="form-group">
+    <label>الاسم بالكامل</label>
+    <input type="text" placeholder="مثال: محمد أحمد">
+  </div>
+  <div class="form-group">
+    <label>رقم الجوال</label>
+    <input type="tel" dir="ltr" placeholder="+20 1xx xxxx xxx">
+  </div>
+  <div class="form-group">
+    <label>عنوان التوصيل</label>
+    <input type="text" placeholder="المنطقة، الشارع، رقم الشقة">
+  </div>
+
+  <div class="section-title">💳 وسيلة الدفع</div>
+  <div class="payment-grid">
+    <div class="pay-option active" onclick="selectPay(this)">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay">
+      <span>Apple Pay</span>
+    </div>
+    <div class="pay-option" onclick="selectPay(this)">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+      <span>بطاقة بنكية</span>
+    </div>
+    <div class="pay-option" onclick="selectPay(this)">
+      <img src="https://img.icons8.com/color/48/mastercard.png" alt="MasterCard">
+      <span>ماستركارد</span>
+    </div>
+    <div class="pay-option" onclick="selectPay(this)">
+      <div style="font-size: 24px; margin-bottom: 8px;">💵</div>
+      <span>نقداً عند الاستلام</span>
+    </div>
+  </div>
+
+  <button class="btn-submit" onclick="done()">تأكيد الطلب</button>
+  <button class="btn-back-home" onclick="location.href='index.html'">إلغاء وإكمال التسوق</button>
+
+</div>
+
+<script>
+  function selectPay(el) {
+    document.querySelectorAll('.pay-option').forEach(opt => opt.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function done() {
+    alert("تم استلام طلبك بنجاح! شكراً لاختيارك لحومي.");
+    location.href='index.html'; // العودة للرئيسية بعد النجاح
+  }
+</script>
+
+</body>
+</html>
