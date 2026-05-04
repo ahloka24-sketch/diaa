@@ -1,10 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
+
 <head>
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1442620098322459"
+
      crossorigin="anonymous"></script>
+
   <meta name="google-adsense-account" content="ca-pub-1442620098322459">
+
   
+
     
 
           <meta charset="UTF-8">
@@ -215,6 +222,20 @@
 
       font-size:28px;flex-shrink:0;
 
+      overflow:hidden;
+
+    }
+
+    .card-icon img{
+
+      width:100%;
+
+      height:100%;
+
+      object-fit:cover;
+
+      border-radius:16px;
+
     }
 
     .card-info h3{
@@ -286,6 +307,76 @@
     }
 
     .store-btn.active{background:var(--primary);color:white;}
+
+    .qty-box{
+
+      margin-right:auto;
+
+      display:flex;
+
+      flex-direction:column;
+
+      align-items:flex-end;
+
+      gap:8px;
+
+      min-width:120px;
+
+    }
+
+    .price-line{
+
+      font-size:11px;
+
+      font-weight:800;
+
+      color:var(--primary);
+
+    }
+
+    .qty-controls{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:8px;
+
+    }
+
+    .qty-btn{
+
+      width:30px;
+
+      height:30px;
+
+      border:none;
+
+      border-radius:10px;
+
+      background:var(--primary);
+
+      color:#fff;
+
+      font-size:18px;
+
+      font-weight:900;
+
+      cursor:pointer;
+
+    }
+
+    .qty-num{
+
+      min-width:24px;
+
+      text-align:center;
+
+      font-weight:900;
+
+      color:var(--primary);
+
+    }
 
     .bottom-nav{
 
@@ -449,47 +540,21 @@
 
   <button class="nav-btn active" id="btn-home" onclick="navTo('home')">
 
-    <svg fill="currentColor" viewBox="0 0 24 24">
-
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-
-    </svg>
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
 
     <span>الرئيسية</span>
 
   </button>
 
-  <button class="nav-btn" id="btn-allowed" onclick="navTo('allowed')">
+  <button class="nav-btn" id="btn-allowed" onclick="navTo('allowed')"><div style="font-size:22px;line-height:1;">🥩</div><span>لحوم</span></button>
 
-    <div style="font-size:22px;line-height:1;">🥩</div>
+  <button class="nav-btn" id="btn-poultry" onclick="navTo('poultry')"><div style="font-size:22px;line-height:1;">🍗</div><span>دواجن</span></button>
 
-    <span>لحوم</span>
-
-  </button>
-
-  <button class="nav-btn" id="btn-poultry" onclick="navTo('poultry')">
-
-    <div style="font-size:22px;line-height:1;">🍗</div>
-
-    <span>دواجن</span>
-
-  </button>
-
-  <button class="nav-btn" id="btn-forbidden" onclick="navTo('forbidden')">
-
-    <div style="font-size:22px;line-height:1;">🐟</div>
-
-    <span>أسماك</span>
-
-  </button>
+  <button class="nav-btn" id="btn-forbidden" onclick="navTo('forbidden')"><div style="font-size:22px;line-height:1;">🐟</div><span>أسماك</span></button>
 
   <button class="nav-btn" id="btn-stores" onclick="navTo('stores')">
 
-    <svg fill="currentColor" viewBox="0 0 24 24">
-
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
-
-    </svg>
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
 
     <span>الشراء</span>
 
@@ -501,9 +566,111 @@
 
 <script>
 
-const days = ["السبت","الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة"];
+const days = ["مطعم السلطان","بيت المشويات","ملحمة الريف","بيت البروتين"];
 
-let currentDay = "السبت";
+let currentDay = "مطعم السلطان";
+
+const cart = {};
+
+const restaurantMenus = {
+
+  "مطعم السلطان":[
+
+    {id:1,t:"ستيك بقري",d:"قطعة ستيك طازجة مشوية",i:"YOUR_IMAGE_1.jpg",price:280},
+
+    {id:2,t:"كفتة مشوية",d:"كفتة بلدي على الفحم",i:"YOUR_IMAGE_2.jpg",price:190},
+
+    {id:3,t:"ريش ضاني",d:"ريش ضاني طرية",i:"YOUR_IMAGE_3.jpg",price:320},
+
+    {id:4,t:"برجر لحم",d:"برجر بقري طازج",i:"YOUR_IMAGE_4.jpg",price:160},
+
+    {id:5,t:"طرب مشوي",d:"طرب بلدي مميز",i:"YOUR_IMAGE_5.jpg",price:170},
+
+    {id:6,t:"سجق بلدي",d:"سجق حار طازج",i:"YOUR_IMAGE_6.jpg",price:150},
+
+    {id:7,t:"كبدة مشوية",d:"كبدة بقري ممتازة",i:"YOUR_IMAGE_7.jpg",price:140},
+
+    {id:8,t:"موزة بقري",d:"موزة مطهية ببطء",i:"YOUR_IMAGE_8.jpg",price:260},
+
+    {id:9,t:"عكاوي",d:"عكاوي صوص غني",i:"YOUR_IMAGE_9.jpg",price:230},
+
+    {id:10,t:"حواوشي",d:"حواوشي لحمة بلدي",i:"YOUR_IMAGE_10.jpg",price:95}
+
+  ],
+
+  "بيت المشويات":[
+
+    {id:11,t:"شيش طاووق",d:"مكعبات دجاج متبلة",i:"YOUR_IMAGE_11.jpg",price:180},
+
+    {id:12,t:"فراخ مشوية",d:"نصف فرخة على الفحم",i:"YOUR_IMAGE_12.jpg",price:210},
+
+    {id:13,t:"كباب",d:"كباب بقري طازج",i:"YOUR_IMAGE_13.jpg",price:290},
+
+    {id:14,t:"كفتة",d:"كفتة ناعمة مشوية",i:"YOUR_IMAGE_14.jpg",price:190},
+
+    {id:15,t:"بط مشوي",d:"بط متبل ومقرمش",i:"YOUR_IMAGE_15.jpg",price:310},
+
+    {id:16,t:"حمام",d:"حمام محشي فاخر",i:"YOUR_IMAGE_16.jpg",price:260},
+
+    {id:17,t:"ريش",d:"ريش لحم على الفحم",i:"YOUR_IMAGE_17.jpg",price:330},
+
+    {id:18,t:"مكس جريل",d:"تشكيلة مشويات",i:"YOUR_IMAGE_18.jpg",price:360},
+
+    {id:19,t:"كبد وقوانص",d:"طاجن كبد وقوانص",i:"YOUR_IMAGE_19.jpg",price:150},
+
+    {id:20,t:"استربس",d:"قطع دجاج مقرمشة",i:"YOUR_IMAGE_20.jpg",price:130}
+
+  ],
+
+  "ملحمة الريف":[
+
+    {id:21,t:"انتركوت",d:"قطعة لحم ممتازة",i:"YOUR_IMAGE_21.jpg",price:340},
+
+    {id:22,t:"وش فخدة",d:"وش فخدة طازج",i:"YOUR_IMAGE_22.jpg",price:280},
+
+    {id:23,t:"مفروم",d:"لحم مفروم فاخر",i:"YOUR_IMAGE_23.jpg",price:220},
+
+    {id:24,t:"كبدة",d:"كبدة بلدي",i:"YOUR_IMAGE_24.jpg",price:160},
+
+    {id:25,t:"لسان",d:"لسان بقري",i:"YOUR_IMAGE_25.jpg",price:210},
+
+    {id:26,t:"مخ",d:"مخ بقري طازج",i:"YOUR_IMAGE_26.jpg",price:190},
+
+    {id:27,t:"كرشة",d:"كرشة منظفة",i:"YOUR_IMAGE_27.jpg",price:170},
+
+    {id:28,t:"ممبار",d:"ممبار جاهز",i:"YOUR_IMAGE_28.jpg",price:180},
+
+    {id:29,t:"كوارع",d:"كوارع بلدي",i:"YOUR_IMAGE_29.jpg",price:230},
+
+    {id:30,t:"سجق",d:"سجق ريفي",i:"YOUR_IMAGE_30.jpg",price:155}
+
+  ],
+
+  "بيت البروتين":[
+
+    {id:31,t:"سلمون",d:"شريحة سلمون طازجة",i:"YOUR_IMAGE_31.jpg",price:360},
+
+    {id:32,t:"تونة",d:"تونة فيليه",i:"YOUR_IMAGE_32.jpg",price:220},
+
+    {id:33,t:"جمبري",d:"جمبري جامبو",i:"YOUR_IMAGE_33.jpg",price:390},
+
+    {id:34,t:"بلطي",d:"بلطي ممتاز",i:"YOUR_IMAGE_34.jpg",price:140},
+
+    {id:35,t:"دنيس",d:"دنيس طازج",i:"YOUR_IMAGE_35.jpg",price:260},
+
+    {id:36,t:"قاروص",d:"قاروص فاخر",i:"YOUR_IMAGE_36.jpg",price:290},
+
+    {id:37,t:"سبيط",d:"سبيط طازج",i:"YOUR_IMAGE_37.jpg",price:310},
+
+    {id:38,t:"كابوريا",d:"كابوريا بحرية",i:"YOUR_IMAGE_38.jpg",price:280},
+
+    {id:39,t:"رنجة",d:"رنجة مدخنة",i:"YOUR_IMAGE_39.jpg",price:110},
+
+    {id:40,t:"سردين",d:"سردين طازج",i:"YOUR_IMAGE_40.jpg",price:95}
+
+  ]
+
+};
 
 const storeData = {
 
@@ -581,96 +748,11 @@ const forbiddenData = [
 
 ];
 
-const weeklyMenu = {
-
-  "السبت":[
-
-    { type:"فطور", t:"بيض بلدي مسلوق", d:"بيضتين مع رشة ملح وفلفل", i:"🥚" },
-
-    { type:"غداء", t:"ستيك بقري", d:"قطعة ستيك مشوية متوسطة", i:"🥩" },
-
-    { type:"عشاء", t:"تونة خفيفة", d:"تونة بالماء مع ليمون", i:"🐟" },
-      
-    { type:"عشاء", t:"تونة خفيفة", d:"تونة بالماء مع ليمون", i:"🐟" },
-
-    { type:"فطور", t:"بيض بلدي مسلوق", d:"بيضتين مع رشة ملح وفلفل", i:"🥚" },
-
-    { type:"غداء", t:"ستيك بقري", d:"قطعة ستيك مشوية متوسطة", i:"🥩" },
-
-    { type:"عشاء", t:"تونة خفيفة", d:"تونة بالماء مع ليمون", i:"🐟" },
-      
-    { type:"عشاء", t:"تونة خفيفة", d:"تونة بالماء مع ليمون", i:"🐟" }
-
-
-  ],
-
-  "الأحد":[
-
-    { type:"فطور", t:"أومليت", d:"3 بيضات مع أعشاب", i:"🍳" },
-
-    { type:"غداء", t:"فراخ مشوية", d:"صدر دجاج متبل ومشوي", i:"🍗" },
-
-    { type:"عشاء", t:"سردين", d:"سردين مشوي خفيف", i:"🐠" }
-
-  ],
-
-  "الاثنين":[
-
-    { type:"فطور", t:"بيض سمان", d:"5 بيضات سمان", i:"🥚" },
-
-    { type:"غداء", t:"كبدة بقري", d:"كبدة مشوحة سريعة", i:"🐄" },
-
-    { type:"عشاء", t:"جمبري", d:"جمبري مشوي بالثوم", i:"🦐" }
-
-  ],
-
-  "الثلاثاء":[
-
-    { type:"فطور", t:"بيض مقلي", d:"بيضتان في زبدة", i:"🍳" },
-
-    { type:"غداء", t:"ريش ضاني", d:"ريش ضاني مشوية", i:"🍖" },
-
-    { type:"عشاء", t:"تونة", d:"علبة تونة مصفاة", i:"🐟" }
-
-  ],
-
-  "الأربعاء":[
-
-    { type:"فطور", t:"بيض + رومي", d:"بيض مع شرائح ديك رومي", i:"🦃" },
-
-    { type:"غداء", t:"سلمون", d:"شريحة سلمون مشوية", i:"🐠" },
-
-    { type:"عشاء", t:"بيض مسلوق", d:"بيضتان خفيفتان", i:"🥚" }
-
-  ],
-
-  "الخميس":[
-
-    { type:"فطور", t:"بيض بلدي", d:"بيضتان بلدي", i:"🥚" },
-
-    { type:"غداء", t:"بط مشوي", d:"ربع بطة متبلة", i:"🦆" },
-
-    { type:"عشاء", t:"كاليماري", d:"كاليماري مشوي", i:"🦑" }
-
-  ],
-
-  "الجمعة":[
-
-    { type:"فطور", t:"بيض + كبدة", d:"فطور بروتين قوي", i:"🍳" },
-
-    { type:"غداء", t:"مشكل لحوم", d:"بقري وضاني وكفتة", i:"🥩" },
-
-    { type:"عشاء", t:"شوربة سي فود", d:"شوربة بحرية غنية", i:"🍲" }
-
-  ]
-
-};
-
 function init(){
 
   renderTabs();
 
-  renderDay("السبت");
+  renderDay("مطعم السلطان");
 
   renderLists();
 
@@ -694,19 +776,35 @@ function renderDay(day){
 
   const list = document.getElementById("schedule-list");
 
-  list.innerHTML = weeklyMenu[day].map(m => `
+  list.innerHTML = restaurantMenus[day].map(m => `
 
     <div class="card-item">
 
-      <div class="card-icon">${m.i}</div>
+      <div class="card-icon"><img src="${m.i}" alt="${m.t}"></div>
 
       <div class="card-info">
-
-        <span style="font-size:10px;color:var(--accent);font-weight:900;">${m.type}</span>
 
         <h3>${m.t}</h3>
 
         <p>${m.d}</p>
+
+      </div>
+
+      <div class="qty-box">
+
+        <div class="price-line">${m.price} ج</div>
+
+        <div class="qty-controls">
+
+          <button class="qty-btn" onclick="changeQty(${m.id},-1)">-</button>
+
+          <span class="qty-num" id="qty-${m.id}">${cart[m.id]?.qty || 0}</span>
+
+          <button class="qty-btn" onclick="changeQty(${m.id},1)">+</button>
+
+        </div>
+
+        <div class="price-line">الإجمالي: <span id="total-${m.id}">${(cart[m.id]?.qty || 0)*m.price}</span> ج</div>
 
       </div>
 
@@ -715,6 +813,22 @@ function renderDay(day){
   `).join('');
 
   updateReminder(day);
+
+}
+
+function changeQty(id,delta){
+
+  const item = Object.values(restaurantMenus).flat().find(x=>x.id===id);
+
+  if(!cart[id]) cart[id]={qty:0,price:item.price};
+
+  cart[id].qty += delta;
+
+  if(cart[id].qty < 0) cart[id].qty = 0;
+
+  document.getElementById(`qty-${id}`).textContent = cart[id].qty;
+
+  document.getElementById(`total-${id}`).textContent = cart[id].qty * cart[id].price;
 
 }
 
@@ -756,13 +870,7 @@ function updateReminder(day){
 
   const box = document.getElementById("reminder-box");
 
-  const sub = day==="الجمعة"
-
-    ? "نوّع بين اللحوم والأسماك والبيض لملف أميني متكامل."
-
-    : "وزّع البروتين على 3 وجبات يوميًا لتحسين الشبع وبناء العضلات.";
-
-  box.innerHTML = `<div class="reminder-card"><span>💡</span><div><b>نصيحة البروتين</b><p>${sub}</p></div></div>`;
+  box.innerHTML = `<div class="reminder-card"><span>🛒</span><div><b>${day}</b><p>اختر أصنافك وحدد الكمية وسيتم حساب الإجمالي تلقائيًا.</p></div></div>`;
 
 }
 
